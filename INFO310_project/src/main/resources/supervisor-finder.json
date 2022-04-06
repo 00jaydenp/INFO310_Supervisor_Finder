@@ -1,0 +1,652 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Supervisor Finder",
+    "version": "1.0",
+    "description": "A service that allows students to find supervisor's research projects"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8090/api"
+    }
+  ],
+  "paths": {
+    "/supervisor/profile/{staffID}": {
+      "get": {
+        "summary": "Get Staff Profile",
+        "tags": [
+          "Profiles",
+          "Staff"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Supervisor"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - No staff profile by that ID"
+          }
+        },
+        "operationId": "get-supervisor-profile",
+        "description": "Get the staff members profile by thier staff ID"
+      },
+      "put": {
+        "summary": "Update Staff Profile",
+        "operationId": "put-supervisor-profile",
+        "responses": {
+          "204": {
+            "description": "Profile successfully updated"
+          },
+          "404": {
+            "description": "Not Found - No staff profile by that ID"
+          },
+          "409": {
+            "description": "Profile <b>NOT</b> updated - you may not change the Staff ID"
+          }
+        },
+        "description": "Update the staff members profile by staff ID",
+        "tags": [
+          "Profiles",
+          "Staff"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "staffID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "Delete Staff Profile",
+        "operationId": "delete-supervisor-profile-staffID",
+        "responses": {
+          "204": {
+            "description": "Profile Successfully deleted"
+          },
+          "404": {
+            "description": "Not Found - No staff profile by that ID"
+          }
+        },
+        "tags": [
+          "Profiles",
+          "Staff"
+        ],
+        "description": "Delete Staff profile by Staff ID"
+      }
+    },
+    "/supervisor/projects": {
+      "post": {
+        "summary": "Add Project",
+        "operationId": "post-supervisor-projects",
+        "responses": {
+          "200": {
+            "description": "Project Successfully added"
+          },
+          "422": {
+            "description": "Project <b>NOT</b> added - there is already a product with that ID"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            }
+          }
+        },
+        "description": "Add a project to the system",
+        "tags": [
+          "Projects",
+          "Staff"
+        ]
+      }
+    },
+    "/supervisor/projects/{staffID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "staffID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Projects By Staff ID",
+        "tags": [
+          "Projects",
+          "Staff"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - No projects under that Staff ID"
+          }
+        },
+        "operationId": "get-projects-staffID",
+        "description": "Get the projects connected to a staff member"
+      }
+    },
+    "/supervisor/projects/{projectID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "projectID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "put": {
+        "summary": "Update Project",
+        "operationId": "putprojects-projectID",
+        "responses": {
+          "204": {
+            "description": "Project Succeessfully Updated"
+          },
+          "404": {
+            "description": "Not Found - No project with hat ID"
+          },
+          "409": {
+            "description": "Project <b>NOT</b> updated - you are not allowed to change the ID via this opperation"
+          }
+        },
+        "tags": [
+          "Projects",
+          "Staff"
+        ],
+        "description": "Udate the project using its project ID",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Project",
+        "operationId": "deleteprojects-projectID",
+        "responses": {
+          "204": {
+            "description": "Project Successfully deleted"
+          },
+          "404": {
+            "description": "Not Found - No project with hat ID"
+          }
+        },
+        "tags": [
+          "Projects",
+          "Staff"
+        ],
+        "description": "Deletes a project using its project ID"
+      },
+      "get": {
+        "summary": "Get Project",
+        "operationId": "get-supervisor-projects-projectID",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - No project with hat ID"
+          }
+        },
+        "tags": [
+          "Projects",
+          "Staff"
+        ],
+        "description": "Gets a certian project usng the projects ID"
+      }
+    },
+    "/profile/{studentID}": {
+      "get": {
+        "summary": "Get Student profile",
+        "tags": [
+          "Profiles",
+          "Student"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - No student profile by that ID"
+          }
+        },
+        "operationId": "get-student-profile",
+        "description": "Gets the Students profile by their student ID"
+      },
+      "put": {
+        "summary": "Update Student Profile",
+        "operationId": "put-student-profile",
+        "responses": {
+          "204": {
+            "description": "Profile sucesssfully updated"
+          },
+          "404": {
+            "description": "Not Found - No student profile by that ID"
+          },
+          "409": {
+            "description": "Profile <b>NOT</b> updated - you may not change the student ID"
+          }
+        },
+        "tags": [
+          "Profiles",
+          "Student"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            }
+          }
+        },
+        "description": "Updates the student profile by their ID"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "studentID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "Delete Student Profile",
+        "operationId": "delete-profile-studentID",
+        "responses": {
+          "204": {
+            "description": "Profile successfully deleted"
+          },
+          "404": {
+            "description": "Not Found - No student profile by that ID"
+          }
+        },
+        "description": "Deletes a students profile by their ID",
+        "tags": [
+          "Profiles",
+          "Student"
+        ]
+      }
+    },
+    "/projects/{projectID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "projectID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Project",
+        "tags": [
+          "Projects",
+          "Student"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Project"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - No project with that ID"
+          }
+        },
+        "operationId": "get-projects-projectID",
+        "description": "Gets a certian project usng the projects ID"
+      }
+    },
+    "/projects/{query}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "query",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Projects by search term",
+        "tags": [
+          "Projects",
+          "Student"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - No project matching that query term"
+          }
+        },
+        "operationId": "get-projects-query",
+        "description": "Get a project by a query"
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login User",
+        "operationId": "post-login",
+        "responses": {
+          "202": {
+            "description": "User Accepted"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "examples": {}
+            }
+          }
+        },
+        "parameters": [],
+        "description": "Posts a user entered email and password",
+        "tags": [
+          "Login"
+        ]
+      }
+    },
+    "/sign-up": {
+      "post": {
+        "summary": "Sign up User",
+        "operationId": "post-sign-up",
+        "responses": {
+          "201": {
+            "description": "User Created"
+          },
+          "422": {
+            "description": "User <b>NOT</b> added - there is already a user with that email"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "description": "Posts an entered user",
+        "tags": [
+          "Sign Up"
+        ]
+      }
+    },
+    "/sign-up/supervisor": {
+      "post": {
+        "summary": "Sign up Supervisor",
+        "operationId": "post-sign-up-supervisor",
+        "responses": {
+          "201": {
+            "description": "Supervisor Created"
+          }
+        },
+        "description": "Signs up with supervisor privilidges",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Supervisor"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Sign Up"
+        ]
+      }
+    },
+    "/sign-up/student": {
+      "post": {
+        "summary": "Sign up Student",
+        "operationId": "post-sign-up-supervisor",
+        "responses": {
+          "201": {
+            "description": "Student Created"
+          }
+        },
+        "description": "Signs up with student privilidges",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Student"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Sign Up"
+        ]
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "title": "User",
+        "type": "object",
+        "description": "",
+        "x-examples": {},
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User's email"
+          },
+          "password": {
+            "type": "string",
+            "format": "date",
+            "description": "User's Password "
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "Supervisor": {
+        "title": "Supervisor",
+        "type": "object",
+        "properties": {
+          "staffID": {
+            "type": "string",
+            "description": "Staffs university ID"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Staffs first name"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Staffs last name"
+          },
+          "interests": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "projects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Project"
+            }
+          }
+        },
+        "required": [
+          "staffID",
+          "firstName",
+          "lastName",
+          "interests"
+        ]
+      },
+      "Student": {
+        "title": "Supervisor",
+        "type": "object",
+        "properties": {
+          "studentID": {
+            "type": "string",
+            "description": "Students University ID"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Students First Name"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Students Last Name"
+          },
+          "interests": {
+            "description": "Students Areas of interest",
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "gpa": {
+            "type": "integer"
+          },
+          "address": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "project": {
+            "$ref": "#/components/schemas/Project"
+          }
+        },
+        "required": [
+          "studentID",
+          "firstName",
+          "lastName",
+          "interests"
+        ]
+      },
+      "Project": {
+        "title": "Project",
+        "type": "object",
+        "properties": {
+          "projectID": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "responses": {}
+  },
+  "tags": [
+    {
+      "name": "Login"
+    },
+    {
+      "name": "Profiles"
+    },
+    {
+      "name": "Projects"
+    },
+    {
+      "name": "Sign Up"
+    },
+    {
+      "name": "Staff"
+    },
+    {
+      "name": "Student"
+    }
+  ]
+}
