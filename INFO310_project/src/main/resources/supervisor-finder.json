@@ -15,8 +15,7 @@
       "get": {
         "summary": "Get Staff Profile",
         "tags": [
-          "Profiles",
-          "Staff"
+          "Profiles"
         ],
         "responses": {
           "200": {
@@ -52,8 +51,7 @@
         },
         "description": "Update the staff members profile by staff ID",
         "tags": [
-          "Profiles",
-          "Staff"
+          "Profiles"
         ]
       },
       "parameters": [
@@ -78,8 +76,7 @@
           }
         },
         "tags": [
-          "Profiles",
-          "Staff"
+          "Profiles"
         ],
         "description": "Delete Staff profile by Staff ID"
       }
@@ -107,8 +104,7 @@
         },
         "description": "Add a project to the system",
         "tags": [
-          "Projects",
-          "Staff"
+          "Projects"
         ]
       }
     },
@@ -126,8 +122,7 @@
       "get": {
         "summary": "Get Projects By Staff ID",
         "tags": [
-          "Projects",
-          "Staff"
+          "Projects"
         ],
         "responses": {
           "200": {
@@ -177,8 +172,7 @@
           }
         },
         "tags": [
-          "Projects",
-          "Staff"
+          "Projects"
         ],
         "description": "Udate the project using its project ID",
         "requestBody": {
@@ -203,8 +197,7 @@
           }
         },
         "tags": [
-          "Projects",
-          "Staff"
+          "Projects"
         ],
         "description": "Deletes a project using its project ID"
       },
@@ -227,8 +220,7 @@
           }
         },
         "tags": [
-          "Projects",
-          "Staff"
+          "Projects"
         ],
         "description": "Gets a certian project usng the projects ID"
       }
@@ -237,8 +229,7 @@
       "get": {
         "summary": "Get Student profile",
         "tags": [
-          "Profiles",
-          "Student"
+          "Profiles"
         ],
         "responses": {
           "200": {
@@ -273,8 +264,7 @@
           }
         },
         "tags": [
-          "Profiles",
-          "Student"
+          "Profiles"
         ],
         "requestBody": {
           "content": {
@@ -310,8 +300,7 @@
         },
         "description": "Deletes a students profile by their ID",
         "tags": [
-          "Profiles",
-          "Student"
+          "Profiles"
         ]
       }
     },
@@ -329,8 +318,7 @@
       "get": {
         "summary": "Get Project",
         "tags": [
-          "Projects",
-          "Student"
+          "Projects"
         ],
         "responses": {
           "200": {
@@ -365,8 +353,7 @@
       "get": {
         "summary": "Get Projects by search term",
         "tags": [
-          "Projects",
-          "Student"
+          "Projects"
         ],
         "responses": {
           "200": {
