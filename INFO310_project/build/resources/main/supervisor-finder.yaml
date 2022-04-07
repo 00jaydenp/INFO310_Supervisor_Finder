@@ -11,7 +11,6 @@ paths:
       summary: Get Staff Profile
       tags:
         - Profiles
-        - Staff
       responses:
         '200':
           description: OK
@@ -36,7 +35,6 @@ paths:
       description: Update the staff members profile by staff ID
       tags:
         - Profiles
-        - Staff
     parameters:
       - schema:
           type: string
@@ -53,7 +51,6 @@ paths:
           description: Not Found - No staff profile by that ID
       tags:
         - Profiles
-        - Staff
       description: Delete Staff profile by Staff ID
   /supervisor/projects:
     post:
@@ -72,7 +69,6 @@ paths:
       description: Add a project to the system
       tags:
         - Projects
-        - Staff
   '/supervisor/projects/{staffID}':
     parameters:
       - schema:
@@ -84,7 +80,6 @@ paths:
       summary: Get Projects By Staff ID
       tags:
         - Projects
-        - Staff
       responses:
         '200':
           description: OK
@@ -117,7 +112,6 @@ paths:
           description: Project <b>NOT</b> updated - you are not allowed to change the ID via this opperation
       tags:
         - Projects
-        - Staff
       description: Udate the project using its project ID
       requestBody:
         content:
@@ -134,7 +128,6 @@ paths:
           description: Not Found - No project with hat ID
       tags:
         - Projects
-        - Staff
       description: Deletes a project using its project ID
     get:
       summary: Get Project
@@ -150,14 +143,12 @@ paths:
           description: Not Found - No project with hat ID
       tags:
         - Projects
-        - Staff
       description: Gets a certian project usng the projects ID
   '/profile/{studentID}':
     get:
       summary: Get Student profile
       tags:
         - Profiles
-        - Student
       responses:
         '200':
           description: OK
@@ -181,7 +172,6 @@ paths:
           description: Profile <b>NOT</b> updated - you may not change the student ID
       tags:
         - Profiles
-        - Student
       requestBody:
         content:
           application/json:
@@ -205,7 +195,6 @@ paths:
       description: Deletes a students profile by their ID
       tags:
         - Profiles
-        - Student
   '/projects/{projectID}':
     parameters:
       - schema:
@@ -217,7 +206,6 @@ paths:
       summary: Get Project
       tags:
         - Projects
-        - Student
       responses:
         '200':
           description: OK
@@ -240,7 +228,6 @@ paths:
       summary: Get Projects by search term
       tags:
         - Projects
-        - Student
       responses:
         '200':
           description: OK
