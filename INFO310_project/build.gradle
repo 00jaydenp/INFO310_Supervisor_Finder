@@ -21,6 +21,12 @@ dependencies {
         implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.10'
 
         implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+        implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.0'
+        implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.5'
+
+        def jdbiVer = '3.21.0'
+        implementation group: 'org.jdbi', name: 'jdbi3-core', version: jdbiVer
+        implementation group: 'org.jdbi', name: 'jdbi3-sqlobject', version: jdbiVer
     
     testImplementation     'junit:junit:4.13'
 }
