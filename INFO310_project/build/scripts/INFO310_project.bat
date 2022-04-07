@@ -67,7 +67,7 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\INFO310_project.jar;%APP_HOME%\lib\jooby-netty-2.13.0.jar;%APP_HOME%\lib\jooby-gson-2.13.0.jar;%APP_HOME%\lib\jooby-swagger-ui-2.13.0.jar;%APP_HOME%\lib\logback-classic-1.2.10.jar;%APP_HOME%\lib\jooby-2.13.0.jar;%APP_HOME%\lib\slf4j-api-1.7.36.jar;%APP_HOME%\lib\netty-codec-http-4.1.73.Final.jar;%APP_HOME%\lib\netty-handler-4.1.73.Final.jar;%APP_HOME%\lib\gson-2.8.6.jar;%APP_HOME%\lib\logback-core-1.2.10.jar;%APP_HOME%\lib\jsr305-3.0.2.jar;%APP_HOME%\lib\javax.inject-1.jar;%APP_HOME%\lib\config-1.4.1.jar;%APP_HOME%\lib\netty-codec-4.1.73.Final.jar;%APP_HOME%\lib\netty-transport-4.1.73.Final.jar;%APP_HOME%\lib\netty-resolver-4.1.73.Final.jar;%APP_HOME%\lib\netty-buffer-4.1.73.Final.jar;%APP_HOME%\lib\netty-common-4.1.73.Final.jar;%APP_HOME%\lib\netty-tcnative-classes-2.0.46.Final.jar
+set CLASSPATH=%APP_HOME%\lib\INFO310_project.jar;%APP_HOME%\lib\jooby-netty-2.13.0.jar;%APP_HOME%\lib\jooby-gson-2.13.0.jar;%APP_HOME%\lib\jooby-swagger-ui-2.13.0.jar;%APP_HOME%\lib\logback-classic-1.2.10.jar;%APP_HOME%\lib\jooby-2.13.0.jar;%APP_HOME%\lib\slf4j-api-1.7.36.jar;%APP_HOME%\lib\h2-1.4.200.jar;%APP_HOME%\lib\netty-codec-http-4.1.73.Final.jar;%APP_HOME%\lib\netty-handler-4.1.73.Final.jar;%APP_HOME%\lib\gson-2.8.6.jar;%APP_HOME%\lib\logback-core-1.2.10.jar;%APP_HOME%\lib\jsr305-3.0.2.jar;%APP_HOME%\lib\javax.inject-1.jar;%APP_HOME%\lib\config-1.4.1.jar;%APP_HOME%\lib\netty-codec-4.1.73.Final.jar;%APP_HOME%\lib\netty-transport-4.1.73.Final.jar;%APP_HOME%\lib\netty-resolver-4.1.73.Final.jar;%APP_HOME%\lib\netty-buffer-4.1.73.Final.jar;%APP_HOME%\lib\netty-common-4.1.73.Final.jar;%APP_HOME%\lib\netty-tcnative-classes-2.0.46.Final.jar
 
 
 @rem Execute INFO310_project
