@@ -15,7 +15,9 @@ CREATE TABLE STUDENT(
     phoneNumber varchar(20) not null, 
     gpa varchar(10) not null, 
     address varchar(50) not null, 
-
-    constraint Student_PK primary key (studentID)
+    
+    
+    constraint Student_PK primary key (studentID),
+    constraint Student_FK foreign key (userID) references User(userID)
 );
 
