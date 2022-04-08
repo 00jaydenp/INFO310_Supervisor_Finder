@@ -1,4 +1,4 @@
-CREATE TABLE USER(
+CREATE TABLE User(
     userID varchar(5) not null unique,
     email varchar(50) not null unique,
     password varchar(20) not null,
@@ -6,7 +6,7 @@ CREATE TABLE USER(
     constraint User_PK primary key (studentID)
 );
 
-CREATE TABLE STUDENT(
+CREATE TABLE Student(
     studentID varchar(5) not null unique, 
     firstName varchar(20) not null, 
     lastName varchar(20) not null, 
@@ -29,10 +29,26 @@ CREATE TABLE Supervisor(
     email varchar(50) not null,
     interest varchar(50) not null,
     description varchar(50) not null,
-    phoneNumber varchar(20) not null, 
+    phoneNumber varchar(20) not null,
+    userID varchar(5) not null unique,
      
     
     constraint Supervisor_PK primary key (staffID),
-    constraint Supervisor_FK foreign key (userID) references User(userID)
+    constraint SupervisorUserID_FK foreign key (userID) references User(userID)
 );
+
+CREATE TABLE Project(
+    projectID varchar(5) not null unique,
+    staffID varchar(5) not null unique,
+    description varchar(50) not null,
+    status varchar (10) not null,
+    openDate date,
+    studentID varchar(5) not null,
+
+    constraint Project_PK primary key (projectID),
+    constraint ProjectStaffID_FK foreign key (staffID) references Supervisor(staffID),
+    constraint ProjectStudentID_FK foreign key (studentID) references Student(studentID)
+);
+    
+    
 
