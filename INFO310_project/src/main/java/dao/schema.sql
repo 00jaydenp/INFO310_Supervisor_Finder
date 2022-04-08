@@ -14,11 +14,12 @@ CREATE TABLE STUDENT(
     description varchar(50) not null, 
     phoneNumber varchar(20) not null, 
     gpa varchar(10) not null, 
-    address varchar(50) not null, 
+    address varchar(50) not null,
+    userID varchar(5) not null unique,
     
     
     constraint Student_PK primary key (studentID),
-    constraint Student_FK foreign key (userID) references User(userID)
+    constraint StudentUserID_FK foreign key (userID) references User(userID)
 );
 
 CREATE TABLE Supervisor(
