@@ -1,3 +1,11 @@
+CREATE TABLE USER(
+    userID varchar(5) not null unique,
+    email varchar(50) not null unique,
+    password varchar(20) not null,
+    
+    constraint User_PK primary key (studentID)
+);
+
 CREATE TABLE STUDENT(
     studentID varchar(5) not null unique, 
     firstName varchar(20) not null, 
@@ -10,3 +18,4 @@ CREATE TABLE STUDENT(
 
     constraint Student_PK primary key (studentID)
 );
+
