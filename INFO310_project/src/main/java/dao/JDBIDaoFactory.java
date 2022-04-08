@@ -39,4 +39,11 @@ public class JDBIDaoFactory {
         JDBI = Jdbi.create(HIKARI_DATA_SOURCE);
         JDBI.installPlugin(new SqlObjectPlugin());
     }
+    
+    public static StudentDao getStudentDao(){
+        if (HIKARI_DATA_SOURCE == null) {
+            initialisePool();
+        }
+        return JDBI.onDemand(StudentJdbiDao.class);
+    }
 }

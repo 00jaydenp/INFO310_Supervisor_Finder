@@ -4,17 +4,21 @@
  */
 package server;
 
+import dao.JDBIDaoFactory;
+import dao.StudentDao;
 import io.jooby.Jooby;
 import io.jooby.OpenAPIModule;
 import io.jooby.ServerOptions;
 import io.jooby.json.GsonModule;
 import java.io.IOException;
+import resource.StudentResource;
 
 /**
  *
  * @author David
  */
 public class SupervisorFinderService extends Jooby{
+    private StudentDao studentDao = JDBIDaoFactory.getStudentDao();
     
     public SupervisorFinderService(){
         
@@ -25,6 +29,8 @@ public class SupervisorFinderService extends Jooby{
 
         assets("/openapi.json", "supervisor-finder.json");
         assets("/openapi.yaml", "supervisor-finder.yaml");
+        
+        mount(new StudentResource(studentDao));
         
         get("/", ctx -> ctx.sendRedirect("/swagger"));
     }

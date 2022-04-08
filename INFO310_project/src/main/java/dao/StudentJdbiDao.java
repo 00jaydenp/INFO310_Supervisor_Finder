@@ -5,6 +5,7 @@
 package dao;
 
 import domain.Student;
+import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
@@ -22,6 +23,7 @@ public interface StudentJdbiDao extends StudentDao {
     
     @Override
     @SqlQuery("SELECT * FROM STUDENT WHERE STUDENTID = :studentID")
+    @RegisterBeanMapper(Student.class)
     public Student getByID(@Bind("studentID")String studentID);
     
     @Override
