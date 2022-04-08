@@ -12,12 +12,13 @@ import java.util.Map;
  *
  * @author phmci811
  */
-public class StudentCollectionsDao {
+public class StudentCollectionsDao implements StudentDao {
     private static final Map<String, Student> studentIDMap = new HashMap<>();
     
     /*
     add a new student
     */
+    @Override
     public void saveStudent(Student student){
         studentIDMap.put(student.getStudentID(), student);
     }
@@ -25,6 +26,7 @@ public class StudentCollectionsDao {
     /*
     get a specific student profile by student ID
     */
+    @Override
     public Student getByID(String id){
         return studentIDMap.get(id);
     }
@@ -32,6 +34,7 @@ public class StudentCollectionsDao {
     /*
     delete a specific student by student ID
     */
+    @Override
     public void deleteStudent(String id){
         Student student = studentIDMap.get(id);
         studentIDMap.remove(student.getStudentID());
@@ -40,6 +43,7 @@ public class StudentCollectionsDao {
     /*
     update a specific student by student ID
     */
+    @Override
     public void updateStudent(String id, Student updatedStudent){
         studentIDMap.put(id, updatedStudent);
         
