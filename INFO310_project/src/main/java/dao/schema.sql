@@ -1,9 +1,9 @@
-CREATE TABLE User(
+CREATE TABLE sysUser(
     userID varchar(5) not null unique,
     email varchar(50) not null unique,
     password varchar(20) not null,
     
-    constraint User_PK primary key (studentID)
+    constraint sysUser_PK primary key (userID)
 );
 
 CREATE TABLE Student(
@@ -19,7 +19,7 @@ CREATE TABLE Student(
     
     
     constraint Student_PK primary key (studentID),
-    constraint StudentUserID_FK foreign key (userID) references User(userID)
+    constraint StudentUserID_FK foreign key (userID) references sysUser(userID)
 );
 
 CREATE TABLE Supervisor(
