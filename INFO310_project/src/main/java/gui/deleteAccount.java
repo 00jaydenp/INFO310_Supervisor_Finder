@@ -113,7 +113,7 @@ public class deleteAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteAccountCheckBoxActionPerformed
 
     private void continueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continueBtnActionPerformed
-       // User selected = List.getSelctedValue();
+        User selected = List.getSelctedValue();
         int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete your account?", "Confirmation", JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.YES_OPTION) {
            // dao.removeAccount(selected);
