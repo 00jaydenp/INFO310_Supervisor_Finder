@@ -1,9 +1,8 @@
 CREATE TABLE sysUser(
-    userID varchar(5) not null unique,
     email varchar(50) not null unique,
     password varchar(20) not null,
     
-    constraint sysUser_PK primary key (userID)
+    constraint sysUser_PK primary key (email)
 );
 
 CREATE TABLE Student(
@@ -15,11 +14,11 @@ CREATE TABLE Student(
     phoneNumber varchar(20) not null, 
     gpa varchar(10) not null, 
     address varchar(50) not null,
-    userID varchar(5) not null unique,
+    email varchar(50) not null unique,
     
     
     constraint Student_PK primary key (studentID),
-    constraint StudentUserID_FK foreign key (userID) references sysUser(userID)
+    constraint StudentEmail_FK foreign key (email) references sysUser(email)
 );
 
 CREATE TABLE Supervisor(
@@ -30,11 +29,11 @@ CREATE TABLE Supervisor(
     interest varchar(50) not null,
     description varchar(50) not null,
     phoneNumber varchar(20) not null,
-    userID varchar(5) not null unique,
+    email varchar(50) not null unique,
      
     
     constraint Supervisor_PK primary key (staffID),
-    constraint SupervisorUserID_FK foreign key (userID) references User(userID)
+    constraint StudentEmail_FK foreign key (email) references sysUser(email)
 );
 
 CREATE TABLE Project(
