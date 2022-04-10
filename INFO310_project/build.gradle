@@ -10,6 +10,12 @@ repositories {
 }
 
 dependencies {
+
+        def junitVer = '5.7.2'
+        testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVer
+        testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVer
+        testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+
     // jooby
 	def joobyVer =  '2.13.0'
 	implementation group: 'io.jooby', name: 'jooby-netty', version: joobyVer
@@ -29,4 +35,43 @@ dependencies {
         implementation group: 'org.jdbi', name: 'jdbi3-sqlobject', version: jdbiVer
     
     testImplementation     'junit:junit:4.13'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+run {
+    standardInput = System.in
+}
+
+task openProjectFolder {
+    group = "Directories"
+    description = "Open the project root in the system file manager."
+    doFirst {
+        println('Opening: ' + file(projectDir))
+        java.awt.Desktop.getDesktop().open(file(projectDir));
+    }
+}
+
+def ignored="""
+.gradle
+build
+*.zip
+*.tgz
+.DS_Store
+"""
+
+task createGitIgnore {
+    group = "Git"
+    description = "Create the project's .gitignore file."
+    doLast {
+        def file = new File(projectDir, ".gitignore")
+        if ( !file.exists() ) {
+            println('Creating .gitignore')
+            file.text = ignored
+        } else {
+            println('.gitignore already exists')
+        }
+    }
 }
