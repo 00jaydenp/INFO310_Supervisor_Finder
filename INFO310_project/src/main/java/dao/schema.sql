@@ -25,7 +25,6 @@ CREATE TABLE Supervisor(
     staffID varchar(5) not null unique, 
     firstName varchar(20) not null, 
     lastName varchar(20) not null,
-    email varchar(50) not null,
     interest varchar(50) not null,
     description varchar(50) not null,
     phoneNumber varchar(20) not null,
@@ -33,7 +32,7 @@ CREATE TABLE Supervisor(
      
     
     constraint Supervisor_PK primary key (staffID),
-    constraint StudentEmail_FK foreign key (email) references sysUser(email)
+    constraint SupervisorEmail_FK foreign key (email) references sysUser(email)
 );
 
 CREATE TABLE Project(
