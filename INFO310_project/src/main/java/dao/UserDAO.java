@@ -11,7 +11,9 @@ import domain.User;
  * @author francesca
  */
 public interface UserDAO {
+    
     void deleteUser(User user);
+    
     void changePassword(User user);
     
 }
