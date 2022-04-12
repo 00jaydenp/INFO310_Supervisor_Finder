@@ -12,64 +12,69 @@ import java.util.Map;
  *
  * @author calvin
  */
-public class SupervisorCollectionsDao implements SupervisorDAO{
+public class SupervisorCollectionsDao implements SupervisorDAO {
+
     private static final Map<String, Supervisor> supervisorsMap = new HashMap<>();
 
     /**
      * Add some dummy data for testing if required
      */
-    public SupervisorCollectionsDao(){
-        
+    public SupervisorCollectionsDao() {
+
     }
-    
+
     /**
      * Get a supervisor
-     * @param staffId - id of staff to get
+     *
+     * @param staffID - id of staff to get
      * @return supervisor requested
      */
     @Override
-    public Supervisor getSupervisorById(String staffId) {
-        return supervisorsMap.get(staffId);
+    public Supervisor getSupervisorById(String staffID) {
+        return supervisorsMap.get(staffID);
     }
 
     /**
      * Adds a supervisor
-     * @param supervisor - supervisor to be added 
+     *
+     * @param supervisor - supervisor to be added
      */
     @Override
     public void addSupervisor(Supervisor supervisor) {
         supervisorsMap.put(supervisor.getStaffID(), supervisor);
     }
-    
+
     /**
      * Update a supervisor
-     * @param staffId - id of supervisor to replace
+     *
+     * @param staffID - id of supervisor to replace
      * @param supervisor - the supervisor to replace it with
      */
     @Override
-    public void updateSupervisor(String staffId, Supervisor supervisor) {
-        supervisorsMap.put(staffId, supervisor);
+    public void updateSupervisor(String staffID, Supervisor supervisor) {
+        supervisorsMap.put(staffID, supervisor);
     }
 
-    /**
-     * Delete a supervisor
-     * @param staffId - id of supervisor to be deleted
-     */
-    @Override
-    public void deleteSupervisor(Supervisor staffId) { //not sure here, missing the multimap?!
-        Supervisor supervisor = supervisorsMap.remove(staffId);
-        supervisorsMap.remove(supervisor); //not sure if this is right
-    }
 
     /**
      * Hide a supervisor
-     * @param staffId - id of supervisor to hide
+     *
+     * @param staffID - id of supervisor to hide
      */
     @Override
-    public void hideSupervisor(String staffId) {
+    public void hideSupervisor(String staffID) {
         //not sure for this
     }
     
-    
-    
+    /**
+     * Delete a supervisor
+     *
+     * @param staffID - id of supervisor to be deleted
+     */
+    @Override
+    public void deleteSupervisor(String staffID) {
+        Supervisor supervisor = supervisorsMap.get(staffID);
+        supervisorsMap.remove(supervisor.getStaffID()); //not sure if this is right    
+    }
+
 }
