@@ -46,4 +46,11 @@ public class JDBIDaoFactory {
         }
         return JDBI.onDemand(StudentJdbiDao.class);
     }
+    
+    public static SupervisorDAO getSupervisorDao(){
+        if (HIKARI_DATA_SOURCE == null) {
+            initialisePool();
+        }
+        return JDBI.onDemand(SupervisorJdbiDao.class);
+    }
 }
