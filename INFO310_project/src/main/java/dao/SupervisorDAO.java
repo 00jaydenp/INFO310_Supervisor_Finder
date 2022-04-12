@@ -16,9 +16,9 @@ public interface SupervisorDAO {
     
     /**
      *  Gets the supervisor using staffId
-     * @param staffId - id of staff to get
+     * @param staffID - id of staff to get
     */
-    Supervisor getSupervisorById(String staffId);
+    Supervisor getSupervisorById(String staffID);
     
     /**
      * Adds supervisor
@@ -28,21 +28,21 @@ public interface SupervisorDAO {
     
     /**
      * Update details of supervisor
-     * @param staffId - staff id to update
+     * @param staffID - staff id to update
      * @param supervisor - new details of supervisor
      */
-    void updateSupervisor(String staffId, Supervisor supervisor);
+    void updateSupervisor(String staffID, Supervisor supervisor);
     
     /**
      * Delete a supervisor
-     * @param supervisor - supervisor to be deleted
+     * @param staffID - supervisor to be deleted
      */
-    void deleteSupervisor(Supervisor supervisor);
+    void deleteSupervisor(String staffID);
     
     /**
      * Hide a supervisor
-     * @param staffId - id of staff to be hidden
+     * @param staffID - id of staff to be hidden
      */
-    void hideSupervisor(String staffId);
+    void hideSupervisor(String staffID);
 }
 
