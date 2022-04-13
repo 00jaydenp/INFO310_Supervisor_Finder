@@ -9,6 +9,7 @@ import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
+import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 /**
  *
@@ -22,11 +23,11 @@ public interface SupervisorJdbiDao extends SupervisorDAO {
     public Supervisor getSupervisorById(@Bind("staffID") String staffID);
 
     @Override
-    @SqlQuery("DELETE FROM SUPERVISOR WHERE STAFFID = :staffID")
+    @SqlUpdate("DELETE FROM SUPERVISOR WHERE STAFFID = :staffID")
     public void deleteSupervisor(@Bind("staffID") String staffID);
 
     @Override
-    @SqlQuery("INSERT INTO SUPERVISOR (STAFFID, FIRSTNAME, LASTNAME, INTEREST, DESCRIPTION, PHONENUMBER, EMAIL) VALUES (:staffID, :firstName, :lastName, :interest, :description, :phoneNumber, :email")
+    @SqlUpdate("INSERT INTO SUPERVISOR (STAFFID, FIRSTNAME, LASTNAME, INTEREST, DESCRIPTION, PHONENUMBER, EMAIL) VALUES (:staffID, :firstName, :lastName, :interest, :description, :phoneNumber, :email")
     public void addSupervisor(@BindBean Supervisor supervisor);
 
 //    @Override
