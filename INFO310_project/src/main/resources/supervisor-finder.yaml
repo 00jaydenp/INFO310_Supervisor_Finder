@@ -3,28 +3,45 @@ info:
   title: Supervisor Finder
   version: '1.0'
   description: A service that allows students to find supervisor's research projects
+  x-logo:
+    url: ''
 servers:
-  - url: 'http://localhost:8090/api'
+  - url: http://localhost:8090/api
 paths:
-  '/supervisor/profile/{staffID}':
+  /supervisor/profile:
     get:
-      summary: Get Staff Profile
       tags:
         - Profiles
       responses:
         '200':
-          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Supervisor'
+          description: Return all existed supervisor profiles
+      operationId: get all supervisors
+      summary: Get all of the supervisor profiles
+  /supervisor/profile/{staffID}:
+    get:
+      tags:
+        - Profiles
+      responses:
+        '200':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Supervisor'
+          description: OK
         '404':
           description: Not Found - No staff profile by that ID
       operationId: get-supervisor-profile
+      summary: Get Staff Profile
       description: Get the staff members profile by thier staff ID
     put:
-      summary: Update Staff Profile
-      operationId: put-supervisor-profile
+      tags:
+        - Profiles
       responses:
         '204':
           description: Profile successfully updated
@@ -32,137 +49,159 @@ paths:
           description: Not Found - No staff profile by that ID
         '409':
           description: Profile <b>NOT</b> updated - you may not change the Staff ID
+      operationId: put-supervisor-profile
+      summary: Update Staff Profile
       description: Update the staff members profile by staff ID
+    delete:
       tags:
         - Profiles
-    parameters:
-      - schema:
-          type: string
-        name: staffID
-        in: path
-        required: true
-    delete:
-      summary: Delete Staff Profile
-      operationId: delete-supervisor-profile-staffID
       responses:
         '204':
           description: Profile Successfully deleted
         '404':
           description: Not Found - No staff profile by that ID
-      tags:
-        - Profiles
+      operationId: delete-supervisor-profile-staffID
+      summary: Delete Staff Profile
       description: Delete Staff profile by Staff ID
+    parameters:
+      - name: staffID
+        schema:
+          type: string
+        in: path
+        required: true
   /supervisor/projects:
     post:
-      summary: Add Project
-      operationId: post-supervisor-projects
-      responses:
-        '200':
-          description: Project Successfully added
-        '422':
-          description: Project <b>NOT</b> added - there is already a product with that ID
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Project'
-      description: Add a project to the system
-      tags:
-        - Projects
-  '/supervisor/projects/{staffID}':
-    parameters:
-      - schema:
-          type: string
-        name: staffID
-        in: path
-        required: true
-    get:
-      summary: Get Projects By Staff ID
       tags:
         - Projects
       responses:
         '200':
-          description: OK
+          description: Project Successfully added
+        '422':
+          description: Project <b>NOT</b> added - there is already a product with that ID
+      operationId: post-supervisor-projects
+      summary: Add Project
+      description: Add a project to the system
+  /supervisor/projects/{staffID}:
+    get:
+      tags:
+        - Projects
+      responses:
+        '200':
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/Project'
+          description: OK
         '404':
           description: Not Found - No projects under that Staff ID
       operationId: get-projects-staffID
+      summary: Get Projects By Staff ID
       description: Get the projects connected to a staff member
-  '/supervisor/projects/{projectID}':
     parameters:
-      - schema:
+      - name: staffID
+        schema:
           type: string
-        name: projectID
         in: path
         required: true
+  /supervisor/projects/{projectID}:
+    get:
+      tags:
+        - Projects
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: OK
+        '404':
+          description: Not Found - No project with hat ID
+      operationId: get-supervisor-projects-projectID
+      summary: Get Project
+      description: Gets a certian project usng the projects ID
     put:
-      summary: Update Project
-      operationId: putprojects-projectID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+      tags:
+        - Projects
       responses:
         '204':
           description: Project Succeessfully Updated
         '404':
           description: Not Found - No project with hat ID
         '409':
-          description: Project <b>NOT</b> updated - you are not allowed to change the ID via this opperation
+          description: >-
+            Project <b>NOT</b> updated - you are not allowed to change the ID
+            via this opperation
+      operationId: putprojects-projectID
+      summary: Update Project
+      description: Udate the project using its project ID
+    delete:
       tags:
         - Projects
-      description: Udate the project using its project ID
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Project'
-    delete:
-      summary: Delete Project
-      operationId: deleteprojects-projectID
       responses:
         '204':
           description: Project Successfully deleted
         '404':
           description: Not Found - No project with hat ID
-      tags:
-        - Projects
+      operationId: deleteprojects-projectID
+      summary: Delete Project
       description: Deletes a project using its project ID
+    parameters:
+      - name: projectID
+        schema:
+          type: string
+        in: path
+        required: true
+  /student/profile:
     get:
-      summary: Get Project
-      operationId: get-supervisor-projects-projectID
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Project'
-        '404':
-          description: Not Found - No project with hat ID
-      tags:
-        - Projects
-      description: Gets a certian project usng the projects ID
-  '/profile/{studentID}':
-    get:
-      summary: Get Student profile
       tags:
         - Profiles
       responses:
         '200':
-          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+          description: Return all existed student profiles
+      operationId: get all students
+      summary: Get all of the student profiles
+  /profile/{studentID}:
+    get:
+      tags:
+        - Profiles
+      responses:
+        '200':
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Student'
+          description: OK
         '404':
           description: Not Found - No student profile by that ID
       operationId: get-student-profile
+      summary: Get Student profile
       description: Gets the Students profile by their student ID
     put:
-      summary: Update Student Profile
-      operationId: put-student-profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      tags:
+        - Profiles
       responses:
         '204':
           description: Profile sucesssfully updated
@@ -170,119 +209,121 @@ paths:
           description: Not Found - No student profile by that ID
         '409':
           description: Profile <b>NOT</b> updated - you may not change the student ID
+      operationId: put-student-profile
+      summary: Update Student Profile
+      description: Updates the student profile by their ID
+    delete:
       tags:
         - Profiles
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Student'
-      description: Updates the student profile by their ID
-    parameters:
-      - schema:
-          type: string
-        name: studentID
-        in: path
-        required: true
-    delete:
-      summary: Delete Student Profile
-      operationId: delete-profile-studentID
       responses:
         '204':
           description: Profile successfully deleted
         '404':
           description: Not Found - No student profile by that ID
+      operationId: delete-profile-studentID
+      summary: Delete Student Profile
       description: Deletes a students profile by their ID
-      tags:
-        - Profiles
-  '/projects/{projectID}':
     parameters:
-      - schema:
+      - name: studentID
+        schema:
           type: string
-        name: projectID
         in: path
         required: true
+  /projects/{projectID}:
     get:
-      summary: Get Project
       tags:
         - Projects
       responses:
         '200':
-          description: OK
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Project'
+          description: OK
         '404':
           description: Not Found - No project with that ID
       operationId: get-projects-projectID
+      summary: Get Project
       description: Gets a certian project usng the projects ID
-  '/projects/{query}':
     parameters:
-      - schema:
+      - name: projectID
+        schema:
           type: string
-        name: query
         in: path
         required: true
+  /projects/{query}:
     get:
-      summary: Get Projects by search term
       tags:
         - Projects
       responses:
         '200':
-          description: OK
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/Project'
+          description: OK
         '404':
           description: Not Found - No project matching that query term
       operationId: get-projects-query
+      summary: Get Projects by search term
       description: Get a project by a query
+    parameters:
+      - name: query
+        schema:
+          type: string
+        in: path
+        required: true
   /login:
     post:
-      summary: Login User
-      operationId: post-login
-      responses:
-        '202':
-          description: User Accepted
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/User'
-            examples: {}
-      parameters: []
-      description: Posts a user entered email and password
       tags:
         - Login
+      responses:
+        '202':
+          description: User Accepted
+      operationId: post-login
+      summary: Login User
+      description: Posts a user entered email and password
+  /login/email:
+    get:
+      tags:
+        - Login
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: Return all user emails
+      operationId: get all emails
+      summary: Get all of the emails
   /sign-up:
     post:
-      summary: Sign up User
-      operationId: post-sign-up
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      tags:
+        - Sign Up
       responses:
         '201':
           description: User Created
         '422':
           description: User <b>NOT</b> added - there is already a user with that email
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
+      operationId: post-sign-up
+      summary: Sign up User
       description: Posts an entered user
-      tags:
-        - Sign Up
   /sign-up/supervisor:
     post:
-      summary: Sign up Supervisor
-      operationId: post-sign-up-supervisor
-      responses:
-        '201':
-          description: Supervisor Created
-      description: Signs up with supervisor privilidges
       requestBody:
         content:
           application/json:
@@ -290,14 +331,14 @@ paths:
               $ref: '#/components/schemas/Supervisor'
       tags:
         - Sign Up
-  /sign-up/student:
-    post:
-      summary: Sign up Student
-      operationId: post-sign-up-supervisor
       responses:
         '201':
-          description: Student Created
-      description: Signs up with student privilidges
+          description: Supervisor Created
+      operationId: post-sign-up-supervisor
+      summary: Sign up Supervisor
+      description: Signs up with supervisor privilidges
+  /sign-up/student:
+    post:
       requestBody:
         content:
           application/json:
@@ -305,39 +346,69 @@ paths:
               $ref: '#/components/schemas/Student'
       tags:
         - Sign Up
-    parameters: []
+      responses:
+        '201':
+          description: Student Created
+      operationId: post-sign-up-student
+      summary: Sign up Student
+      description: Signs up with student privilidges
+  /login/{email}:
+    delete:
+      tags:
+        - Login
+      responses:
+        '204':
+          description: 'Sale successfully deleted '
+        '404':
+          description: 'Email not found '
+      operationId: 'delete account '
+      summary: 'Delete an existed account '
+      description: Delete the account matching the provided email
+    parameters:
+      - deprecated: false
+        name: email
+        description: The student/supervisor's email
+        schema:
+          type: string
+        in: path
+        required: true
 components:
   schemas:
     User:
       title: User
-      type: object
       description: ''
-      x-examples: {}
-      properties:
-        email:
-          type: string
-          format: email
-          description: User's email
-        password:
-          type: string
-          format: date
-          description: 'User''s Password '
       required:
         - email
         - password
+      type: object
+      properties:
+        email:
+          format: email
+          description: User's email
+          type: string
+        password:
+          format: date
+          description: 'User''s Password '
+          type: string
+      x-examples: {}
     Supervisor:
       title: Supervisor
+      required:
+        - staffID
+        - firstName
+        - lastName
+        - interests
       type: object
       properties:
         staffID:
-          type: string
           description: Staffs university ID
+          type: string
         firstName:
-          type: string
           description: Staffs first name
-        lastName:
           type: string
+        lastName:
           description: Staffs last name
+          type: string
         interests:
           type: string
         description:
@@ -350,24 +421,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Project'
+    Student:
+      title: Student
       required:
-        - staffID
+        - studentID
         - firstName
         - lastName
         - interests
-    Student:
-      title: Supervisor
       type: object
       properties:
         studentID:
-          type: string
           description: Students University ID
+          type: string
         firstName:
-          type: string
           description: Students First Name
-        lastName:
           type: string
+        lastName:
           description: Students Last Name
+          type: string
         interests:
           description: Students Areas of interest
           type: string
@@ -383,11 +454,6 @@ components:
           $ref: '#/components/schemas/User'
         project:
           $ref: '#/components/schemas/Project'
-      required:
-        - studentID
-        - firstName
-        - lastName
-        - interests
     Project:
       title: Project
       type: object
@@ -402,9 +468,13 @@ components:
           type: string
         date:
           type: string
+  securitySchemes: {}
+  headers: {}
   responses: {}
+  parameters: {}
 tags:
   - name: Login
   - name: Profiles
   - name: Projects
   - name: Sign Up
+security: []
