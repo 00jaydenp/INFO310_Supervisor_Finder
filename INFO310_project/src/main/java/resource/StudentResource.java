@@ -14,13 +14,17 @@ import io.jooby.StatusCode;
  */
 public class StudentResource extends Jooby {
     public StudentResource(StudentDao dao){
-        path("/api/profile/{studentID}", () ->{
+        path("/api/profile", () ->{
             get("", ctx -> {
+                return dao.getStudents();
+            });
+            
+            get("/{studentID}", ctx -> {
                 String id = ctx.path("studentID").value();
                 return dao.getByID(id);
             });
             
-            delete("", ctx -> {
+            delete("/{studentID}", ctx -> {
                 String id = ctx.path("studentID").value();
                 dao.deleteStudent(id);
                 return ctx.send(StatusCode.NO_CONTENT);

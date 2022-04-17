@@ -5,6 +5,7 @@
 package dao;
 
 import domain.Student;
+import java.util.Collection;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
@@ -22,6 +23,11 @@ public interface StudentJdbiDao extends StudentDao {
     public void saveStudent(@BindBean Student student);
     
     @Override
+    @SqlQuery("SELECT * FROM STUDENT ORDER BY STUDENTID")
+    @RegisterBeanMapper(Student.class)
+    public Collection<Student> getStudents();
+    
+    @Override
     @SqlQuery("SELECT * FROM STUDENT WHERE STUDENTID = :studentID")
     @RegisterBeanMapper(Student.class)
     public Student getByID(@Bind("studentID")String studentID);
@@ -30,8 +36,8 @@ public interface StudentJdbiDao extends StudentDao {
     @SqlUpdate("DELETE FROM STUDENT WHERE STUDENTID = :studentID")
     public void deleteStudent(@Bind("studentID")String studentID);
     
-    //@Override 
-    //@SqlUpdate("Update Student set FIRSTNAME=:firstName, LASTNAME=:lastName, INTEREST=:interests, DESCRIPTION=:description, PHONENUMBER=:phoneNumber, GPA=:gpa, ADDRESS=:address")
-    //public void updateStudent(@Bind("studentID")String studentID);
+    @Override 
+    @SqlUpdate("Update Student set FIRSTNAME=:firstName, LASTNAME=:lastName, INTEREST=:interests, DESCRIPTION=:description, PHONENUMBER=:phoneNumber, GPA=:gpa, ADDRESS=:address")
+    public void updateStudent(@BindBean Student student);
     
 }

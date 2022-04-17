@@ -5,12 +5,16 @@
 package dao;
 
 import domain.Student;
+import java.util.Collection;
 
 /**
  *
  * @author phmci811
  */
 public interface StudentDao {
+    
+    //get all of the student profile 
+    Collection<Student> getStudents();
 
     /*
     delete a specific student by student ID
@@ -30,6 +34,6 @@ public interface StudentDao {
     /*
     update a specific student by student ID
      */
-    //void updateStudent(String id, Student updatedStudent);
+    void updateStudent(Student updatedStudent);
     
 }
