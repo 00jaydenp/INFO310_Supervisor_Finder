@@ -8,7 +8,6 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Connection;
-import org.h2.jdbc.JdbcConnection;
 import domain.Student;
 import domain.Supervisor;
 
@@ -18,33 +17,15 @@ import domain.Supervisor;
  */
 public class UserDAO implements StudentDao, SupervisorDAO {
     
-    private final String studentUri = JDBIDaoFactory.getDefaultConnectionJdbcUri();
-    private final String supervisorUri = JDBIDaoFactory.getDefaultConnectionJdbcUri();
-  
+    
+    @Override
     public void deleteStudent(String Id){
-        String sql = "delete from student where studentID =?";
-        try(
-            Connection dbCon = JDBIDaoFactory.getConnection(studentUri);
-            PreparedStatement stmt = dbCon.prepareStatement(sql);
-                ){
-            stmt.executeUpdate();
-        }
-        catch (SQLException ex){
-            throw new RuntimeException(ex);
-        }
+        JDBIDaoFactory.getStudentDao().deleteStudent(Id);
+        
     }
-   
-    public void deleteSupervisor(Supervisor supervisor){
-        String sql = "delete from supervisor where supervisorID =?";
-        try(
-            Connection dbCon = JDBIDaoFactory.getConnection(supervisorUri);
-            PreparedStatement stmt = dbCon.prepareStatement(sql);
-                ){
-            stmt.executeUpdate();
-        }
-        catch (SQLException ex){
-            throw new RuntimeException(ex);
-        }
+ 
+    public void deleteSupervisor(String Id){
+        JDBIDaoFactory.getSupervisorDao().deleteSupervisor(Id);
     }
     
    // public void changePassword(User user){
@@ -69,14 +50,11 @@ public class UserDAO implements StudentDao, SupervisorDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public void updateSupervisor(String staffId, Supervisor supervisor) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public void hideSupervisor(String staffId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }
