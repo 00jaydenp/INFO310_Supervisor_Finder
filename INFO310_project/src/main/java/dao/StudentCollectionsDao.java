@@ -47,8 +47,10 @@ public class StudentCollectionsDao implements StudentDao {
     */
     @Override
     public void deleteStudent(String id){
-        Student student = studentIDMap.get(id);
-        studentIDMap.remove(student.getStudentID());
+        /*Student student = studentIDMap.get(id);
+        studentIDMap.remove(student.getStudentID());*/
+        
+        studentIDMap.remove(id);
     }
     
     /*

@@ -5,6 +5,8 @@
 package resource;
 
 import dao.StudentDao;
+import domain.Student;
+import domain.ErrorMessage;
 import io.jooby.Jooby;
 import io.jooby.StatusCode;
 
@@ -13,24 +15,38 @@ import io.jooby.StatusCode;
  * @author phmci811
  */
 public class StudentResource extends Jooby {
-    public StudentResource(StudentDao dao){
+
+    public StudentResource(StudentDao dao) {
         path("/api/student/profile", () -> {
             get("", ctx -> {
                 return dao.getStudents();
             });
         });
-        
-        path("/api/profile/{studentID}", () ->{
-            
+
+        path("/api/profile/{studentID}", () -> {
+
             get("", ctx -> {
                 String id = ctx.path("studentID").value();
                 return dao.getByID(id);
             });
-            
+
             delete("", ctx -> {
                 String id = ctx.path("studentID").value();
                 dao.deleteStudent(id);
                 return ctx.send(StatusCode.NO_CONTENT);
+            });
+
+            put("", ctx -> {
+                String id = ctx.path("studentID").value();
+                Student student = ctx.body().to(Student.class);
+                if (!id.equals(student.getStudentID())) {
+                    return ctx
+                            .setResponseCode(StatusCode.CONFLICT)
+                            .render(new ErrorMessage("Modifying the product's ID via this operation is not allowed.  Create a new product instead."));
+                } else {
+                    dao.updateStudent(student);
+                    return ctx.send(StatusCode.NO_CONTENT);
+                }
             });
         });
     }

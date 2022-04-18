@@ -37,7 +37,8 @@ public interface StudentJdbiDao extends StudentDao {
     public void deleteStudent(@Bind("studentID")String studentID);
     
     @Override 
-    @SqlUpdate("Update Student set FIRSTNAME=:firstName, LASTNAME=:lastName, INTEREST=:interests, DESCRIPTION=:description, PHONENUMBER=:phoneNumber, GPA=:gpa, ADDRESS=:address")
+    @SqlUpdate("UPDATE STUDENT SET FIRSTNAME=:firstName, LASTNAME=:lastName, INTEREST=:interests, DESCRIPTION=:description, PHONENUMBER=:phoneNumber, GPA=:gpa, ADDRESS=:address")
     public void updateStudent(@BindBean Student student);
+    
     
 }
