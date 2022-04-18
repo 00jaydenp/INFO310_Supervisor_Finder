@@ -34,6 +34,6 @@ public interface StudentDao {
     /*
     update a specific student by student ID
      */
-    void updateStudent(Student updatedStudent);
+    void updateStudent(String id, Student updatedStudent);
     
 }
