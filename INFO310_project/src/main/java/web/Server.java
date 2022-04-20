@@ -8,6 +8,7 @@ import dao.JDBIDaoFactory;
 import dao.StudentDao;
 import io.jooby.Jooby;
 import io.jooby.ServerOptions;
+import io.jooby.json.GsonModule;
 
 /**
  *
@@ -24,8 +25,10 @@ public class Server extends Jooby {
 
     public Server() {
         setServerOptions(new ServerOptions().setPort(8090));
+        install(new GsonModule());
 
-        get("/", ctx -> "Hello World");
+        mount(new StudentModule(studentDao));
+        mount(new StaticAssetModule());
     }
 
 }

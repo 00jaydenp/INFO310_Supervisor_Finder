@@ -12,9 +12,9 @@ import io.jooby.Jooby;
  * @author phmci811
  */
 public class StudentModule extends Jooby{
-    public StudentModule(StudentDao dao){
+    public StudentModule(StudentDao studentDao){
         
-        get("/api/student/profile", ctx -> dao.getStudents());
+        get("/api/student/profile", ctx -> studentDao.getStudents());
         
         /*get("/api/profile/{studentID}", ctx -> {
             
