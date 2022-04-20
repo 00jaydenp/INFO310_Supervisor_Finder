@@ -22,34 +22,35 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <tr>&nbsp
                             <th>Student ID</th>
                             <th>First Name</th> 
-                            <th>Last Name</th> 
-                            <th>Interests</th> 
+                             
+                             
                             <th>Description</th> 
                             <th>Phone Number</th>
                             <th>GPA</th> 
-                            <th>Address</th>
-                            <th>Email</th>
+                            
+                            
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="student in students"> &nbsp
                             <td>{{student.studentID}}</td> 
                             <td>{{student.firstName}}</td>
-                            <td>{{student.lastName}}</td>
-                            <td>{{student.interests}}</td>
+                            
+                            
                             <td>{{student.description}}</td>
                             <td>{{student.phoneNumber}}</td>
                             <td>{{student.gpa}}</td>
-                            <td>{{student.address}}</td>
-                            <td>{{student.email}}</td>
+                            
+                            
+                            <td>
+                                <button>View Profile</button>
+                            </td>
                         </tr> 
                     </tbody>
                 </table>              
             </div>
-            
-            <td>
-                <button>Edit Profile</button>
-            </td>
+
+
         </main>
         <script type="module" src="js/student.js"></script>
     </body>
