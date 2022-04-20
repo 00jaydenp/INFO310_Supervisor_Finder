@@ -75,3 +75,44 @@ task createGitIgnore {
         }
     }
 }
+
+sourceSets {
+   'static' {
+      resources {
+         srcDirs = ['static']
+      }
+      java {
+         srcDirs = []
+      }
+   }
+}
+
+task createMissingSourceFolders {
+  group = "Directories"
+  description = "Create all of the missing source folders for this project."
+  doFirst {
+      sourceSets.each { def sourceRoot ->
+          sourceRoot.allSource.srcDirTrees.each { def sourceDir ->
+              if (!sourceDir.dir.exists()) {
+                  println "Creating ${sourceDir}"
+                  mkdir sourceDir.dir
+              }
+          }
+      }
+  }
+}
+ 
+task deleteEmptySourceFolders {
+  group = "Directories"
+  description = "Delete all empty source folders."
+  doFirst {
+      sourceSets.each { def sourceRoot ->
+          sourceRoot.allSource.srcDirTrees.each { def sourceDir ->
+              if (sourceDir.dir.exists() && sourceDir.dir.isDirectory() && sourceDir.dir.list().length == 0) {
+                  println "Removing empty ${sourceDir}"
+                  sourceDir.dir.delete()
+              }
+          }
+      }
+  }
+}

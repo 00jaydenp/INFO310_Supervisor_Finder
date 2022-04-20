@@ -15,7 +15,7 @@ import domain.Supervisor;
  *
  * @author francesca
  */
-public class UserDAO implements StudentDao, SupervisorDAO {
+public abstract class  UserDAO implements StudentDao, SupervisorDAO {
     
     
     @Override
