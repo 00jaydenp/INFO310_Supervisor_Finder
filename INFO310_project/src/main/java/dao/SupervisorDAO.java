@@ -31,7 +31,7 @@ public interface SupervisorDAO {
      * @param staffID - staff id to update
      * @param supervisor - new details of supervisor
      */
-    //void updateSupervisor(String staffID, Supervisor supervisor);
+    void updateSupervisor(String staffID, Supervisor supervisor);
     
     /**
      * Delete a supervisor

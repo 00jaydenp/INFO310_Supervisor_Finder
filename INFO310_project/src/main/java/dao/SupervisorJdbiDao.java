@@ -30,8 +30,10 @@ public interface SupervisorJdbiDao extends SupervisorDAO {
     @SqlUpdate("INSERT INTO SUPERVISOR (STAFFID, FIRSTNAME, LASTNAME, INTEREST, DESCRIPTION, PHONENUMBER, EMAIL) VALUES (:staffID, :firstName, :lastName, :interest, :description, :phoneNumber, :email")
     public void addSupervisor(@BindBean Supervisor supervisor);
 
-//    @Override
-//    public void updateSupervisor(String staffID, Supervisor supervisor);
+    @Override
+    @SqlUpdate("UPDATE SUPERVISOR SET FIRSTNAME =:firstName, LASTNAME=:lastName, INTEREST=:interest, DESCRIPTION=:description, PHONENUMBER=:phoneNumber, EMAIL=:email WHERE STAFFID =: staffID")
+    public void updateSupervisor(@Bind("staffID")String staffID, @BindBean Supervisor supervisor);
+    
 
 //    @Override
 //    public void hideSupervisor(String staffID);

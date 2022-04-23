@@ -50,10 +50,10 @@ public class SupervisorCollectionsDao implements SupervisorDAO {
      * @param staffID - id of supervisor to replace
      * @param supervisor - the supervisor to replace it with
      */
-    //@Override
-    //public void updateSupervisor(String staffID, Supervisor supervisor) {
-        //supervisorsMap.put(staffID, supervisor);
-    //}
+    @Override
+    public void updateSupervisor(String staffID, Supervisor supervisor) {
+        supervisorsMap.put(staffID, supervisor);
+    }
 
 
     /**
