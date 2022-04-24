@@ -93,7 +93,7 @@ paths:
           description: Not Found - No projects under that Staff ID
       operationId: get-projects-staffID
       description: Get the projects connected to a staff member
-  '/supervisor/projects/{projectID}':
+  '/projects/{projectID}':
     parameters:
       - schema:
           type: string
@@ -195,28 +195,6 @@ paths:
       description: Deletes a students profile by their ID
       tags:
         - Profiles
-  '/projects/{projectID}':
-    parameters:
-      - schema:
-          type: string
-        name: projectID
-        in: path
-        required: true
-    get:
-      summary: Get Project
-      tags:
-        - Projects
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Project'
-        '404':
-          description: Not Found - No project with that ID
-      operationId: get-projects-projectID
-      description: Gets a certian project usng the projects ID
   '/projects/{query}':
     parameters:
       - schema:

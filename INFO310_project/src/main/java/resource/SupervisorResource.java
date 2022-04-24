@@ -23,7 +23,7 @@ public class SupervisorResource extends Jooby{
             });
         });
 
-        path("/api/profile/{staffID}", () -> {
+        path("/api/supervisor/profile/{staffID}", () -> {
 
             get("", ctx -> {
                 String id = ctx.path("staffID").value();
