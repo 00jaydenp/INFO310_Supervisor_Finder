@@ -4,6 +4,7 @@
  */
 package resource;
 
+import dao.StudentCollectionsDao;
 import dao.StudentDao;
 import domain.Student;
 import domain.ErrorMessage;
@@ -46,6 +47,20 @@ public class StudentResource extends Jooby {
                 } else {
                     dao.updateStudent(id, student);
                     return ctx.send(StatusCode.NO_CONTENT);
+                }
+            });
+        });  
+        
+        path("/api/sign-up/student", () -> {
+            post("", ctx -> {
+                Student student = ctx.body().to(Student.class);
+                if (StudentCollectionsDao.exists(student.getStudentID())) {
+                    return ctx
+                            .setResponseCode(StatusCode.CONFLICT)
+                            .render(new ErrorMessage("There is already an existing student with this ID in the system"));
+                } else {
+                    dao.saveStudent(student);
+                    return ctx.send(StatusCode.CREATED);
                 }
             });
         });

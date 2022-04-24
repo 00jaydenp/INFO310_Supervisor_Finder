@@ -23,6 +23,7 @@ public class StudentCollectionsDao implements StudentDao {
     */
     @Override
     public void saveStudent(Student student){
+        students.add(student);
         studentIDMap.put(student.getStudentID(), student);
     }
     
@@ -60,5 +61,9 @@ public class StudentCollectionsDao implements StudentDao {
     public void updateStudent(String id, Student updatedStudent){
         studentIDMap.put(id, updatedStudent);
         //throw new UnsupportedOperationException("Not supported yet");  
+    }
+    
+    public static boolean exists(String id) {
+	return studentIDMap.containsKey(id);
     }
 }
