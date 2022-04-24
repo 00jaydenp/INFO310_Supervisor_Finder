@@ -15,7 +15,7 @@ import java.util.Map;
  * @author phmci811
  */
 public class StudentCollectionsDao implements StudentDao {
-    private static Collection<Student> students = new HashSet<>();
+    private static final Collection<Student> students = new HashSet<>();
     private static final Map<String, Student> studentIDMap = new HashMap<>();
     
     /*

@@ -1,60 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package dao;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Connection;
-import domain.Student;
-import domain.Supervisor;
+import domain.User;
 
 /**
  *
- * @author francesca
+ * @author David
  */
-public abstract class  UserDAO implements StudentDao, SupervisorDAO {
+public interface UserDAO {
+
+    User getUser(String email);
+
+    void saveUser(User user);
     
-    
-    @Override
-    public void deleteStudent(String Id){
-        JDBIDaoFactory.getStudentDao().deleteStudent(Id);
-        
-    }
- 
-    public void deleteSupervisor(String Id){
-        JDBIDaoFactory.getSupervisorDao().deleteSupervisor(Id);
-    }
-    
-   // public void changePassword(User user){
-
-    @Override
-    public Student getByID(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void saveStudent(Student student) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Supervisor getSupervisorById(String staffId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void addSupervisor(Supervisor supervisor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void updateSupervisor(String staffId, Supervisor supervisor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void hideSupervisor(String staffId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
