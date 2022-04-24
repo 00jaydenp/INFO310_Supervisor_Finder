@@ -47,14 +47,14 @@ public class JDBIDaoFactory {
         return JDBI.onDemand(StudentJdbiDao.class);
     }
     
-    public static SupervisorDAO getSupervisorDao(){
+    public static SupervisorDao getSupervisorDao(){
         if (HIKARI_DATA_SOURCE == null) {
             initialisePool();
         }
         return JDBI.onDemand(SupervisorJdbiDao.class);
     }
     
-    public static UserDAO getUserDao(){
+    public static UserDao getUserDao(){
         if (HIKARI_DATA_SOURCE == null) {
             initialisePool();
         }

@@ -12,7 +12,7 @@ import java.util.Map;
  *
  * @author David
  */
-public class UserCollectionsDao implements UserDAO {
+public class UserCollectionsDao implements UserDao {
     
     private static final Map<String, User> users = new HashMap<>();
     

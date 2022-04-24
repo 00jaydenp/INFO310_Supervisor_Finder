@@ -15,7 +15,7 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
  *
  * @author David
  */
-public interface UserJdbiDao extends UserDAO{
+public interface UserJdbiDao extends UserDao{
     
     @Override
     @SqlUpdate("INSERT INTO SYSUSER (EMAIL, PASSWORD) VALUES (:email, :password)")

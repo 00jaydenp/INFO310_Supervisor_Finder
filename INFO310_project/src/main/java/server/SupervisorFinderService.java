@@ -6,8 +6,8 @@ package server;
 
 import dao.JDBIDaoFactory;
 import dao.StudentDao;
-import dao.SupervisorDAO;
-import dao.UserDAO;
+import dao.SupervisorDao;
+import dao.UserDao;
 import io.jooby.Jooby;
 import io.jooby.OpenAPIModule;
 import io.jooby.ServerOptions;
@@ -23,8 +23,8 @@ import resource.UserResource;
  */
 public class SupervisorFinderService extends Jooby{
     private StudentDao studentDao = JDBIDaoFactory.getStudentDao();
-    private SupervisorDAO supervisorDao = JDBIDaoFactory.getSupervisorDao();
-    private UserDAO userDao = JDBIDaoFactory.getUserDao();
+    private SupervisorDao supervisorDao = JDBIDaoFactory.getSupervisorDao();
+    private UserDao userDao = JDBIDaoFactory.getUserDao();
     
     public SupervisorFinderService(){
         
@@ -37,7 +37,7 @@ public class SupervisorFinderService extends Jooby{
         assets("/openapi.yaml", "supervisor-finder.yaml");
         
         mount(new StudentResource(studentDao));
-//        mount(new SupervisorResource(supervisorDao));
+        mount(new SupervisorResource(supervisorDao));
         mount(new UserResource(userDao));
         
         

@@ -5,54 +5,60 @@
 package dao;
 
 import domain.Supervisor;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 /**
  *
  * @author calvin
  */
-public class SupervisorCollectionsDao implements SupervisorDAO {
-
-    private static final Map<String, Supervisor> supervisorsMap = new HashMap<>();
+public class SupervisorCollectionsDao implements SupervisorDao {
+    private static final Collection<Supervisor> supervisors = new HashSet<>();
+    private static final Map<String, Supervisor> supervisorsIDMap = new HashMap<>();
 
     /**
-     * Add some dummy data for testing if required
+     * Get all the supervisors
+     * 
+     * @return a collection of supervisors
      */
-    public SupervisorCollectionsDao() {
-
+    @Override
+    public Collection<Supervisor> getSupervisors() {
+        return supervisors;
     }
-
+    
     /**
-     * Get a supervisor
+     * Get a supervisor by their id
      *
-     * @param staffID - id of staff to get
+     * @param id - id of staff to get
      * @return supervisor requested
      */
     @Override
-    public Supervisor getSupervisorById(String staffID) {
-        return supervisorsMap.get(staffID);
+    public Supervisor getSupervisorById(String id) {
+        return supervisorsIDMap.get(id);
     }
 
     /**
-     * Adds a supervisor
+     * Adds a supervisor to the data structures
      *
      * @param supervisor - supervisor to be added
      */
     @Override
-    public void addSupervisor(Supervisor supervisor) {
-        supervisorsMap.put(supervisor.getStaffID(), supervisor);
+    public void saveSupervisor(Supervisor supervisor) {
+        supervisors.add(supervisor);
+        supervisorsIDMap.put(supervisor.getStaffID(), supervisor);
     }
 
     /**
-     * Update a supervisor
+     * Update a supervisor by their ID
      *
-     * @param staffID - id of supervisor to replace
+     * @param id - id of supervisor to replace
      * @param supervisor - the supervisor to replace it with
      */
     @Override
-    public void updateSupervisor(String staffID, Supervisor supervisor) {
-        supervisorsMap.put(staffID, supervisor);
+    public void updateSupervisorByID(String id, Supervisor supervisor) {
+        supervisorsIDMap.put(id, supervisor);
     }
 
 
@@ -69,12 +75,16 @@ public class SupervisorCollectionsDao implements SupervisorDAO {
     /**
      * Delete a supervisor
      *
-     * @param staffID - id of supervisor to be deleted
+     * @param id - id of supervisor to be deleted
      */
     @Override
-    public void deleteSupervisor(String staffID) {
-        Supervisor supervisor = supervisorsMap.get(staffID);
-        supervisorsMap.remove(supervisor.getStaffID()); //not sure if this is right    
+    public void deleteSupervisorByID(String id) {
+        Supervisor supervisor = supervisorsIDMap.get(id);
+        supervisors.remove(supervisor);
+        supervisorsIDMap.remove(id);
     }
 
+    public static boolean exists(String id) {
+	return supervisorsIDMap.containsKey(id);
+    }
 }

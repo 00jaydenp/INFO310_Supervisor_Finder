@@ -4,7 +4,7 @@
  */
 package resource;
 
-import dao.UserDAO;
+import dao.UserDao;
 import domain.User;
 import io.jooby.Jooby;
 import io.jooby.StatusCode;
@@ -15,7 +15,7 @@ import io.jooby.StatusCode;
  */
 public class UserResource extends Jooby {
     
-    public UserResource(UserDAO dao){
+    public UserResource(UserDao dao){
         path("/api/login/{email}", () -> {
             get("", ctx -> {
                 String email = ctx.path("email").value();

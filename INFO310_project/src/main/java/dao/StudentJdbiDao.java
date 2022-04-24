@@ -30,15 +30,15 @@ public interface StudentJdbiDao extends StudentDao {
     @Override
     @SqlQuery("SELECT * FROM STUDENT WHERE STUDENTID = :studentID")
     @RegisterBeanMapper(Student.class)
-    public Student getByID(@Bind("studentID")String studentID);
+    public Student getStudentByID(@Bind("studentID")String studentID);
     
     @Override
     @SqlUpdate("DELETE FROM STUDENT WHERE STUDENTID = :studentID")
-    public void deleteStudent(@Bind("studentID")String studentID);
+    public void deleteStudentByID(@Bind("studentID")String studentID);
     
     @Override 
     @SqlUpdate("UPDATE STUDENT SET FIRSTNAME=:firstName, LASTNAME=:lastName, INTEREST=:interests, DESCRIPTION=:description, PHONENUMBER=:phoneNumber, GPA=:gpa, ADDRESS=:address WHERE STUDENTID = :studentID")
-    public void updateStudent(@Bind("studentID")String studentID, @BindBean Student student);
+    public void updateStudentByID(@Bind("studentID")String studentID, @BindBean Student student);
     
     
 }

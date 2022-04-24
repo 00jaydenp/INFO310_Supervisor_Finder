@@ -28,12 +28,12 @@ public class StudentResource extends Jooby {
 
             get("", ctx -> {
                 String id = ctx.path("studentID").value();
-                return dao.getByID(id);
+                return dao.getStudentByID(id);
             });
 
             delete("", ctx -> {
                 String id = ctx.path("studentID").value();
-                dao.deleteStudent(id);
+                dao.deleteStudentByID(id);
                 return ctx.send(StatusCode.NO_CONTENT);
             });
 
@@ -45,7 +45,7 @@ public class StudentResource extends Jooby {
                             .setResponseCode(StatusCode.CONFLICT)
                             .render(new ErrorMessage("Modifying the product's ID via this operation is not allowed.  Create a new product instead."));
                 } else {
-                    dao.updateStudent(id, student);
+                    dao.updateStudentByID(id, student);
                     return ctx.send(StatusCode.NO_CONTENT);
                 }
             });

@@ -19,12 +19,12 @@ public interface StudentDao {
     /*
     delete a specific student by student ID
      */
-    void deleteStudent(String id);
+    void deleteStudentByID(String id);
 
     /*
     get a specific student profile by student ID
      */
-    Student getByID(String id);
+    Student getStudentByID(String id);
 
     /*
     add a new student
@@ -34,6 +34,6 @@ public interface StudentDao {
     /*
     update a specific student by student ID
      */
-    void updateStudent(String id, Student updatedStudent);
+    void updateStudentByID(String id, Student updatedStudent);
     
 }

@@ -39,7 +39,7 @@ public class StudentCollectionsDao implements StudentDao {
     get a specific student profile by student ID
     */
     @Override
-    public Student getByID(String id){
+    public Student getStudentByID(String id){
         return studentIDMap.get(id);
     }
     
@@ -47,20 +47,20 @@ public class StudentCollectionsDao implements StudentDao {
     delete a specific student by student ID
     */
     @Override
-    public void deleteStudent(String id){
-        /*Student student = studentIDMap.get(id);
-        studentIDMap.remove(student.getStudentID());*/
-        
+    public void deleteStudentByID(String id){
+        Student student = studentIDMap.get(id);
+        students.remove(student);
         studentIDMap.remove(id);
+        
     }
     
     /*
     update a specific student by student ID
     */
     @Override
-    public void updateStudent(String id, Student updatedStudent){
+    public void updateStudentByID(String id, Student updatedStudent){
         studentIDMap.put(id, updatedStudent);
-        //throw new UnsupportedOperationException("Not supported yet");  
+ 
     }
     
     public static boolean exists(String id) {
