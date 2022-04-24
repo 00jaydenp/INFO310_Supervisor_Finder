@@ -12,7 +12,7 @@ CREATE TABLE Student(
     interest varchar(50) not null, 
     description varchar(50) not null, 
     phoneNumber varchar(20) not null, 
-    gpa varchar(10) not null, 
+    gpa decimal(3,1) not null, 
     address varchar(50) not null,
     email varchar(50) not null unique,
     hidden boolean not null default 0,
