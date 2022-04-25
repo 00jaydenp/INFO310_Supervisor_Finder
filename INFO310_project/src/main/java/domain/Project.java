@@ -18,7 +18,7 @@ public class Project {
     private String name;
     private String description;
     private String status;
-    private LocalDate date;
+    private String date;
     
     private Supervisor supervisor;
     private Student student;
@@ -71,11 +71,11 @@ public class Project {
         this.status = status;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
     

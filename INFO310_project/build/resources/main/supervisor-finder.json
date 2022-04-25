@@ -52,7 +52,17 @@
         "description": "Update the staff members profile by staff ID",
         "tags": [
           "Profiles"
-        ]
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Supervisor"
+              }
+            }
+          },
+          "description": ""
+        }
       },
       "parameters": [
         {
@@ -468,8 +478,8 @@
           },
           "password": {
             "type": "string",
-            "format": "date",
-            "description": "User's Password "
+            "description": "User's Password ",
+            "format": "password"
           }
         },
         "required": [
@@ -573,7 +583,8 @@
             "type": "string"
           },
           "date": {
-            "type": "string"
+            "type": "string",
+            "format": "date"
           },
           "supervisor": {
             "$ref": "#/components/schemas/Supervisor"

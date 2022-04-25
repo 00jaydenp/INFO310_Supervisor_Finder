@@ -18,6 +18,7 @@ import io.jooby.StatusCode;
 public class UserResource extends Jooby {
     
     public UserResource(UserDao dao){
+        UserCollectionsDao collectionDao = new UserCollectionsDao();
         path("/api/login/{email}", () -> {
             get("", ctx -> {
                 String email = ctx.path("email").value();
@@ -33,13 +34,13 @@ public class UserResource extends Jooby {
         path("/api/sign-up", () -> {
             post("", ctx -> {
                 User user = ctx.body().to(User.class);
-                if (UserCollectionsDao.exists(user.getEmail())) {
+                if (dao.getUser(user.getEmail()) == null) {
+                    dao.saveUser(user);
+                    return ctx.send(StatusCode.CREATED);
+                } else {
                     return ctx
                             .setResponseCode(StatusCode.UNPROCESSABLE_ENTITY)
                             .render(new ErrorMessage("That email already exists in the system"));
-                } else {
-                    dao.saveUser(user);
-                    return ctx.send(StatusCode.CREATED);
                 }
             });
         });

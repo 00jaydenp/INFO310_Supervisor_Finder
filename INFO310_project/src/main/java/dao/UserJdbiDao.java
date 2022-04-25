@@ -25,4 +25,5 @@ public interface UserJdbiDao extends UserDao{
     @SqlQuery("SELECT * FROM SYSUSER WHERE EMAIL = :email")
     @RegisterBeanMapper(User.class)
     public User getUser(@Bind("email")String email);
+    
 }

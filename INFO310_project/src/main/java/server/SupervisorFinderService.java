@@ -24,10 +24,10 @@ import resource.UserResource;
  * @author David
  */
 public class SupervisorFinderService extends Jooby{
-    private StudentDao studentDao = JDBIDaoFactory.getStudentDao();
-    private SupervisorDao supervisorDao = JDBIDaoFactory.getSupervisorDao();
-    private UserDao userDao = JDBIDaoFactory.getUserDao();
-    private ProjectDao projectDao = JDBIDaoFactory.getProjectDao();
+    private final StudentDao studentDao = JDBIDaoFactory.getStudentDao();
+    private final SupervisorDao supervisorDao = JDBIDaoFactory.getSupervisorDao();
+    private final UserDao userDao = JDBIDaoFactory.getUserDao();
+    private final ProjectDao projectDao = JDBIDaoFactory.getProjectDao();
     
     public SupervisorFinderService(){
         

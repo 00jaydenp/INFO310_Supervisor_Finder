@@ -28,25 +28,38 @@ public class StudentResource extends Jooby {
 
             get("", ctx -> {
                 String id = ctx.path("studentID").value();
-                return dao.getStudentByID(id);
+                Student student = dao.getStudentByID(id);
+                if(student == null){
+                    return ctx.send(StatusCode.NOT_FOUND);
+                } else {
+                    return student;
+                }
             });
 
             delete("", ctx -> {
                 String id = ctx.path("studentID").value();
-                dao.deleteStudentByID(id);
-                return ctx.send(StatusCode.NO_CONTENT);
+                if(dao.getStudentByID(id) == null){
+                    return ctx.send(StatusCode.NOT_FOUND);
+                } else {
+                    dao.deleteStudentByID(id);
+                    return ctx.send(StatusCode.NO_CONTENT);
+                }
             });
 
             put("", ctx -> {
                 String id = ctx.path("studentID").value();
-                Student student = ctx.body().to(Student.class);
-                if (!id.equals(student.getStudentID())) {
-                    return ctx
-                            .setResponseCode(StatusCode.CONFLICT)
-                            .render(new ErrorMessage("Modifying the student's ID via this operation is not allowed.  Create a new student instead."));
+                if(dao.getStudentByID(id) == null){
+                    return ctx.send(StatusCode.NOT_FOUND);
                 } else {
-                    dao.updateStudentByID(id, student);
-                    return ctx.send(StatusCode.NO_CONTENT);
+                    Student student = ctx.body().to(Student.class);
+                    if (!id.equals(student.getStudentID())) {
+                        return ctx
+                                .setResponseCode(StatusCode.CONFLICT)
+                                .render(new ErrorMessage("Modifying the student's ID via this operation is not allowed.  Create a new student instead."));
+                    } else {
+                        dao.updateStudentByID(id, student);
+                        return ctx.send(StatusCode.NO_CONTENT);
+                    }
                 }
             });
         });  
@@ -54,13 +67,13 @@ public class StudentResource extends Jooby {
         path("/api/sign-up/student", () -> {
             post("", ctx -> {
                 Student student = ctx.body().to(Student.class);
-                if (StudentCollectionsDao.exists(student.getStudentID())) {
+                if (dao.getStudentByID(student.getStudentID()) == null) {
+                    dao.saveStudent(student);
+                    return ctx.send(StatusCode.CREATED);
+                } else {
                     return ctx
                             .setResponseCode(StatusCode.CONFLICT)
                             .render(new ErrorMessage("There is already an existing student with this ID in the system"));
-                } else {
-                    dao.saveStudent(student);
-                    return ctx.send(StatusCode.CREATED);
                 }
             });
         });

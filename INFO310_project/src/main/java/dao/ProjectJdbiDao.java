@@ -43,19 +43,10 @@ public interface ProjectJdbiDao extends ProjectDao{
     @RegisterBeanMapper(Project.class)
     public Collection<Project> getProjectsByStaffID(@Bind("staffID")String staffID);
 
-    
-    @SqlUpdate("INSERT INTO PROJECT (NAME, DESCRIPTION, STAFFID) VALUES (:name, :description, :supervisor.staffID)")
-    @GetGeneratedKeys
-    public String insertProject(@BindBean Project project);
-    
     @Override
-    default void saveProject(Project project){
-        project.setDate(LocalDate.now());
-        
-        project.setStatus("New Project");
-        
-        String projectID = insertProject(project);
-        project.setProjectID(projectID);
-    }
+    @SqlUpdate("INSERT INTO PROJECT (PROJECTID, NAME, DESCRIPTION, STATUS, OPENDATE, STAFFID) VALUES (:projectID, :name, :description, :status, :date, :supervisor.staffID)")
+    public void saveProject(@BindBean Project project);
+    
+    
     
 }

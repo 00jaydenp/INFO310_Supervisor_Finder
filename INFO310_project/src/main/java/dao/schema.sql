@@ -14,7 +14,7 @@ CREATE TABLE Student(
     phoneNumber varchar(20) not null, 
     gpa decimal(3,1) not null, 
     address varchar(50) not null,
-    email varchar(50) not null,
+    email varchar(50) not null unique,
     hidden boolean not null default 0,
     
     constraint Student_PK primary key (studentID),
@@ -41,7 +41,7 @@ CREATE TABLE Project(
     name varchar(20) not null,
     description varchar(50) not null,
     status varchar (10) not null,
-    openDate date,
+    openDate varchar(10),
     staffID varchar(8) not null,
     studentID varchar(8),
     hidden boolean not null default 0,
