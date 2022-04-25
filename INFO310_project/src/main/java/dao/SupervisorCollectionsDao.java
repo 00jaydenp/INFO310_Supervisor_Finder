@@ -84,9 +84,5 @@ public class SupervisorCollectionsDao implements SupervisorDao {
         supervisorsIDMap.remove(id);
     }
 
-    public static boolean exists(String id) {
-	return supervisorsIDMap.containsKey(id);
-    }
-
 
 }

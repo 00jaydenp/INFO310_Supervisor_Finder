@@ -62,8 +62,5 @@ public class StudentCollectionsDao implements StudentDao {
         studentIDMap.put(id, updatedStudent);
  
     }
-    
-    public static boolean exists(String id) {
-	return studentIDMap.containsKey(id);
-    }
+
 }

@@ -4,7 +4,6 @@
  */
 package resource;
 
-import dao.ProjectCollectionsDao;
 import dao.ProjectDao;
 import domain.ErrorMessage;
 import domain.Project;

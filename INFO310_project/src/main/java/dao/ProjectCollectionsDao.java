@@ -60,8 +60,5 @@ public class ProjectCollectionsDao implements ProjectDao {
         return result;
     }
     
-    public static boolean exists(String id) {
-	return projectsIDMap.containsKey(id);
-    }
     
 }
