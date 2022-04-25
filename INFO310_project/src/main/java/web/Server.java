@@ -24,7 +24,7 @@ public class Server extends Jooby {
     public Server(){
         setServerOptions(new ServerOptions().setPort(8080));
         // The mount method will add all of the routes that were 
-        //declared in the ProductModule to the service.
+        //declared in the modules to the service.
     }
     
    
