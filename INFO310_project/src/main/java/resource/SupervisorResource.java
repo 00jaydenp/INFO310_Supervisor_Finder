@@ -32,7 +32,7 @@ public class SupervisorResource extends Jooby{
 
             delete("", ctx -> {
                 String id = ctx.path("staffID").value();
-                dao.deleteSupervisorByID(id);
+                dao.deleteSupervisor(id);
                 return ctx.send(StatusCode.NO_CONTENT);
             });
 
@@ -44,7 +44,7 @@ public class SupervisorResource extends Jooby{
                             .setResponseCode(StatusCode.CONFLICT)
                             .render(new ErrorMessage("Modifying the product's ID via this operation is not allowed.  Create a new product instead."));
                 } else {
-                    dao.updateSupervisorByID(id, supervisor);
+                    dao.updateSupervisor(id, supervisor);
                     return ctx.send(StatusCode.NO_CONTENT);
                 }
             });

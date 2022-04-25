@@ -57,7 +57,7 @@ public class SupervisorCollectionsDao implements SupervisorDao {
      * @param supervisor - the supervisor to replace it with
      */
     @Override
-    public void updateSupervisorByID(String id, Supervisor supervisor) {
+    public void updateSupervisor(String id, Supervisor supervisor) {
         supervisorsIDMap.put(id, supervisor);
     }
 
@@ -78,7 +78,7 @@ public class SupervisorCollectionsDao implements SupervisorDao {
      * @param id - id of supervisor to be deleted
      */
     @Override
-    public void deleteSupervisorByID(String id) {
+    public void deleteSupervisor(String id) {
         Supervisor supervisor = supervisorsIDMap.get(id);
         supervisors.remove(supervisor);
         supervisorsIDMap.remove(id);
@@ -87,4 +87,6 @@ public class SupervisorCollectionsDao implements SupervisorDao {
     public static boolean exists(String id) {
 	return supervisorsIDMap.containsKey(id);
     }
+
+
 }

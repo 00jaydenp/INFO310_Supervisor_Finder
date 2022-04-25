@@ -30,7 +30,7 @@ public interface SupervisorJdbiDao extends SupervisorDao {
 
     @Override
     @SqlUpdate("DELETE FROM SUPERVISOR WHERE STAFFID = :staffID")
-    public void deleteSupervisorByID(@Bind("staffID") String staffID);
+    public void deleteSupervisor(@Bind("staffID") String staffID);
 
     @Override
     @SqlUpdate("INSERT INTO SUPERVISOR (STAFFID, FIRSTNAME, LASTNAME, INTEREST, DESCRIPTION, PHONENUMBER, EMAIL) VALUES (:staffID, :firstName, :lastName, :interests, :description, :phoneNumber, :user.email)")
@@ -38,7 +38,7 @@ public interface SupervisorJdbiDao extends SupervisorDao {
 
     @Override
     @SqlUpdate("UPDATE SUPERVISOR SET FIRSTNAME =:firstName, LASTNAME=:lastName, INTEREST=:interest, DESCRIPTION=:description, PHONENUMBER=:phoneNumber, EMAIL=:email WHERE STAFFID =: staffID")
-    public void updateSupervisorByID(@Bind("staffID")String staffID, @BindBean Supervisor supervisor);
+    public void updateSupervisor(@Bind("staffID")String staffID, @BindBean Supervisor supervisor);
     
 
 //    @Override
