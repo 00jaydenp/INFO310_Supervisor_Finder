@@ -195,7 +195,7 @@ paths:
       description: Deletes a students profile by their ID
       tags:
         - Profiles
-  '/projects/{query}':
+  '/projects/search/{query}':
     parameters:
       - schema:
           type: string
@@ -328,10 +328,6 @@ components:
           type: string
         user:
           $ref: '#/components/schemas/User'
-        projects:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
       required:
         - staffID
         - firstName
@@ -358,13 +354,11 @@ components:
         phoneNumber:
           type: string
         gpa:
-          type: integer
+          type: number
         address:
           type: string
         user:
           $ref: '#/components/schemas/User'
-        project:
-          $ref: '#/components/schemas/Project'
       required:
         - studentID
         - firstName
@@ -384,6 +378,10 @@ components:
           type: string
         date:
           type: string
+        supervisor:
+          $ref: '#/components/schemas/Supervisor'
+        students:
+          $ref: '#/components/schemas/Student'
   responses: {}
   securitySchemes: {}
 tags:

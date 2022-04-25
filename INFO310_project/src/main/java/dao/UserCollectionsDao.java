@@ -26,4 +26,8 @@ public class UserCollectionsDao implements UserDao {
         return users.get(email);
     }
     
+    public static boolean exists(String email) {
+	return users.containsKey(email);
+    }
+    
 }

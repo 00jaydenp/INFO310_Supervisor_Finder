@@ -21,7 +21,6 @@ public class Supervisor {
     private String phoneNumber;
     
     private User user;
-    private Collection<Project> projects = new ArrayList<>();
 
     public String getStaffID() {
         return staffID;
@@ -77,14 +76,5 @@ public class Supervisor {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Collection<Project> getProjects() {
-        return projects;
-    }
-
-    public void setProjects(Collection<Project> projects) {
-        this.projects = projects;
-    }      
-            
+    }             
 }

@@ -60,4 +60,11 @@ public class JDBIDaoFactory {
         }
         return JDBI.onDemand(UserJdbiDao.class);
     }
+    
+    public static ProjectDao getProjectDao(){
+        if (HIKARI_DATA_SOURCE == null) {
+            initialisePool();
+        }
+        return JDBI.onDemand(ProjectJdbiDao.class);
+    }
 }

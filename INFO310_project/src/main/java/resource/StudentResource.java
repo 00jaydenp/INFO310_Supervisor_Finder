@@ -43,7 +43,7 @@ public class StudentResource extends Jooby {
                 if (!id.equals(student.getStudentID())) {
                     return ctx
                             .setResponseCode(StatusCode.CONFLICT)
-                            .render(new ErrorMessage("Modifying the product's ID via this operation is not allowed.  Create a new product instead."));
+                            .render(new ErrorMessage("Modifying the student's ID via this operation is not allowed.  Create a new student instead."));
                 } else {
                     dao.updateStudentByID(id, student);
                     return ctx.send(StatusCode.NO_CONTENT);

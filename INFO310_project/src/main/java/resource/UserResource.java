@@ -4,7 +4,9 @@
  */
 package resource;
 
+import dao.UserCollectionsDao;
 import dao.UserDao;
+import domain.ErrorMessage;
 import domain.User;
 import io.jooby.Jooby;
 import io.jooby.StatusCode;
@@ -31,8 +33,14 @@ public class UserResource extends Jooby {
         path("/api/sign-up", () -> {
             post("", ctx -> {
                 User user = ctx.body().to(User.class);
-                dao.saveUser(user);
-                return ctx.send(StatusCode.CREATED);
+                if (UserCollectionsDao.exists(user.getEmail())) {
+                    return ctx
+                            .setResponseCode(StatusCode.UNPROCESSABLE_ENTITY)
+                            .render(new ErrorMessage("That email already exists in the system"));
+                } else {
+                    dao.saveUser(user);
+                    return ctx.send(StatusCode.CREATED);
+                }
             });
         });
     }

@@ -4,6 +4,10 @@
  */
 package domain;
 
+import java.time.LocalDate;
+
+
+
 /**
  *
  * @author David
@@ -14,7 +18,26 @@ public class Project {
     private String name;
     private String description;
     private String status;
-    private String date;
+    private LocalDate date;
+    
+    private Supervisor supervisor;
+    private Student student;
+
+    public Supervisor getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(Supervisor supervisor) {
+        this.supervisor = supervisor;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudents(Student student) {
+        this.student = student;
+    }
 
     public String getProjectID() {
         return projectID;
@@ -48,11 +71,11 @@ public class Project {
         this.status = status;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
     

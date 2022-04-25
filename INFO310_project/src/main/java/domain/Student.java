@@ -21,7 +21,6 @@ public class Student {
     private String address;
     
     private User user;
-    private Project project;
 
     public String getStudentID() {
         return studentID;
@@ -95,11 +94,4 @@ public class Student {
         this.user = user;
     }
 
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
 }
