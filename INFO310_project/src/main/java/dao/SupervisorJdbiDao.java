@@ -37,7 +37,7 @@ public interface SupervisorJdbiDao extends SupervisorDao {
     public void saveSupervisor(@BindBean Supervisor supervisor);
 
     @Override
-    @SqlUpdate("UPDATE SUPERVISOR SET FIRSTNAME =:firstName, LASTNAME=:lastName, INTEREST=:interest, DESCRIPTION=:description, PHONENUMBER=:phoneNumber, EMAIL=:email WHERE STAFFID =: staffID")
+    @SqlUpdate("UPDATE SUPERVISOR SET FIRSTNAME =:firstName, LASTNAME=:lastName, INTEREST=:interests, DESCRIPTION=:description, PHONENUMBER=:phoneNumber WHERE STAFFID = :staffID")
     public void updateSupervisor(@Bind("staffID")String staffID, @BindBean Supervisor supervisor);
     
 

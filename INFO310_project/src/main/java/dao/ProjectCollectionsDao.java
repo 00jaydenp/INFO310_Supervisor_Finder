@@ -54,9 +54,11 @@ public class ProjectCollectionsDao implements ProjectDao {
         Collection<Project> result = new HashSet<>();
         for(String key : projectDescriptionMap.keySet()){
             if(key.contains(query)){
+                
                 result.add(projectDescriptionMap.get(key));
             }
         }
+        System.out.print(result);
         return result;
     }
     

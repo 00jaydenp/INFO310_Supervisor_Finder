@@ -36,7 +36,7 @@ public interface ProjectJdbiDao extends ProjectDao{
     @Override
     @SqlQuery("SELECT * FROM PROJECT WHERE DESCRIPTION LIKE '%:query%'")
     @RegisterBeanMapper(Project.class)
-    public Collection<Project> getProjectsByQuery(@Bind("query")String query);
+    public Collection<Project> getProjectsByQuery(String query);
 
     @Override
     @SqlQuery("SELECT * FROM PROJECT WHERE STAFFID = :staffID")
