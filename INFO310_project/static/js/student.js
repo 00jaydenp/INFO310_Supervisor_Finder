@@ -1,13 +1,15 @@
 "use strict";
 
 var studentsApi = '/api/student/profile';
+var studentIDApi = ({studentID}) => '/api/student/profile/${studentID}';
 
 const app = Vue.createApp({
 
     data() {
         return {
             // models (comma separated key/value pairs)
-            students: new Array()
+            students: new Array(),
+            student: new Object()
 
         };
     },
@@ -16,6 +18,7 @@ const app = Vue.createApp({
         // semicolon separated statements
 
         this.getAllStudents();
+        //this.getStudent(studentID);
 
     },
 
@@ -32,9 +35,24 @@ const app = Vue.createApp({
                         alert("An error occurred - check the console for details.");
                     });
 
+        },
+
+        getStudent(studentID) {
+
+            axios.get(studentIDApi({'studentID': studentID}))
+                    .then(response => {
+                        this.student = response.data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
         }
 
+
+
     }
+
 
 });
 
