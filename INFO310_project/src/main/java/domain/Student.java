@@ -17,7 +17,7 @@ public class Student {
     private String interests;
     private String description;
     private String phoneNumber;
-    private Integer gpa;
+    private Double gpa;
     private String address;
     
     private User user;
@@ -70,11 +70,11 @@ public class Student {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getGpa() {
+    public Double getGpa() {
         return gpa;
     }
 
-    public void setGpa(Integer gpa) {
+    public void setGpa(double gpa) {
         this.gpa = gpa;
     }
 
