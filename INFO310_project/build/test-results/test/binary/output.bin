@@ -1,4 +1,4 @@
-P17:02:55 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
- y17:02:55 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:tests user=SA
- U17:02:55 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+P14:21:06 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+ y14:21:06 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:tests user=SA
+ U14:21:06 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
  
