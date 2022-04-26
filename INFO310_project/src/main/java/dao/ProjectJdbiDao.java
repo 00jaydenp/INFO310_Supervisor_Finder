@@ -21,6 +21,11 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 public interface ProjectJdbiDao extends ProjectDao{
     
     @Override
+    @SqlQuery("SELECT * FROM PROJECT ORDER BY PROJECTID")
+    @RegisterBeanMapper(Project.class)
+    public Collection<Project> getProjects();
+    
+    @Override
     @SqlUpdate("DELETE FROM PROJECT WHERE PROJECTID = :projectID")
     public void deleteProjectByID(@Bind("projectID")String projectID);
 

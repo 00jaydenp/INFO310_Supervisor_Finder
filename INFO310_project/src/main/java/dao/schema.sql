@@ -38,9 +38,9 @@ CREATE TABLE Supervisor(
 
 CREATE TABLE Project(
     projectID varchar(5) not null unique,
-    name varchar(20) not null,
-    description varchar(50) not null,
-    status varchar (10) not null,
+    name varchar(255) not null,
+    description varchar(255) not null,
+    status varchar (255) not null,
     openDate varchar(10),
     staffID varchar(8) not null,
     studentID varchar(8),

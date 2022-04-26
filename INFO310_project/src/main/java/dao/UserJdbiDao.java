@@ -26,4 +26,8 @@ public interface UserJdbiDao extends UserDao{
     @RegisterBeanMapper(User.class)
     public User getUser(@Bind("email")String email);
     
+    @Override
+    @SqlUpdate("DELETE FROM SYSUSER WHERE EMAIL = :email")
+    public void deleteUser(@Bind("email")String email);
+    
 }

@@ -26,4 +26,9 @@ public class UserCollectionsDao implements UserDao {
         return users.get(email);
     }
     
+    @Override
+    public void deleteUser(String email){
+        users.remove(email);
+    }
+    
 }

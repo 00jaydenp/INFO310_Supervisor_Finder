@@ -12,7 +12,9 @@ import java.util.Collection;
  * @author David
  */
 public interface ProjectDao {
-
+    
+    Collection<Project> getProjects();
+    
     void deleteProjectByID(String id);
 
     Project getProjectByID(String id);

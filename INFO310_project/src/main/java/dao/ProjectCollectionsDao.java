@@ -17,10 +17,15 @@ import java.util.Map;
  * @author David
  */
 public class ProjectCollectionsDao implements ProjectDao {
-    
+    private static final Collection<Project> projects = new HashSet<>();
     private static final Map<String, Project> projectsIDMap = new HashMap<>();
     private static final Multimap<String, Project> projectsStaffIDMap = ArrayListMultimap.create();
     private static final Map<String, Project> projectDescriptionMap = new HashMap<>();
+    
+    @Override
+    public Collection<Project> getProjects(){
+        return projects;
+    }
     
     @Override
     public void saveProject(Project project){
