@@ -5,8 +5,9 @@
  */
 
 "use strict";
-var supervisorApi = '/api/supervisor/profile';
+var supervisorApi = `/api/supervisor/profile`;
 //var staffIdApi = '/api/supervisor/profile/$(staffID)';
+
 
 const app = Vue.createApp({
     data() {

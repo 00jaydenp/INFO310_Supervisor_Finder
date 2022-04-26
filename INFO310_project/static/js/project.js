@@ -7,6 +7,8 @@
 
 var projectsApi = 'api/projects';
 var addProjectApi = 'api/supervisor/projects';
+//var projectByStaff = '/api/supervisor/projects';
+var porjectByID = ({projectID}) => '/api/projects/{projectID}';
 
 //var getByIDApi = ({projectID}) ='api/projects/${projectID}';
 //var getByStaffIDApi = ({staffID}) ='api/supervisor/projects/${staffID}';
@@ -16,7 +18,8 @@ const app = Vue.createApp({
     data() {
         return {
             // models (comma separated key/value pairs)
-            projects: new Array()
+            projects: new Array(),
+            projectByStaff: new Array()
             //project: new Object()           
         };
     },
@@ -26,6 +29,7 @@ const app = Vue.createApp({
 
         //alert('Mounted method called');
         this.getAllProjects();
+        this.getProjectByStaffID();
 
     },
 
@@ -43,6 +47,18 @@ const app = Vue.createApp({
                     });
 
         },
+        
+        filterByProjectID(projectID) {
+            axios.get(porjectByID({'projectID': projectID}))
+                    .then(response => {
+                        this.project = response.data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    })
+        },
+        
         // comma separated function declarations
         /*addProject() {
             axios.post(addProjectApi, this.project)
@@ -88,10 +104,10 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-        },
+        },*/
         
-        getProjectByStaffID(staffID) {
-            axios.get(getByStaffIDApi({'staffID': this.supervisor.staffID}))
+        /*getProjectByStaffID() {
+            axios.get(projectByStaff({'staffID': this.supervisor.staffID}))
                     .then(response => {
                         this.project = response.data;
                     })
@@ -100,6 +116,7 @@ const app = Vue.createApp({
                         alert("An error occurred - check the console for details.");
                     });
         }*/
+        
 
     }
 
