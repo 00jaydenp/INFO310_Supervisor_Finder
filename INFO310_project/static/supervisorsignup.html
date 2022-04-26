@@ -21,12 +21,12 @@ and open the template in the editor.
             </div>
             <h1>Create Supervisor Account</h1>
             <div id='account-container'>
-                <form @submit.prevent="registerSupervisor()">
+                <form @submit.prevent="registerUser()">
                     <fieldset>
                     <legend>Account Details:</legend>
                     <p>
-                        <label for="username"> Username/email: </label>
-                        <input type="text" v-model="user.username" required>
+                        <label> Username/email: </label>
+                        <input type="text" v-model="user.email" required>
                     </p>                 
                     <p>
                         <label for="password"> Password: </label>
