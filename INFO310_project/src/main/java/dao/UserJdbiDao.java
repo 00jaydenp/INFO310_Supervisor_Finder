@@ -5,6 +5,7 @@
 package dao;
 
 import domain.User;
+import java.util.Collection;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
@@ -29,5 +30,10 @@ public interface UserJdbiDao extends UserDao{
     @Override
     @SqlUpdate("DELETE FROM SYSUSER WHERE EMAIL = :email")
     public void deleteUser(@Bind("email")String email);
+    
+    @Override
+    @SqlQuery("SELECT * FROM SYSUSER ORDER BY EMAIL")
+    @RegisterBeanMapper(User.class)
+    public Collection<User> getUsers();
     
 }

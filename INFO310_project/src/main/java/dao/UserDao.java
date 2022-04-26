@@ -5,6 +5,7 @@
 package dao;
 
 import domain.User;
+import java.util.Collection;
 
 /**
  *
@@ -17,4 +18,6 @@ public interface UserDao {
     void saveUser(User user);
 
     void deleteUser(String email);
+    
+    Collection<User> getUsers();
 }
