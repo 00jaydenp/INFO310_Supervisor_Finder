@@ -4,6 +4,8 @@
  */
 package domain;
 
+import java.util.Objects;
+
 
 /**
  *
@@ -21,6 +23,30 @@ public class Student {
     private String address;
     
     private User user;
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 17 * hash + Objects.hashCode(this.studentID);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Student other = (Student) obj;
+        return Objects.equals(this.studentID, other.studentID);
+    }
+    
+    
 
     public String getStudentID() {
         return studentID;
