@@ -58,6 +58,8 @@ public class StudentCollectionsDaoTest {
         student2.setGpa(4.0);
         student2.setAddress("123 Castle Street");
         student2.setUser(user2);
+        
+        dao.saveStudent(student1);
     }
     
     @AfterEach
