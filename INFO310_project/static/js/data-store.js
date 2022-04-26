@@ -7,8 +7,8 @@
 export const dataStore = Vuex.createStore({
 
     state () {
-        // signed in customer
-        customer: null;
+        // signed in student
+        student: null;
         
     },
 

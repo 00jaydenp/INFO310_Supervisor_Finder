@@ -5,7 +5,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html>
     <head>
-        <title>Welcome</title>
+        <title>Sign In</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,24 +13,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
         <script src="js/external/axios.js"></script>
+
     </head>
     <body>
         <main id="content">
 
-
             <center>
-                <div>Welcome to our service </div>
+                <div>Sign in</div>
+                
+                <form @submit.prevent="studentSignIn()"> 
 
-                <h2> Student </h2>
-                <button><a href ="studentlogin.html">Log in</a></button>&nbsp
-                <button><a href ="usersignup.html">Create Account</a></button>&nbsp 
+                <label>Email:</label> 
+                <input type="text" v-model="user.email" required><br>
 
-
-
-
-
+                <label>Password:</label>
+                <input type="password" v-model="user.password" required><br>
+                
+                <p></p>
+                    <button type="submit" >Log In</button>
+                </form>
 
             </center>
+
+
         </main>
+        <script type="module" src="js/User.js"></script>
+
     </body>
 </html>
