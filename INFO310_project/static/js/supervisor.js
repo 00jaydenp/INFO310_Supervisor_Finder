@@ -11,7 +11,7 @@ var supervisorApi = '/api/supervisor/profile';
 const app = Vue.createApp({
     data() {
         return{
-            supervisors: new Array(),
+            supervisors: new Array()
 //            supervisor: new Object()
         };
     },

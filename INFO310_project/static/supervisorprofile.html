@@ -17,31 +17,32 @@ and open the template in the editor.
     </head>
     <body>
         <main id="content">
-        <div>
-            <table>
-                <tr>
-                    <th>Staff ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Interest</th>
-                    <th>Description</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
-                </tr>
-                <tr v-for="supervisor in supervisors">
-                    <td>{{supervisor.staffID}}</td>
-                    <td>{{supervisor.firstName}}</td>
-                    <td>{{supervisor.lastName}}</td>
-                    <td>{{supervisor.interest}}</td>
-                    <td>{{supervisor.description}}</td>
-                    <td>{{supervisor.phoneNumber}}</td>
-                    <td>{{supervisor.email}}</td>
-                </tr>
-                    
-                
-            </table>
-             
-        </div>
+                <div>
+                    <table id="cartContents">
+                        <tr>
+                            <th>Staff ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Interest</th>
+                            <th>Description</th>
+                            <th>Phone Number</th>
+                            <th>Email</th>
+                        </tr>
+                        <tr v-for="supervisor in supervisors">
+                            <td>{{supervisor.staffID}}</td>
+                            <td>{{supervisor.firstName}}</td>
+                            <td>{{supervisor.lastName}}</td>
+                            <td>{{supervisor.interest}}</td>
+                            <td>{{supervisor.description}}</td>
+                            <td>{{supervisor.phoneNumber}}</td>
+                            <td>{{supervisor.email}}</td>
+                        </tr>
+
+
+                    </table>
+
+                </div>
+          
         </main>
         <script type="module" src="js/supervisor.js"></script>
     </body>
