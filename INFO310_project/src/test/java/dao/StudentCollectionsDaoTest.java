@@ -14,6 +14,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -23,6 +24,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.Assert.*;
 import org.junit.jupiter.api.BeforeAll;
+
 
 /**
  *
@@ -149,7 +151,7 @@ public class StudentCollectionsDaoTest {
     }
 
     /**
-     * Test of getStudentByID method, of class StudentCollectionsDao.
+     * Test to get a student by their specific ID
      */
     @Test
     public void testGetStudentByID() {
@@ -164,10 +166,16 @@ public class StudentCollectionsDaoTest {
     }
 
     /**
-     * Test of deleteStudentByID method, of class StudentCollectionsDao.
+     * Test to delete a student specified by their ID
      */
     @Test
     public void testDeleteStudentByID() {
+        //Delete student by their ID
+        studentDao.deleteStudentByID(student1.getStudentID());
+        //Make sure the student is no longer on record
+        assertThat(studentDao.getStudents(), not(hasItem(student1)));
+        //Should only be one student on record if succesful
+        assertThat(studentDao.getStudents(), hasSize(1));
 
     }
 
@@ -176,7 +184,29 @@ public class StudentCollectionsDaoTest {
      */
     @Test
     public void testUpdateStudentByID() {
-
+        //Create a clone of Student1 to update
+        Student updateStudent = new Student();
+        updateStudent.setStudentID("smigr123");
+        updateStudent.setFirstName("Greg");
+        updateStudent.setLastName("Smith");
+        updateStudent.setPhoneNumber("0223861135");
+        updateStudent.setAddress("123 George Street");
+         updateStudent.setDescription("PhD Student Majoring in Mathematics");
+        updateStudent.setInterests("Mathematics");
+        updateStudent.setUser(user1);
+        //update values
+        updateStudent.setGpa(5.0);
+       
+       
+        //Make sure its not the old value
+        assertThat(student1.getGpa(), not(5.0));
+        //Call update method
+        studentDao.updateStudentByID(student1.getStudentID(), updateStudent);
+        
+        //Make sure the details have updated, get new student
+        Student newStudent = studentDao.getStudentByID(student1.getStudentID());
+        assertThat(newStudent.getGpa(), is(5.0));
+        
     }
     
 }
