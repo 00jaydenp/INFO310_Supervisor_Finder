@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Project list</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+    </head>
+    <body>
+        <main id="content"> 
+            <div>All projects available here</div>
+            
+             <table>
+                    <thead>
+                        <tr>&nbsp
+                            <th>Project ID</th>
+                            <th>Name</th> 
+                            <th>Description</th> 
+                            <th>Status</th>
+                            <th>Date</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="project in projects">
+                            <td>{{project.projectID}}</td> 
+                            <td>{{project.name}}</td>
+                            <td>{{project.description}}</td>
+                            <td>{{project.status}}</td>
+                            <td>{{project.date}}</td>
+                            
+                            <td>
+                                <button>View Project</button>
+                            </td>
+                        </tr> 
+                    </tbody>
+                </table>    
+            
+        </main>
+        <script type="module" src="js/project.js"></script>
+    </body>
+</html>

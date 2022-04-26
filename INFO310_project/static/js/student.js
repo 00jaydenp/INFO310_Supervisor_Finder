@@ -1,15 +1,15 @@
 "use strict";
 
 var studentsApi = '/api/student/profile';
-var studentIDApi = ({studentID}) => '/api/student/profile/${studentID}';
+//var studentIDApi = ({studentID}) => '/api/student/profile/${studentID}';
 
 const app = Vue.createApp({
 
     data() {
         return {
             // models (comma separated key/value pairs)
-            students: new Array(),
-            student: new Object()
+            students: new Array()
+            //student: new Object()
 
         };
     },
@@ -35,9 +35,9 @@ const app = Vue.createApp({
                         alert("An error occurred - check the console for details.");
                     });
 
-        },
+        }
 
-        getStudent(studentID) {
+        /*getStudent(studentID) {
 
             axios.get(studentIDApi({'studentID': studentID}))
                     .then(response => {
@@ -47,7 +47,29 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-        }
+        }, 
+        
+        updateStudent(studentID){
+            axios.put(studentIDApi({'studentID': studentID}))
+                    .then(response => {
+                        this.student = response.data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+        },
+        
+        deleteStudent(studentID){
+            axios.delete(studentIDApi({'studentID': studentID}))
+                    .then(response => {
+                        this.student = response.data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+        }*/
 
 
 

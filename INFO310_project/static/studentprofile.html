@@ -16,40 +16,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <main id="content">
-            <div> 
-                <table>
-                    <thead>
-                        <tr>&nbsp
-                            <th>Student ID</th>
-                            <th>First Name</th> 
-                             
-                             
-                            <th>Description</th> 
-                            <th>Phone Number</th>
-                            <th>GPA</th> 
-                            
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="student in students"> &nbsp
-                            <td>{{student.studentID}}</td> 
-                            <td>{{student.firstName}}</td>
-                            
-                            
-                            <td>{{student.description}}</td>
-                            <td>{{student.phoneNumber}}</td>
-                            <td>{{student.gpa}}</td>
-                            
-                            
-                            <td>
-                                <button>View Profile</button>
-                            </td>
-                        </tr> 
-                    </tbody>
-                </table>              
-            </div>
-
+            <center> 
+                <div>   
+                    <table>
+                        <thead>
+                            <tr>&nbsp
+                                <th>Student ID</th>
+                                <th>First Name</th> 
+                                <th>Description</th> 
+                                <th>Phone Number</th>
+                                <th>GPA</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="student in students"> &nbsp
+                                <td>{{student.studentID}}</td> 
+                                <td>{{student.firstName}}</td>
+                                <td>{{student.description}}</td>
+                                <td>{{student.phoneNumber}}</td>
+                                <td>{{student.gpa}}</td>
+                                <td>
+                                    <button>View Profile</button>
+                                </td>
+                            </tr> 
+                        </tbody>
+                    </table>              
+                </div>
+            </center>
 
         </main>
         <script type="module" src="js/student.js"></script>

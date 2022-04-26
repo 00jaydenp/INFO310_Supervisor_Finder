@@ -20,6 +20,11 @@ public class ProjectResource extends Jooby{
     
     public ProjectResource(ProjectDao dao){
         
+        path("api/projects", () -> {
+            get("", ctx -> {
+                return dao.getProjects();
+            });
+        });
         
         path("/api/projects/search/{query}", () -> {
            get("", ctx -> {

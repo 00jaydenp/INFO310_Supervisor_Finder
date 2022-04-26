@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Create a new project</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+    </head>
+    <body>
+        <main id="content"> 
+            <center>
+                <div>
+                    <form @submit.prevent="addProject()">
+                        <label>ProjectID:</label>
+                        <input type="text" v-model="project.projectID" required><br>
+
+                        <label>Name:</label>
+                        <input type="text" v-model="project.name" required><br> 
+
+                        <label>Description:</label>
+                        <input type="text" v-model="project.description" required><br>
+
+                        <label>Open_date:</label>
+                        <input type="text" v-model="project.date" required><br> 
+                        
+                        <label>StaffID:</label>
+                        <input type="text" v-model="project.staffID" required><br> 
+
+                        <p></p>
+                        <button type="submit" >Create Project</button>
+                </div>
+            </center>
+
+        </main> 
+        <script type="module" src="js/project.js"></script>
+    </body>
+</html>
