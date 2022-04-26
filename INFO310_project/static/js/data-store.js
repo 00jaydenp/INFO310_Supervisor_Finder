@@ -8,15 +8,15 @@ export const dataStore = Vuex.createStore({
 
     state () {
         // signed in student
-        student: null;
+        user: null;
         
     },
 
     mutations: {
 
         // user signs in
-        signIn(state, student) {
-            state.student = student;
+        logIn(state, user) {
+            state.user = user;
             //state.items = new Array();
         }
 

@@ -4,18 +4,17 @@
  */
 
 "use strict";
-var registerApi = '/api/sign-up';
-var studentLogInApi = ({email}) = '/api/login/${email}';
-var studentApi = ({studentID}) => `//localhost:8080/api/student/${studentID}`;
-var supervisorApi = ({supervisorID}) => `//localhost:8080/api/supervisor/${supervisorID}`;
+var registerApi = '//localhost:8090/api/sign-up';
+var logInApi = ({email}) => '//localhost:8090/api/login/${email}';
+
 
 const app = Vue.createApp({
 
     data() {
         return {
             user: new Object(),
-            supervisor: new Object(),
-            student: new Object(),
+            //supervisor: new Object(),
+            //student: new Object(),
             signInMessage: "Please sign in to continue."
 
         };
@@ -31,7 +30,7 @@ const app = Vue.createApp({
 // send POST request to service to create customer
             axios.post(registerApi, this.user)
                     .then(() => {
-                        window.location = 'index.html';
+                        window.location = 'studentlogin.html';
 
                     })
                     .catch(error => {
@@ -39,55 +38,21 @@ const app = Vue.createApp({
                         alert("An error occurred - check the console for details.");
                     });
         },
-        
-        logInStudent() {
-            axios.get(studentLogInApi({'email': this.user.email}))
+
+        logIn() {
+
+            axios.get(logInApi({'email': this.user.email}))
                     .then(response => {
-                        if(this.user.password == response.data.password){
-                            this.user = repsonse.data;
-                    dataStore.commit("signIn", this.user);
-                    window.location = "studentprofile.html"
-                        }else{
+                        if (this.user.password === response.data.password) {
+                            this.user = response.data;
+                            dataStore.commit("logIn", this.user);
+                            window.location = 'project-list.html';
+                            
+                        } else {
                             this.signInMessage = 'Sign in failed.  Check your username and password and try again.';
                         }
-            })
+                    })
                     .catch(error => {
-                        this.signInMessage = 'Sign in failed.  Check your username and password and try again.';
-            });
-        },
-    
-
-        registerSupervisor() {
-            // send POST request to service to create supervisor
-            axios.post(registerApi, this.supervisor).then(() => {
-                window.location = 'index.html';
-            })
-                    .catch(error => {
-                        console.error(error);
-                        alert("An error occurred - check the console for details.");
-                    });
-        },
-
-        registerStudent() {
-            // send POST request to service to create student
-            axios.post(registerApi, this.student).then(() => {
-                window.location = 'index.html';
-            })
-                    .catch(error => {
-                        console.error(error);
-                        alert("An error occurred - check the console for details.");
-                    });
-        },
-
-        supervisorSignIn() {
-            alert("Sign In " + this.supervisor.emailAddress + ", " + this.supervisor.password);
-            axios.get(supervisorApi({'Email Address': this.supervisor.emailAddress})).then(response => {
-                this.supervisor = response.data;
-                dataStore.commit("signIn", this.supervisor);
-                window.location = 'index.html';
-            })
-                    .catch(error => {
-                        console.error(error);
                         this.signInMessage = 'Sign in failed.  Check your username and password and try again.';
                     });
         }
