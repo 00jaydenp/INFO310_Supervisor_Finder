@@ -19,6 +19,8 @@ import java.util.Collection;
 public class ProjectResource extends Jooby{
     
     public ProjectResource(ProjectDao dao){
+        
+        
         path("/api/projects/search/{query}", () -> {
            get("", ctx -> {
               String query = ctx.path("query").value();
@@ -78,6 +80,10 @@ public class ProjectResource extends Jooby{
         });
         
         path("/api/supervisor/projects", () -> {
+            get("", ctx -> {
+                return dao.getProjects();
+            });
+            
             post("", ctx -> {
                 Project project = ctx.body().to(Project.class);
                 if (dao.getProjectByID(project.getProjectID()) == null) {

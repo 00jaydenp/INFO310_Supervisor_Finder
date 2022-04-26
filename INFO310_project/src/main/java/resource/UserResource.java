@@ -18,7 +18,13 @@ import io.jooby.StatusCode;
 public class UserResource extends Jooby {
     
     public UserResource(UserDao dao){
-        UserCollectionsDao collectionDao = new UserCollectionsDao();
+
+        path("api/login", () -> {
+            get("", ctx -> {
+                return dao.getUsers();
+            });
+        });
+       
         path("/api/login/{email}", () -> {
             get("", ctx -> {
                 String email = ctx.path("email").value();
@@ -27,6 +33,16 @@ public class UserResource extends Jooby {
                     return ctx.send(StatusCode.NOT_FOUND);
                 } else{
                     return user;
+                }
+            });
+            
+            delete("", ctx -> {
+                String email = ctx.path("email").value();
+                if (dao.getUser(email) == null){
+                    return ctx.send(StatusCode.NOT_FOUND);
+                } else{
+                    dao.deleteUser(email);
+                    return ctx.send(StatusCode.NO_CONTENT);
                 }
             });
         });

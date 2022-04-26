@@ -4,7 +4,6 @@
  */
 package resource;
 
-import dao.StudentCollectionsDao;
 import dao.StudentDao;
 import domain.Student;
 import domain.ErrorMessage;
