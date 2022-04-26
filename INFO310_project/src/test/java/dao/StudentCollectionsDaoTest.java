@@ -4,10 +4,14 @@
  */
 package dao;
 
+import domain.Project;
 import domain.Student;
 import domain.User;
 import java.util.Collection;
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import org.junit.After;
@@ -134,12 +138,14 @@ public class StudentCollectionsDaoTest {
     }
 
     /**
-     * Test of getStudents method, of class StudentCollectionsDao.
+     * Test getting a list of all students on record
      */
     @Test
     public void testGetStudents() {
-    
-      
+        // Make sure it returns the two students on the database
+        assertThat(studentDao.getStudents(), hasItems(student1, student2));
+        //Make sure it only has those two
+        assertThat(studentDao.getStudents(), hasSize(2));
     }
 
     /**
@@ -147,6 +153,12 @@ public class StudentCollectionsDaoTest {
      */
     @Test
     public void testGetStudentByID() {
+        //Get the student by their ID
+        Student testStudent = studentDao.getStudentByID(student1.getStudentID());
+        //Make sure the returned student is the one specified by the ID
+        assertThat(testStudent, is(student1));
+        //Make sure the returned student is not being mistakingly recognised
+        assertThat(testStudent, not(is(student2)));
 
       
     }
