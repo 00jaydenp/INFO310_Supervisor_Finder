@@ -4,17 +4,24 @@
  */
 
 "use strict";
-var registerApi = '//localhost:8090/api/sign-up';
-var logInApi = ({email}) => '//localhost:8090/api/login/${email}';
+var registerApi = `//localhost:8090/api/sign-up`;
+var logInApi = ({email}) => `//localhost:8090/api/login/${email}`;
+var studentSignUpApi = `//localhost:8090/api/sign-up/student`;
 
+class Student{
+    constructor(user, student){
+        this.user = user;
+        this.student = student;
+    }
+}
 
 const app = Vue.createApp({
 
     data() {
         return {
             user: new Object(),
-//            supervisor: new Object(),
-            //student: new Object(),
+            //supervisor: new Object(),
+            student: new Object(),
             signInMessage: "Please sign in to continue."
 
         };
@@ -27,22 +34,10 @@ const app = Vue.createApp({
     methods: {
 
         registerUser() {
-// send POST request to service to create customer
+// send POST request to service to create user
             axios.post(registerApi, this.user)
                     .then(() => {
                         window.location = 'studentlogin.html';
-
-                    })
-                    .catch(error => {
-                        console.error(error);
-                        alert("An error occurred - check the console for details.");
-                    });
-        },
-        
-        registerSupervisor(){
-            axios.post(registerApi, this.user)
-                    .then(() => {
-                        window.location = 'supervisorlogin.html';
 
                     })
                     .catch(error => {
@@ -58,7 +53,7 @@ const app = Vue.createApp({
                         if (this.user.password === response.data.password) {
                             this.user = response.data;
                             dataStore.commit("logIn", this.user);
-                            window.location = 'project-list.html';
+                            window.location = 'studentprofilesetup.html';
                             
                         } else {
                             this.signInMessage = 'Sign in failed.  Check your username and password and try again.';
@@ -69,17 +64,33 @@ const app = Vue.createApp({
                     });
         },
         
-//        supervisorLogIn() {
-//
-//            this.createToken(this.user.email, this.user.password);
-//            axios.get(loginApi({'email': this.user.email})).then(response => {
-//                this.user = response.data;
-//                dataStore.commit("supervisorLogIn", this.user);
-//                window.location = 'supervisorProfile.html';
-//            }).catch(error => {
-//                this.signInMessage = 'Sign in failed.  Check your username and password and try again.';
-//            });
-//        }
+        /*studentProfileSetUp() {
+// send POST request to service to create user
+            axios.post(studentSignUpApi, this.student)
+                    .then(() => {
+                        window.location = 'index.html';
+
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+        }*/
+        
+        studentProfileSetUp() {
+            let stud = new Student(this.user, this.student);
+            axios.post(studentSignUpApi, stud)
+                    .then(() => {
+                        //console.log("Save!")
+                        //this.student = response.data;
+                        window.location = 'index.html';
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+
+        }
 
     }
 });
@@ -87,13 +98,4 @@ const app = Vue.createApp({
 // mount the page - this needs to be the last line in the file
 import { dataStore } from './data-store.js'
         app.use(dataStore);
-        // import authentication module
-import { BasicAccessAuthentication } from './authentication.js';
-// import data store
-
-// import navigation  menu component
-import { NavigationMenu } from './navigation.js';
-app.component('navigation', NavigationMenu);
-
 app.mount("#content");
-

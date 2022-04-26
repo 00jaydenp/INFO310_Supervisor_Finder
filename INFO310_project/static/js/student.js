@@ -1,15 +1,16 @@
 "use strict";
 
 var studentsApi = '/api/student/profile';
-//var studentIDApi = ({studentID}) => '/api/student/profile/${studentID}';
+var studentIDApi = ({studentID}) => `//localhost:8090/api/student/profile/${studentID}`;
+//var logInApi = ({email}) => `//localhost:8090/api/login/${email}`;
 
 const app = Vue.createApp({
 
     data() {
         return {
             // models (comma separated key/value pairs)
-            students: new Array()
-            //student: new Object()
+            students: new Array(),
+            student: new Object()
 
         };
     },
@@ -35,7 +36,7 @@ const app = Vue.createApp({
                         alert("An error occurred - check the console for details.");
                     });
 
-        }
+        },
 
         /*getStudent(studentID) {
 
@@ -47,12 +48,26 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-        }, 
-        
-        updateStudent(studentID){
-            axios.put(studentIDApi({'studentID': studentID}))
+        },*/
+
+        /*saveStudents() {
+            axios.post(studentIDApi({'studentID': studentID}))
                     .then(response => {
                         this.student = response.data;
+                        window.location = 'index.html';
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+        },*/
+        
+        saveStudent() {
+// send POST request to service to create customer
+            axios.post(studentsApi, this.student)
+                    .then(() => {
+                        window.location = 'index.html';
+
                     })
                     .catch(error => {
                         console.error(error);
@@ -60,7 +75,7 @@ const app = Vue.createApp({
                     });
         },
         
-        deleteStudent(studentID){
+        /*deleteStudent(studentID){
             axios.delete(studentIDApi({'studentID': studentID}))
                     .then(response => {
                         this.student = response.data;
