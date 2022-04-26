@@ -50,7 +50,7 @@ public class SupervisorFinderService extends Jooby{
    
         
         
-        //get("/", ctx -> ctx.sendRedirect("/swagger"));
+//        get("/", ctx -> ctx.sendRedirect("/swagger"));
     }
     
     public static void main(String[] args) throws IOException {

@@ -8,12 +8,6 @@ var registerApi = `//localhost:8090/api/sign-up`;
 var logInApi = ({email}) => `//localhost:8090/api/login/${email}`;
 var studentSignUpApi = `//localhost:8090/api/sign-up/student`;
 
-class Student{
-    constructor(user, student){
-        this.user = user;
-        this.student = student;
-    }
-}
 
 const app = Vue.createApp({
 
@@ -78,14 +72,14 @@ const app = Vue.createApp({
         }*/
         
         studentProfileSetUp() {
-            let stud = new Student(this.user, this.student);
-            axios.post(studentSignUpApi, stud)
+            axios.post(studentSignUpApi, this.student)
                     .then(() => {
                         //console.log("Save!")
                         //this.student = response.data;
                         window.location = 'index.html';
                     })
                     .catch(error => {
+                        console.log(this.student);
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
