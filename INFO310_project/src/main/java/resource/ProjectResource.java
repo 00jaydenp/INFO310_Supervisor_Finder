@@ -5,6 +5,7 @@
 package resource;
 
 import dao.ProjectDao;
+import dao.StudentDao;
 import domain.ErrorMessage;
 import domain.Project;
 import io.jooby.Jooby;

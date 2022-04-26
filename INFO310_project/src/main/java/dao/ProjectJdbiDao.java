@@ -35,7 +35,7 @@ public interface ProjectJdbiDao extends ProjectDao{
     public Project getProjectByID(@Bind("projectID")String projectID);
     
     @Override
-    @SqlUpdate("UPDATE PROJECT SET NAME = :name, DESCRIPTION = :description, STATUS = :status")
+    @SqlUpdate("UPDATE PROJECT SET NAME = :name, DESCRIPTION = :description, STATUS = :status, STUDENTID = :student.studentID")
     public void updateProjectByID(@Bind("projectID")String projectID, @BindBean Project project);
 
     @Override
@@ -51,7 +51,5 @@ public interface ProjectJdbiDao extends ProjectDao{
     @Override
     @SqlUpdate("INSERT INTO PROJECT (PROJECTID, NAME, DESCRIPTION, STATUS, OPENDATE, STAFFID) VALUES (:projectID, :name, :description, :status, :date, :supervisor.staffID)")
     public void saveProject(@BindBean Project project);
-    
-    
     
 }

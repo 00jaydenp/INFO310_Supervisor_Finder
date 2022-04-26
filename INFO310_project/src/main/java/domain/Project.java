@@ -60,7 +60,7 @@ public class Project {
         return student;
     }
 
-    public void setStudents(Student student) {
+    public void setStudent(Student student) {
         this.student = student;
     }
 

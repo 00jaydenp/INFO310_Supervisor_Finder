@@ -24,7 +24,7 @@ public class StudentResource extends Jooby {
             });
         });
 
-        path("/api/profile/{studentID}", () -> {
+        path("/api/student/profile/{studentID}", () -> {
 
             get("", ctx -> {
                 String id = ctx.path("studentID").value();

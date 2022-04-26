@@ -7,6 +7,7 @@ package dao;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import domain.Project;
+import domain.Student;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,6 +18,8 @@ import java.util.Map;
  * @author David
  */
 public class ProjectCollectionsDao implements ProjectDao {
+    
+    private StudentDao studentDao = JDBIDaoFactory.getStudentDao();;
     private static final Collection<Project> projects = new HashSet<>();
     private static final Map<String, Project> projectsIDMap = new HashMap<>();
     private static final Multimap<String, Project> projectsStaffIDMap = ArrayListMultimap.create();
@@ -66,6 +69,7 @@ public class ProjectCollectionsDao implements ProjectDao {
         System.out.print(result);
         return result;
     }
+
     
     
 }
