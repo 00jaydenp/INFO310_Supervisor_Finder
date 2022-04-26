@@ -161,8 +161,6 @@ public class StudentCollectionsDaoTest {
         assertThat(testStudent, is(student1));
         //Make sure the returned student is not being mistakingly recognised
         assertThat(testStudent, not(is(student2)));
-
-      
     }
 
     /**
@@ -176,6 +174,7 @@ public class StudentCollectionsDaoTest {
         assertThat(studentDao.getStudents(), not(hasItem(student1)));
         //Should only be one student on record if succesful
         assertThat(studentDao.getStudents(), hasSize(1));
+     
 
     }
 
