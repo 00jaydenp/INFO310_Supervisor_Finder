@@ -5,6 +5,7 @@
 package dao;
 
 import domain.Project;
+import domain.Student;
 import domain.Supervisor;
 import domain.User;
 import java.util.Collection;
@@ -28,12 +29,16 @@ public class ProjectCollectionsDaoTest {
     private ProjectDao projectDao;
     private SupervisorDao supervisorDao;
     private UserDao userDao;
+    private StudentDao studentDao;
     
     private User user1;
     private User user2;
+    private User user3;
     
     private Supervisor supervisor1;
     private Supervisor supervisor2;
+    
+    private Student student1;
     
     private Project project1;
     private Project project2;
@@ -49,6 +54,7 @@ public class ProjectCollectionsDaoTest {
         projectDao = JDBIDaoFactory.getProjectDao();
         supervisorDao = JDBIDaoFactory.getSupervisorDao();
         userDao = JDBIDaoFactory.getUserDao();
+        studentDao = JDBIDaoFactory.getStudentDao();
         
         user1 = new User();
         user1.setEmail("doejo222@otago.ac.nz");
@@ -58,8 +64,13 @@ public class ProjectCollectionsDaoTest {
         user2.setEmail("doeja333@otago.ac.nz");
         user2.setPassword("Musicislove2");
         
+        user3 = new User();
+        user3.setEmail("doeja233@student.otago.ac.nz");
+        user3.setPassword("Mynameisjack3");
+        
         userDao.saveUser(user1);
         userDao.saveUser(user2);
+        userDao.saveUser(user3);
         
         supervisor1 = new Supervisor();
         supervisor1.setStaffID("doejo222");
@@ -81,6 +92,19 @@ public class ProjectCollectionsDaoTest {
         
         supervisorDao.saveSupervisor(supervisor1);
         supervisorDao.saveSupervisor(supervisor2);
+        
+        student1 = new Student();
+        student1.setStudentID("doeja233");
+        student1.setFirstName("Jack");
+        student1.setLastName("Doe");
+        student1.setInterests("Computer Science");
+        student1.setDescription("Masters Student");
+        student1.setPhoneNumber("0213334445");
+        student1.setGpa(4.0);
+        student1.setAddress("444 George Street");
+        student1.setUser(user3);
+        
+        studentDao.saveStudent(student1);
         
         project1 = new Project();
         project1.setProjectID("phy11");
@@ -117,11 +141,14 @@ public class ProjectCollectionsDaoTest {
         projectDao.deleteProjectByID(project2.getProjectID());
         projectDao.deleteProjectByID(project3.getProjectID());
         
+        studentDao.deleteStudentByID(student1.getStudentID());
+        
         supervisorDao.deleteSupervisor(supervisor1.getStaffID());
         supervisorDao.deleteSupervisor(supervisor2.getStaffID());
         
         userDao.deleteUser(user1.getEmail());
         userDao.deleteUser(user2.getEmail());
+        userDao.deleteUser(user3.getEmail());
     }
 
     /**
@@ -167,6 +194,7 @@ public class ProjectCollectionsDaoTest {
         testProject.setStatus("On-Going project");
         testProject.setDate(project1.getDate());
         testProject.setSupervisor(project1.getSupervisor());
+        testProject.setStudent(student1);
         
         projectDao.updateProjectByID(project1.getProjectID(), testProject);
         assertThat(project1, is(testProject));
