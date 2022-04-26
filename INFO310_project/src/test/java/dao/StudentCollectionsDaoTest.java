@@ -124,18 +124,13 @@ public class StudentCollectionsDaoTest {
         //Make sure it contains all student objects
         assertThat(studentDao.getStudents(), hasItems(student1, student2, student3));
        
-        //Make Duplicate student and add
-        Student student4 = new Student();
-        student4 = student3;
-        // Try adding student, should throw an exception due to PK violation
-        try{
-            studentDao.saveStudent(student4);
-        } catch(Exception e){
-            return;
-        }
-        
-        // Fail if it doesnt throw an error
-        fail("Didnt violate PK restriction");      
+        //Make Duplicate student 
+        final Student student4 = student3;
+        // Try adding student4, make sure it throws exception due to duplicate values
+        assertThrows(Exception.class, () -> {
+		studentDao.saveStudent(student4);
+	});
+
     }
 
     /**
@@ -143,7 +138,7 @@ public class StudentCollectionsDaoTest {
      */
     @Test
     public void testGetStudents() {
-        
+    
       
     }
 
