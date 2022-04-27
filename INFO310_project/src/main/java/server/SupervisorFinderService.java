@@ -46,11 +46,11 @@ public class SupervisorFinderService extends Jooby{
         mount(new SupervisorResource(supervisorDao));
         mount(new UserResource(userDao));
         mount(new ProjectResource(projectDao));
-        mount(new StaticAssetResource());
+        //mount(new StaticAssetResource());
    
         
         
-//        get("/", ctx -> ctx.sendRedirect("/swagger"));
+        get("/", ctx -> ctx.sendRedirect("/swagger"));
     }
     
     public static void main(String[] args) throws IOException {
