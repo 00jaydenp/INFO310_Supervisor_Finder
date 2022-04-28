@@ -41,6 +41,9 @@ const app = Vue.createApp({
 //        }
     }
 })
+// import navigation  menu component
+import { NavigationMenu } from './navigation.js';
+app.component('navigation', NavigationMenu);
 
 app.mount("#content");
 

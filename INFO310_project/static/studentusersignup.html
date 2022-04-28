@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Register</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+    </head>
+    <body>
+        <main id="content"> 
+            
+            <div>Create your account</div> <p></p>
+
+            
+                <form @submit.prevent="registerStudentUser()">
+                    <label>Email:</label>
+                    <input type="text" v-model="user.email" required><br>
+
+                    <label>Password:</label>
+                    <input type="password" v-model="user.password" required><br> 
+       
+                    <p></p>
+                    <button type="submit" >Create Account</button>
+                </form>
+            
+        </main>
+        <script type="module" src="js/User.js"></script>
+    </body>
+</html>

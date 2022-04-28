@@ -16,41 +16,43 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <main id="content"> 
+            
             <center>
+                <div>
+                    <h1>All projects available here</h1>
+                </div>
+
+                <div>
+                    <p></p>
+                    <input type="text" placeholder="Search..">&nbsp
+                    <button>Search</button>
+                </div>
                 
-            
-            <div>All projects available here</div>
-            
-            <p></p>
-            <input type="text" placeholder="Search..">
-            
-            <div> 
-             <table>
-                    <thead>
-                        <tr>&nbsp
-                            <th>Project ID</th>
-                            <th>Name</th> 
-                            <th>Description</th> 
-                            <th>Status</th>
-                            <th>Date</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="project in projects">
-                            <td>{{project.projectID}}</td> 
-                            <td>{{project.name}}</td>
-                            <td>{{project.description}}</td>
-                            <td>{{project.status}}</td>
-                            <td>{{project.date}}</td>
-                            
-                            <td>
-                                <button>View Project</button>
-                            </td>
-                        </tr> 
-                    </tbody>
-                </table>  
-            </div>
+                <div> 
+                    <table>
+                        <thead>
+                            <tr>&nbsp
+                                <th>Project ID</th>
+                                <th>Name</th> 
+                                <th>Description</th> 
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="project in projects">
+                                <td>{{project.projectID}}</td> 
+                                <td>{{project.name}}</td>
+                                <td>{{project.description}}</td>
+                                <td>{{project.status}}</td>
+                                <td>{{project.date}}</td>
+                                <td>
+                                    <button>View Project</button>
+                                </td>
+                            </tr> 
+                        </tbody>
+                    </table>  
+                </div>
             </center>
         </main>
         <script type="module" src="js/project.js"></script>

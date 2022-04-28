@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Supervisor Profile Setup</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+    </head>
+    <body>
+        <main id="content">
+            <center> 
+                <div>Set Up Your Profile</div>
+
+                <form @submit.prevent="supervisorProfileSetUp()">
+                    <label>Staff ID:</label>
+                    <input type="text" v-model="supervisor.studentID" required><br>  
+
+                    <label>First Name:</label>
+                    <input type="text" v-model="supervisor.firstName" required><br>
+
+                    <label>Last Name:</label>
+                    <input type="text" v-model="supervisor.lastName" required><br>
+
+                    <label>Interest:</label>
+                    <input type="text" v-model="supervisor.interests" required><br>
+
+                    <label>Description:</label>
+                    <input type="text" v-model="supervisor.description" required><br>
+
+                    <label>Phone Number:</label>
+                    <input type="text" v-model="supervisor.phoneNumber" required><br>
+
+                    <label>Email:</label>
+                    <input type="text" v-model="supervisor.email" required><br>
+
+                    <p></p>
+                    <button type="submit">Save Profile</button>
+                </form> 
+            </center> 
+        </main> 
+        <script type="module" src="js/user.js"></script> 
+    </body>
+
+</html>

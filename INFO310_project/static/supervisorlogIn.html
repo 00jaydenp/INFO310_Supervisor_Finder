@@ -22,15 +22,15 @@ and open the template in the editor.
             <h1>Supervisor Sign In</h1>
             <div>
                 <p>{{signInMessage}}</p>    
-                <form @submit.prevent="logIn()">
+                <form @submit.prevent="supervisorSignIn()">
                     <fieldset>
                     <legend>Account Details:</legend>
                     <p>
-                        <label for="username"> Username: </label>
-                        <input type="text" v-model="user.username" required>
+                        <label> Email:</label>
+                        <input type="text" v-model="user.email" required>
                     </p>
                     <p>
-                        <label for="password"> Password: </label>
+                        <label> Password:</label>
                         <input type="password" v-model="user.password" required>
                     </p>
                     
@@ -38,10 +38,9 @@ and open the template in the editor.
                     
                     </fieldset>
                 </form>
-                <p> If you don't have an account, then you can  <a href="supervisorsignup.html">create one</a></p>
+                <p> If you don't have an account, then you can  <a href="supervisorusersignup.html">create one</a></p>
             </div>
         </main>
         <script type="module" src="js/user.js"></script>
     </body>
-</html>
 </html>

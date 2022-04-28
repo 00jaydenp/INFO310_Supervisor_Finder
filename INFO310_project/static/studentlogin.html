@@ -19,20 +19,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <main id="content">
 
             <center>
-                <div>Sign in</div>
-                
-                <form @submit.prevent="logIn()"> 
+                <div>
+                    <h1>Student Sign in</h1>
+                </div>
 
-                <label>Email:</label> 
-                <input type="text" v-model="user.email" required><br>
-
-                <label>Password:</label>
-                <input type="password" v-model="user.password" required><br>
-                
-                <p></p>
-                    <button type="submit" >Log In</button>
-                </form>
-
+                <div>
+                    <p>{{signInMessage}}</p>
+                    <form @submit.prevent="studentSignIn()"> 
+                        <fieldset>
+                            <legend>Account Details:</legend>
+                            <p>
+                                <label>Email:</label> 
+                                <input type="text" v-model="user.email" required><br>
+                            </p>
+                            <p>
+                                <label>Password:</label>
+                                <input type="password" v-model="user.password" required><br>
+                            </p> 
+                            <p></p>
+                            <button type="submit" >Log In</button>
+                        </fieldset>
+                    </form>
+                    <p> If you don't have an account, then you can  <a href="studentusersignup.html">create one</a></p>
+                </div>
             </center>
 
 

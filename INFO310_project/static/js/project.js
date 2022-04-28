@@ -5,10 +5,10 @@
 
 "use strict";
 
-var projectsApi = 'api/projects';
-var addProjectApi = 'api/supervisor/projects';
+var projectsApi = '//localhost:8090/api/projects';
+var addProjectApi = '//localhost:8090/api/supervisor/projects';
 //var projectByStaff = '/api/supervisor/projects';
-var porjectByID = ({projectID}) => '/api/projects/{projectID}';
+var porjectByID = ({projectID}) => '//localhost:8090/api/projects/{projectID}';
 
 //var getByIDApi = ({projectID}) ='api/projects/${projectID}';
 //var getByStaffIDApi = ({staffID}) ='api/supervisor/projects/${staffID}';
@@ -123,7 +123,9 @@ const app = Vue.createApp({
 });
 
 // other component imports go here
-
+// import navigation  menu component
+import { NavigationMenu } from './navigation.js';
+app.component('navigation', NavigationMenu);
 
 // mount the page - this needs to be the last line in the file
 app.mount("#content");
