@@ -64,7 +64,7 @@ const app = Vue.createApp({
         addProject() {
             axios.post(addProjectApi, this.project)
                     .then(() => {
-                        window.location = 'studnetLookUp.html'
+                        window.location = 'index.html'
                     })
                     .catch(error => {
                         console.error(error);
