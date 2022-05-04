@@ -7,8 +7,8 @@
 
 "use strict";
 
-var projectsApi = '//localhost:8082/api/projects';
-var addProjectApi = '//localhost:8082/api/supervisor/projects';
+var projectsApi = '//localhost:8090/api/projects';
+var addProjectApi = '//localhost:8090/api/supervisor/projects';
 //var projectByStaff = '/api/supervisor/projects';
 var projectByID = ({projectID}) => '//localhost:8090/api/projects/{projectID}';
 
