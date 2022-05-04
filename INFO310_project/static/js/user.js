@@ -40,9 +40,10 @@ const app = Vue.createApp({
         },
         
         registerSupervisorUser(){
+            dataStore.commit("signIn", this.user);
             axios.post(registerApi, this.user)
                     .then(() =>{
-                        window.location = 'index.html';
+                        window.location = 'supervisorsignup.html';
                 
             })
                     .catch(error => {

@@ -39,9 +39,9 @@ public interface ProjectJdbiDao extends ProjectDao{
     public void updateProjectByID(@Bind("projectID")String projectID, @BindBean Project project);
 
     @Override
-    @SqlQuery("SELECT * FROM PROJECT WHERE DESCRIPTION LIKE '%:query%'")
+    @SqlQuery("SELECT * FROM PROJECT WHERE DESCRIPTION LIKE CONCAT('%', :query, '%')")
     @RegisterBeanMapper(Project.class)
-    public Collection<Project> getProjectsByQuery(String query);
+    public Collection<Project> getProjectsByQuery(@Bind("query")String query);
 
     @Override
     @SqlQuery("SELECT * FROM PROJECT WHERE STAFFID = :staffID")

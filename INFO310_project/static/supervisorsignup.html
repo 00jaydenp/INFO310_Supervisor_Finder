@@ -19,9 +19,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <center> 
                 <div>Set Up Your Profile</div>
 
-                <form @submit.prevent="supervisorProfileSetUp()">
+                <form @submit.prevent="registerStudent()">
                     <label>Staff ID:</label>
-                    <input type="text" v-model="supervisor.studentID" required><br>  
+                    <input type="text" v-model="supervisor.staffID" required><br>  
 
                     <label>First Name:</label>
                     <input type="text" v-model="supervisor.firstName" required><br>
@@ -38,15 +38,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <label>Phone Number:</label>
                     <input type="text" v-model="supervisor.phoneNumber" required><br>
 
-                    <label>Email:</label>
-                    <input type="text" v-model="supervisor.email" required><br>
-
                     <p></p>
-                    <button type="submit">Save Profile</button>
+                    <button type="submit">Create Account</button>
                 </form> 
             </center> 
         </main> 
-        <script type="module" src="js/supervisor.js"></script> 
+        <script type="module" src="js/Supervisor.js"></script> 
     </body>
 
 </html>

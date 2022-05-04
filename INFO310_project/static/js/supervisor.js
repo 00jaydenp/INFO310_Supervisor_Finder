@@ -4,32 +4,54 @@
  * and open the template in the editor.
  */
 
+/* global axios, Vue, Vuex */
+
 "use strict";
-var supervisorApi = `/api/supervisor/profile`;
-//var staffIdApi = '/api/supervisor/profile/$(staffID)';
+
+var supervisorApi = '/api/sign-up/supervisor';
 
 
 const app = Vue.createApp({
     data() {
         return{
-            supervisors: new Array()
-//            supervisor: new Object()
+            supervisor: new Object({
+                user: new Object()
+            })
         };
     },
     
+    computed: Vuex.mapState({
+        user: 'user'
+    }),
+
+    
     mounted(){
-        this.getSupervisor();
+        //this.getSupervisor();
     },
     
     methods:{
-        getSupervisor(){
+        registerStudent() {
+        // send POST request to service to create customer
+            this.supervisor.user.email = this.user.email;
+            this.supervisor.user.password = this.user.password;
+            axios.post(supervisorApi, this.supervisor)
+                    .then(() => {
+                        window.location = 'index.html';
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+        }
+        
+        /*getSupervisor(){
             axios.get(supervisorApi).then(response => {
                 this.supervisors = response.data;
             }).catch(error => {
                 console.error(error);
                 alert("An error occurred - check the console for details");            
             });
-        }
+        }*/
         
 //        getSupervisorById(staffID){
 //            axios.get(supervisorApi({'staffID':staffID})).then(response => {
@@ -40,7 +62,10 @@ const app = Vue.createApp({
 //            });
 //        }
     }
-})
+});
+
+import { dataStore } from './data-store.js'
+        app.use(dataStore);
 // import navigation  menu component
 import { NavigationMenu } from './navigation.js';
 app.component('navigation', NavigationMenu);

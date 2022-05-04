@@ -15,25 +15,19 @@ export const NavigationMenu = {
             return this.user != null;
         },
         
-        studentSignedIn(){
-            return this.studentuser !=null;
-        },
-        
         ...Vuex.mapState({
-            user: 'user',
-            studentuser: 'studentuser'
+            user: 'user'
         })
     },
 
     template:
     `
     <nav>
-        <div v-if="studentSignedIn">Welcome back {{studentuser.email}}</div>
-    <center>
+        <div v-if="signedIn">Welcome back {{user.email}}</div>
         <a href=".">Home</a>&nbsp
-        <a href="project-list.html" v-if="studentSignedIn">Project</a>&nbsp
-        <a href="#" v-if="studentSignedIn" @click="signOut()">Sign Out</a>&nbsp
-    </center>
+
+        <a href="project-list.html" v-if="signedIn">Project</a>&nbsp
+        <a href="#" v-if="signedIn" @click="signOut()">Sign Out</a>&nbsp
     </nav>
     `,
 

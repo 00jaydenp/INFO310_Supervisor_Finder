@@ -77,6 +77,10 @@ const app = Vue.createApp({
 // other component imports go here
 import { dataStore } from './data-store.js'
         app.use(dataStore);
+        
+// import navigation  menu component
+import { NavigationMenu } from './navigation.js';
+app.component('navigation', NavigationMenu);
 
 // mount the page - this needs to be the last line in the file
 app.mount("#content");
