@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Project View</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+    </head>
+    <body>
+        <main id="content">  
+            <center>
+                <div><navigation></navigation></div>
+                
+                <h1>View your selected project details</h1>
+
+                <h4>Project ID</h4> 
+                <p>{{project.projectID}}</p>
+
+                <h4>Project Name</h4> 
+                <p>{{project.name}}</p>
+
+                <h4>Description</h4> 
+                <p>{{project.description}}</p>
+
+                <h4>Project Status</h4> 
+                <p>{{project.status}}</p>
+                
+                <h4>Open date</h4> 
+                <p>{{project.date}}</p>
+
+                <h4>Coordinator</h4> 
+                <p>{{project.staffID}}</p>
+                
+                <button> Apply to this project </button>
+                
+            </center>
+        </main> 
+        <script type="module" src="js/project.js"></script>
+    </body>
+</html>

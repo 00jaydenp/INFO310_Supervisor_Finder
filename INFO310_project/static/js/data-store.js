@@ -13,6 +13,7 @@ export const dataStore = Vuex.createStore({
         user: null;
         studentuser: null;
         supervisoruser: null;
+        selectedProject: null;
         
     },
 
@@ -29,6 +30,11 @@ export const dataStore = Vuex.createStore({
         
         signInSupervisor(state, supervisoruser) {
             state.supervisoruser = supervisoruser;
+        },
+        
+        //user selected a project
+        selectProject(state, project){
+            state.selectedProject = project;
         }
 
     },

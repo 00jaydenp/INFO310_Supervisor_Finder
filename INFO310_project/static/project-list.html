@@ -16,7 +16,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <main id="content"> 
-            
+            <div>
+            <navigation></navigation>
+            </div>
             <center>
                 <div>
                     <h1>All projects available here</h1>
@@ -40,14 +42,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="project in project">
+                            <tr v-for="project in projects">
                                 <td>{{project.projectID}}</td> 
                                 <td>{{project.name}}</td>
                                 <td>{{project.description}}</td>
                                 <td>{{project.status}}</td>
                                 <td>{{project.date}}</td>
                                 <td>
-                                    <button>View Project</button>
+                                    <button @click.prevent="pickProject(project)">View Project</button>
                                 </td>
                             </tr> 
                         </tbody>

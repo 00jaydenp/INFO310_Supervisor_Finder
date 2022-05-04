@@ -20,27 +20,33 @@ const app = Vue.createApp({
     data() {
         return {
             // models (comma separated key/value pairs)
-            project: new Array(),
+            projects: new Array(),
             projectByStaff: new Array()
             //project: new Object()           
         };
     },
+    
+    computed: Vuex.mapState({
+        project: 'selectedProject'
+    }),
+
 
     mounted() {
         // semicolon separated statements
 
         //alert('Mounted method called');
         this.getAllProjects();
-        this.getProjectByStaffID();
+        //this.getProjectByStaffID();
 
     },
+    
 
     methods: {
         
         getAllProjects() {
             axios.get(projectsApi)
                     .then(response => {
-                        this.project = response.data;
+                        this.projects = response.data;
                     })
                     .catch(error => {
                         console.error(error);
@@ -70,6 +76,11 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
+        },
+        
+        pickProject(project){
+            dataStore.commit("selectProject", project);
+            window.location="viewselectedproject.html";
         }
         
         //enter project ID to get the project 
