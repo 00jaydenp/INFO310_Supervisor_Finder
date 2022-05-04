@@ -41,6 +41,8 @@ public interface SupervisorDao {
      */
     void deleteSupervisor(String staffID);
     
+    Supervisor getSupervisorByEmail(String email);
+    
     /**
      * Hide a supervisor
      * @param staffID - id of staff to be hidden

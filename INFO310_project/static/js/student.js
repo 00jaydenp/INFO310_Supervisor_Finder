@@ -2,8 +2,8 @@
 
 "use strict";
 
-var studentsApi = '/api/sign-up/student';
-var studentIDApi = ({studentID}) => `//localhost:8090/api/student/profile/${studentID}`;
+
+var studentIDApi = ({studentID}) => `/api/student/profile/${studentID}`;
 
 const app = Vue.createApp({
 
@@ -38,20 +38,7 @@ const app = Vue.createApp({
                     });
         },
 
-        registerStudent() {
-        // send POST request to service to create customer
-            this.student.user.email = this.user.email;
-            this.student.user.password = this.user.password;
-            dataStore.commit("signInStudent", this.student);
-            axios.post(studentsApi, this.student)
-                    .then(() => {
-                        window.location = 'index.html';
-                    })
-                    .catch(error => {
-                        console.error(error);
-                        alert("An error occurred - check the console for details.");
-                    });
-        },
+        
         
         deleteStudent(studentID){
             axios.delete(studentIDApi({'studentID': studentID}))

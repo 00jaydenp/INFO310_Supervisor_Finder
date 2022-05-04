@@ -40,5 +40,8 @@ public interface StudentJdbiDao extends StudentDao {
     @SqlUpdate("UPDATE STUDENT SET FIRSTNAME=:firstName, LASTNAME=:lastName, INTERESTS=:interests, DESCRIPTION=:description, PHONENUMBER=:phoneNumber, GPA=:gpa, ADDRESS=:address WHERE STUDENTID = :studentID")
     public void updateStudentByID(@Bind("studentID")String studentID, @BindBean Student student);
     
-    
+    @Override
+    @SqlQuery("SELECT * FROM STUDENT WHERE EMAIL = :email")
+    @RegisterBeanMapper(Student.class)
+    public Student getStudentByEmail(@Bind("email")String email);
 }

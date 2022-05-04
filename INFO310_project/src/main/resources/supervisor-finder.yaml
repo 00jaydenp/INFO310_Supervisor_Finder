@@ -74,6 +74,30 @@ paths:
       tags:
         - Staff
     parameters: []
+  '/supervisor/{email}':
+    get:
+      summary: Get Supervisor Profile By Email
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+        '404':
+          description: Not Found - No Supervisor with that Email
+      operationId: get-supervisor-profiles-email
+      description: Get a Supervisors profile by their email
+      tags:
+        - Staff
+    parameters:
+      - schema:
+          type: string
+        name: email
+        in: path
+        required: true
   '/student/profile/{studentID} ':
     get:
       summary: Get Stuent Profile
@@ -143,6 +167,30 @@ paths:
       tags:
         - Student
     parameters: []
+  '/student/{email}':
+    get:
+      summary: Get Student Profile By Email
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+        '404':
+          description: Not Found - No Student with that Email
+      operationId: get-student-profiles-email
+      description: Get a Students profile by their email
+      tags:
+        - Student
+    parameters:
+      - schema:
+          type: string
+        name: email
+        in: path
+        required: true
   /supervisor/projects:
     post:
       summary: Add Project

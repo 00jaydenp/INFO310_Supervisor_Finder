@@ -17,6 +17,7 @@ import java.util.Map;
 public class SupervisorCollectionsDao implements SupervisorDao {
     private static final Collection<Supervisor> supervisors = new HashSet<>();
     private static final Map<String, Supervisor> supervisorsIDMap = new HashMap<>();
+    private static final Map<String, Supervisor> supervisorsEmailMap = new HashMap<>();
 
     /**
      * Get all the supervisors
@@ -48,6 +49,7 @@ public class SupervisorCollectionsDao implements SupervisorDao {
     public void saveSupervisor(Supervisor supervisor) {
         supervisors.add(supervisor);
         supervisorsIDMap.put(supervisor.getStaffID(), supervisor);
+        supervisorsEmailMap.put(supervisor.getUser().getEmail(), supervisor);
     }
 
     /**
@@ -82,6 +84,11 @@ public class SupervisorCollectionsDao implements SupervisorDao {
         Supervisor supervisor = supervisorsIDMap.get(id);
         supervisors.remove(supervisor);
         supervisorsIDMap.remove(id);
+    }
+    
+    @Override
+    public Supervisor getSupervisorByEmail(String email){
+        return supervisorsEmailMap.get(email);
     }
 
 

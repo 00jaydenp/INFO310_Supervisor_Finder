@@ -8,7 +8,7 @@
 
 "use strict";
 
-var supervisorApi = '/api/sign-up/supervisor';
+
 
 
 const app = Vue.createApp({
@@ -30,19 +30,7 @@ const app = Vue.createApp({
     },
     
     methods:{
-        registerStudent() {
-        // send POST request to service to create customer
-            this.supervisor.user.email = this.user.email;
-            this.supervisor.user.password = this.user.password;
-            axios.post(supervisorApi, this.supervisor)
-                    .then(() => {
-                        window.location = 'index.html';
-                    })
-                    .catch(error => {
-                        console.error(error);
-                        alert("An error occurred - check the console for details.");
-                    });
-        }
+
         
         /*getSupervisor(){
             axios.get(supervisorApi).then(response => {

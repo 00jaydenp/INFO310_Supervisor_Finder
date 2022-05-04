@@ -21,6 +21,19 @@ public class SupervisorResource extends Jooby{
                 return dao.getSupervisors();
             });
         });
+        
+        path("/api/supervisor/{email}", () -> {
+            
+            get("", ctx -> {
+                String email = ctx.path("email").value();
+                Supervisor supervisor = dao.getSupervisorByEmail(email);
+                if(supervisor == null){
+                    return ctx.send(StatusCode.NOT_FOUND);
+                } else {
+                    return supervisor;
+                }
+            });
+        });
 
         path("/api/supervisor/profile/{staffID}", () -> {
 

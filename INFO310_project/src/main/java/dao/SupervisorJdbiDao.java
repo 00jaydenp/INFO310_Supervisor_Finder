@@ -40,7 +40,11 @@ public interface SupervisorJdbiDao extends SupervisorDao {
     @SqlUpdate("UPDATE SUPERVISOR SET FIRSTNAME =:firstName, LASTNAME=:lastName, INTERESTS=:interests, DESCRIPTION=:description, PHONENUMBER=:phoneNumber WHERE STAFFID = :staffID")
     public void updateSupervisor(@Bind("staffID")String staffID, @BindBean Supervisor supervisor);
     
-
+    @Override
+    @SqlQuery("SELECT * FROM SUPERVISOR WHERE EMAIL = :email")
+    @RegisterBeanMapper(Supervisor.class)
+    public Supervisor getSupervisorByEmail(@Bind("email")String email);
+    
 //    @Override
 //    public void hideSupervisor(String staffID);
     

@@ -17,6 +17,7 @@ import java.util.Map;
 public class StudentCollectionsDao implements StudentDao {
     private static final Collection<Student> students = new HashSet<>();
     private static final Map<String, Student> studentIDMap = new HashMap<>();
+    private static final Map<String, Student> studentEmailMap = new HashMap<>();
     
     /*
     add a new student
@@ -25,6 +26,7 @@ public class StudentCollectionsDao implements StudentDao {
     public void saveStudent(Student student){
         students.add(student);
         studentIDMap.put(student.getStudentID(), student);
+        studentEmailMap.put(student.getUser().getEmail(), student);
     }
     
     /*
@@ -61,6 +63,11 @@ public class StudentCollectionsDao implements StudentDao {
     public void updateStudentByID(String id, Student updatedStudent){
         studentIDMap.put(id, updatedStudent);
  
+    }
+    
+    @Override
+    public Student getStudentByEmail(String email){
+        return studentEmailMap.get(email);
     }
 
 }

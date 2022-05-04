@@ -22,6 +22,19 @@ public class StudentResource extends Jooby {
                 return dao.getStudents();
             });
         });
+        
+        path("/api/student/{email}", () -> {
+            
+            get("", ctx -> {
+                String email = ctx.path("email").value();
+                Student student = dao.getStudentByEmail(email);
+                if(student == null){
+                    return ctx.send(StatusCode.NOT_FOUND);
+                } else {
+                    return student;
+                }
+            });
+        });
 
         path("/api/student/profile/{studentID}", () -> {
 

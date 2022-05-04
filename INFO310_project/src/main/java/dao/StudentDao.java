@@ -36,4 +36,6 @@ public interface StudentDao {
      */
     void updateStudentByID(String id, Student updatedStudent);
     
+    Student getStudentByEmail(String email);
+    
 }
