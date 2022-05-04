@@ -3,12 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/javascript.js to edit this template
  */
 
+/* global axios, Vue */
+
 "use strict";
 
 var projectsApi = '//localhost:8082/api/projects';
 var addProjectApi = '//localhost:8082/api/supervisor/projects';
 //var projectByStaff = '/api/supervisor/projects';
-var projectByID = ({projectID}) => '//localhost:8082/api/projects/{projectID}';
+var projectByID = ({projectID}) => '//localhost:8090/api/projects/{projectID}';
 
 //var getByIDApi = ({projectID}) ='api/projects/${projectID}';
 //var getByStaffIDApi = ({staffID}) ='api/supervisor/projects/${staffID}';

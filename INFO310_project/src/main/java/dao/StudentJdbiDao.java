@@ -19,7 +19,7 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 public interface StudentJdbiDao extends StudentDao {
     
     @Override
-    @SqlUpdate("INSERT INTO STUDENT (STUDENTID, FIRSTNAME, LASTNAME, INTEREST, DESCRIPTION, PHONENUMBER, GPA, ADDRESS, EMAIL) VALUES (:studentID, :firstName, :lastName, :interests, :description, :phoneNumber, :gpa, :address, :user.email)")
+    @SqlUpdate("INSERT INTO STUDENT (STUDENTID, FIRSTNAME, LASTNAME, INTERESTS, DESCRIPTION, PHONENUMBER, GPA, ADDRESS, EMAIL) VALUES (:studentID, :firstName, :lastName, :interests, :description, :phoneNumber, :gpa, :address, :user.email)")
     public void saveStudent(@BindBean Student student);
     
     @Override
@@ -33,11 +33,11 @@ public interface StudentJdbiDao extends StudentDao {
     public Student getStudentByID(@Bind("studentID")String studentID);
     
     @Override
-    @SqlUpdate("DELETE FROM STUDENT WHERE STUDENTID = :studentID")
+    @SqlUpdate("DELETE FROM SYSUSER WHERE EMAIL IN (SELECT EMAIL FROM STUDENT WHERE STUDENTID = :studentID)")
     public void deleteStudentByID(@Bind("studentID")String studentID);
     
     @Override 
-    @SqlUpdate("UPDATE STUDENT SET FIRSTNAME=:firstName, LASTNAME=:lastName, INTEREST=:interests, DESCRIPTION=:description, PHONENUMBER=:phoneNumber, GPA=:gpa, ADDRESS=:address WHERE STUDENTID = :studentID")
+    @SqlUpdate("UPDATE STUDENT SET FIRSTNAME=:firstName, LASTNAME=:lastName, INTERESTS=:interests, DESCRIPTION=:description, PHONENUMBER=:phoneNumber, GPA=:gpa, ADDRESS=:address WHERE STUDENTID = :studentID")
     public void updateStudentByID(@Bind("studentID")String studentID, @BindBean Student student);
     
     

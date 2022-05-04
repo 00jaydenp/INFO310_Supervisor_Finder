@@ -21,17 +21,14 @@ export const dataStore = Vuex.createStore({
         // user signs in
         signIn(state, user) {
             state.user = user;
-            //state.items = new Array();
         },
         
-        studentSignIn(state, studentuser) {
+        signInStudent(state, studentuser) {
             state.studentuser = studentuser;
-            //state.items = new Array();
         },
         
-        supervisorSignIn(state, supervisoruser) {
+        signInSupervisor(state, supervisoruser) {
             state.supervisoruser = supervisoruser;
-            //state.items = new Array();
         }
 
     },

@@ -76,7 +76,7 @@ const app = Vue.createApp({
                     .then(response => {
                         if (this.user.password === response.data.password) {
                             this.user = response.data;
-                            dataStore.commit("SignIn", this.user);
+                            dataStore.commit("signIn", this.user);
                             window.location = 'index.html';
                             
                         } else {

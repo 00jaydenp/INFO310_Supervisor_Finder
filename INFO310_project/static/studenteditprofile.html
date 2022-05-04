@@ -18,17 +18,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <main id="content">
             <navigation></navigation>
             <center> 
-                <form @submit.prevent="deleteStudent(student.studentID)">   
+                
+                <form @submit.prevent="updateStudent(student.studentID)">   
                     <h3>StudentID: </h3><h3>{{student.studentID}}</h3>  
                     <h3>Name: </h3><h3>{{student.firstName}} {{student.lastName}}</h3>
                     <h3>Email: </h3><h3>{{user.email}}</h3>
-                    <h3>Interests: </h3><h3>{{student.interests}}</h3>
-                    <h3>Description: </h3><h3>{{student.description}}</h3>
-                    <h3>Phone Number: </h3><h3>{{student.phoneNumber}}</h3>
-                    <h3>GPA: </h3><h3>{{student.gpa}}</h3>
-                    <h3>Address: </h3><h3>{{student.address}}</h3>
-                    <a href="studenteditprofile.html">Edit Account</a> <button type="submit">Delete Account</button>
+                    <h3>Interests: </h3><input type="text" v-model="student.interests" value="student.interests">
+                    <h3>Description: </h3><input type="text" v-model="student.description" value="student.description">
+                    <h3>Phone Number: </h3><input type="text" v-model="student.phoneNumber" value="student.phoneNumber">
+                    <h3>GPA: </h3><input type="text" v-model="student.gpa" value="student.gpa">
+                    <h3>Address: </h3><input type="text" v-model="student.address" value="student.address"><br>
+                    <button type="submit">Save Changes</button>
                 </form>
+                
             </center>
 
         </main>

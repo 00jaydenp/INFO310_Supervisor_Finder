@@ -33,11 +33,11 @@ public interface SupervisorJdbiDao extends SupervisorDao {
     public void deleteSupervisor(@Bind("staffID") String staffID);
 
     @Override
-    @SqlUpdate("INSERT INTO SUPERVISOR (STAFFID, FIRSTNAME, LASTNAME, INTEREST, DESCRIPTION, PHONENUMBER, EMAIL) VALUES (:staffID, :firstName, :lastName, :interests, :description, :phoneNumber, :user.email)")
+    @SqlUpdate("INSERT INTO SUPERVISOR (STAFFID, FIRSTNAME, LASTNAME, INTERESTS, DESCRIPTION, PHONENUMBER, EMAIL) VALUES (:staffID, :firstName, :lastName, :interests, :description, :phoneNumber, :user.email)")
     public void saveSupervisor(@BindBean Supervisor supervisor);
 
     @Override
-    @SqlUpdate("UPDATE SUPERVISOR SET FIRSTNAME =:firstName, LASTNAME=:lastName, INTEREST=:interests, DESCRIPTION=:description, PHONENUMBER=:phoneNumber WHERE STAFFID = :staffID")
+    @SqlUpdate("UPDATE SUPERVISOR SET FIRSTNAME =:firstName, LASTNAME=:lastName, INTERESTS=:interests, DESCRIPTION=:description, PHONENUMBER=:phoneNumber WHERE STAFFID = :staffID")
     public void updateSupervisor(@Bind("staffID")String staffID, @BindBean Supervisor supervisor);
     
 

@@ -16,16 +16,18 @@ const app = Vue.createApp({
     },
     
     computed: Vuex.mapState({
-        user: 'user'
+        user: 'user',
+        studentuser: 'studentuser'
     }),
 
 
     mounted() {
+        this.getStudent(this.studentuser.studentID);
     },
 
     methods: {
         
-       /*getStudent(studentID) {
+       getStudent(studentID) {
             axios.get(studentIDApi({'studentID': studentID}))
                     .then(response => {
                         this.student = response.data;
@@ -34,12 +36,13 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-        },*/
+        },
 
         registerStudent() {
         // send POST request to service to create customer
             this.student.user.email = this.user.email;
             this.student.user.password = this.user.password;
+            dataStore.commit("signInStudent", this.student);
             axios.post(studentsApi, this.student)
                     .then(() => {
                         window.location = 'index.html';
@@ -48,29 +51,32 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-        }
+        },
         
-        /*deleteStudent(studentID){
+        deleteStudent(studentID){
             axios.delete(studentIDApi({'studentID': studentID}))
                     .then(response => {
                         this.student = response.data;
+                        sessionStorage.clear();
+                        window.location = '.';
                     })
                     .catch(error => {
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-        },*/
+        },
         
-        /*updateStudent(studentID){
-            axios.put(studentIDApi({'studentID': studentID}))
-                    .then(response => {
-                        this.student = response.data;
+        updateStudent(studentID){
+            axios.put(studentIDApi({'studentID': studentID}), this.student)
+                    .then(() => {
+                        window.location = 'studentprofile.html';
                     })
                     .catch(error =>{
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-        }*/
+                    
+        }
     }
 });
 
