@@ -5,10 +5,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 <html>
     <head>
-        <title>Create a new project</title>
+        <title>Create A New Project</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -17,29 +17,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <main id="content"> 
             <center>
-                <div>
-                    <form @submit.prevent="addProject()">
-                        <label>ProjectID:</label>
-                        <input type="text" v-model="project.projectID" required><br>
-
-                        <label>Name:</label>
-                        <input type="text" v-model="project.name" required><br> 
-
-                        <label>Description:</label>
-                        <input type="text" v-model="project.description" required><br>
-
-                        <label>Open_date:</label>
-                        <input type="text" v-model="project.date" required><br> 
-                        
-                        <label>StaffID:</label>
-                        <input type="text" v-model="project.staffID" required><br> 
-
-                        <p></p>
-                        <button type="submit" >Create Project</button>
-                </div>
-            </center>
-
-        </main> 
-        <script type="module" src="js/project.js"></script>
+                
+                <div>Set Up Your Project</div> 
+                <form @submit.prevent="addProject()">
+                    <label>Project ID:</label>
+                    <input type="text" v-model="project.projectID" required><br>  
+                    
+                    <label>Name:</label>
+                    <input type="text" v-model="project.name" required><br>
+                    
+                    <label>Description</label>
+                    <input type="text" v-model="project.description" required><br>
+                    
+                    <label>Starting Date:</label>
+                    <input type="text" v-model="project.date" required><br>
+                    
+                    <label>Staff ID:</label>
+                    <input type="text" v-model="project.staffID" required><br>
+                    
+                    <p></p>
+                    <button type="submit">Save Project</button>
+                </form> 
+                
+            </center>      
+        
+        </main>
+        <script type="module" src="js/project.js"></script> 
     </body>
 </html>
