@@ -5,10 +5,10 @@
 
 "use strict";
 
-var projectsApi = '//localhost:8090/api/projects';
-var addProjectApi = '//localhost:8090/api/supervisor/projects';
+var projectsApi = '//localhost:8082/api/projects';
+var addProjectApi = '//localhost:8082/api/supervisor/projects';
 //var projectByStaff = '/api/supervisor/projects';
-var porjectByID = ({projectID}) => '//localhost:8090/api/projects/{projectID}';
+var projectByID = ({projectID}) => '//localhost:8082/api/projects/{projectID}';
 
 //var getByIDApi = ({projectID}) ='api/projects/${projectID}';
 //var getByStaffIDApi = ({staffID}) ='api/supervisor/projects/${staffID}';
@@ -18,7 +18,7 @@ const app = Vue.createApp({
     data() {
         return {
             // models (comma separated key/value pairs)
-            projects: new Array(),
+            project: new Array(),
             projectByStaff: new Array()
             //project: new Object()           
         };
@@ -36,10 +36,9 @@ const app = Vue.createApp({
     methods: {
         
         getAllProjects() {
-
             axios.get(projectsApi)
                     .then(response => {
-                        this.projects = response.data;
+                        this.project = response.data;
                     })
                     .catch(error => {
                         console.error(error);
@@ -49,7 +48,7 @@ const app = Vue.createApp({
         },
         
         filterByProjectID(projectID) {
-            axios.get(porjectByID({'projectID': projectID}))
+            axios.get(project({'projectID': projectID}))
                     .then(response => {
                         this.project = response.data;
                     })
@@ -60,19 +59,19 @@ const app = Vue.createApp({
         },
         
         // comma separated function declarations
-        /*addProject() {
+        addProject() {
             axios.post(addProjectApi, this.project)
                     .then(() => {
-                        window.location = 'addproject.html'
+                        window.location = 'studnetLookUp.html'
                     })
                     .catch(error => {
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-        },
+        }
         
         //enter project ID to get the project 
-        getProjectByID(projectID) {
+    /*    getProjectByID(projectID) {
             axios.get(getByIDApi({'projectID': projectID}))
                     .then(response => {
                         this.project = response.data;
@@ -123,6 +122,10 @@ const app = Vue.createApp({
 });
 
 // other component imports go here
+
+import { dataStore } from './data-store.js'
+app.use(dataStore);
+
 // import navigation  menu component
 import { NavigationMenu } from './navigation.js';
 app.component('navigation', NavigationMenu);
