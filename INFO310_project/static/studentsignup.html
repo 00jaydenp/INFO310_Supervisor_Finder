@@ -16,42 +16,36 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <main id="content"> 
-            <div>
-            <navigation></navigation>
-            </div>
             <div>Create Student Account</div> 
-            <form @submit.prevent="addProject()">
+            <form @submit.prevent="registerStudent()">
                 <label>Student ID:</label>
-                <input type="text" v-model="user.studentID" required><br> 
+                <input type="text" v-model="student.studentID" required><br> 
 
                 <label>First Name: </label>
-                <input type="text" v-model="user.firstName" required><br>
+                <input type="text" v-model="student.firstName" required><br>
 
                 <label>Last Name:</label>
-                <input type="text" v-model="user.lastName" required><br>
+                <input type="text" v-model="student.lastName" required><br>
 
                 <label>Interest:</label>
-                <input type="text" v-model="user.interest" required><br>
+                <input type="text" v-model="student.interests" required><br>
 
                 <label>Description:</label>
-                <input type="text" v-model="user.description" required><br>
+                <input type="text" v-model="student.description" required><br>
 
                 <label>Phone Number:</label>
-                <input type="text" v-model="user.phoneNumber" required><br>
+                <input type="tel" v-model="student.phoneNumber" required><br>
                 
                 <label>GPA</label>
-                <input type="text" v-model="user.gpa" required><br>
+                <input type="text" v-model="student.gpa" required><br>
                 
                 <label>Address:</label>
-                <input type="text" v-model="user.address" required><br>
-
-                <label>Email:</label>
-                <input type="text" v-model="user.email" required><br>
+                <input type="text" v-model="student.address" required><br>
 
                 <p></p>
                 <button type="submit" >Create Account</button>
             </form>
         </main>
-        <script type="module" src="js/User.js"></script>
+        <script type="module" src="js/Student.js"></script>
     </body>
 </html>

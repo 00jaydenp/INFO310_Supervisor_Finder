@@ -4,6 +4,8 @@
  */
 
 
+/* global Vuex */
+
 export const dataStore = Vuex.createStore({
 
     state () {

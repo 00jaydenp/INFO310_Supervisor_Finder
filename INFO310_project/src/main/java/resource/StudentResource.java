@@ -67,6 +67,7 @@ public class StudentResource extends Jooby {
             post("", ctx -> {
                 Student student = ctx.body().to(Student.class);
                 if (dao.getStudentByID(student.getStudentID()) == null) {
+                    System.out.println(student.getAddress());
                     dao.saveStudent(student);
                     return ctx.send(StatusCode.CREATED);
                 } else {

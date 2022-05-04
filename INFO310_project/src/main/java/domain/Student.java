@@ -23,7 +23,7 @@ public class Student {
     private String address;
     
     private User user;
-
+    
     @Override
     public int hashCode() {
         int hash = 3;

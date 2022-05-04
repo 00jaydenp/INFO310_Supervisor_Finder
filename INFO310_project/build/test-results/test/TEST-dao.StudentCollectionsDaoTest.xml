@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dao.StudentCollectionsDaoTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-05-04T03:55:28" hostname="DAVIDS-PC" time="1.359">
+  <properties/>
+  <testcase name="testSaveStudent()" classname="dao.StudentCollectionsDaoTest" time="1.292"/>
+  <testcase name="testUpdateStudentByID()" classname="dao.StudentCollectionsDaoTest" time="0.024"/>
+  <testcase name="testGetStudents()" classname="dao.StudentCollectionsDaoTest" time="0.016"/>
+  <testcase name="testDeleteStudentByID()" classname="dao.StudentCollectionsDaoTest" time="0.014"/>
+  <testcase name="testGetStudentByID()" classname="dao.StudentCollectionsDaoTest" time="0.012"/>
+  <system-out><![CDATA[15:55:28 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+ 15:55:29 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:tests user=SA
+ 15:55:29 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+ ]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

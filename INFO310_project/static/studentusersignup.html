@@ -19,10 +19,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             
             <div>Create your account</div> <p></p>
 
-            
                 <form @submit.prevent="registerStudentUser()">
                     <label>Email:</label>
-                    <input type="text" v-model="user.email" required><br>
+                    <input type="email" v-model="user.email" required><br>
 
                     <label>Password:</label>
                     <input type="password" v-model="user.password" required><br> 
