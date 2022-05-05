@@ -56,23 +56,40 @@ const app = Vue.createApp({
             });
         },
 
-        registerUser() {
-// send POST request to service to create user
+//        registerUser() {
+//// send POST request to service to create user
+//            dataStore.commit("signIn", this.newUser);
+//            axios.post(registerApi, this.newUser)
+//                    .then(() => {
+//                        if(this.newUser.email.includes("@student.otago.ac.nz")){
+//                            window.location = 'studentsignup.html';
+//                        } else if(this.newUser.email.includes("@otago.ac.nz")){
+//                            window.location = 'supervisorsignup.html';
+//                        } else {
+//                            alert("Please enter a valid Universtiy of Otago email");
+//                        }
+//                    })
+//                    .catch(error => {
+//                        console.error(error);
+//                        alert("An error occurred - check the console for details.");
+//                    });
+//        },
+        
+        registerUser(){
             dataStore.commit("signIn", this.newUser);
-            axios.post(registerApi, this.newUser)
-                    .then(() => {
-                        if(this.newUser.email.includes("@student.otago.ac.nz")){
+            if(this.newUser.email.includes("@student.otago.ac.nz")){
+                axios.post(registerApi, this.newUser)
+                        .then(() => {
                             window.location = 'studentsignup.html';
-                        } else if(this.newUser.email.includes("@otago.ac.nz")){
+                })
+            } else if (this.newUser.email.includes("otago.ac.nz")){
+                axios.post(registerApi, this.newUser)
+                        .then(() => {
                             window.location = 'supervisorsignup.html';
-                        } else {
-                            alert("Please enter a valid Universtiy of Otago email");
-                        }
-                    })
-                    .catch(error => {
-                        console.error(error);
-                        alert("An error occurred - check the console for details.");
-                    });
+                })
+            } else {
+                alert ("Please enter a valid Universtiy of Otago email");
+            }
         },
 
         signIn() {

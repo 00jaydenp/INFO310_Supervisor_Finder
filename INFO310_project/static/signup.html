@@ -20,6 +20,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <div>Create your account</div> <p></p>
 
                 <form @submit.prevent="registerUser()">
+                    <fieldset>
                     <label>Email:</label>
                     <input type="email" v-model="newUser.email" required><br>
 
@@ -28,6 +29,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
        
                     <p></p>
                     <button type="submit" >Create Account</button>
+                    </fieldset>
                 </form>
             
         </main>
