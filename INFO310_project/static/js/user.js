@@ -32,7 +32,7 @@ const app = Vue.createApp({
     computed: Vuex.mapState({
         user: 'user',
         studentuser: 'studentuser',
-        //supervisoruser: 'supervisoruser'
+        supervisoruser: 'supervisoruser'
     }),
 
     mounted() {
@@ -86,7 +86,7 @@ const app = Vue.createApp({
             this.loginSupervisor(this.newUser.email);
             axios.get(logInApi({'email': this.newUser.email}))
                     .then(response => {
-                        if (this.newUser.password === response.data.password) {
+                        if (this.newUser.password === response.data.password) { 
                             this.newUser = response.data;
                             dataStore.commit("signIn", this.newUser);
                             

@@ -33,10 +33,11 @@ export const NavigationMenu = {
     template:
             `
     <nav>
-        <div v-if="studentSignedIn">Welcome back {{studentuser.firstName}}</div>
-        <div v-if="supervisorSignedIn">Welcome back {{supervisoruser.firstName}}</div>
+        <div v-if="studentSignedIn && signedIn">Welcome back {{studentuser.firstName}}</div>
+        <div v-if="supervisorSignedIn && signedIn">Welcome back {{supervisoruser.firstName}}</div>
         <a href=".">Home</a>&nbsp
-        <a href="studentprofile.html" v-if="studentSignedIn">Profile</a>&nbsp
+        <a href="studentprofile.html" v-if="studentSignedIn && signedIn">Profile</a>&nbsp
+        <a href="supervisorprofile.html" v-if="supervisorSignedIn && signedIn">Profile</a>&nbsp
         <a href="project-list.html" v-if="signedIn">Project</a>&nbsp
         <a href="#" v-if="signedIn" @click="signOut()">Sign Out</a>&nbsp
     </nav>

@@ -37,8 +37,6 @@ const app = Vue.createApp({
                         alert("An error occurred - check the console for details.");
                     });
         },
-
-        
         
         deleteStudent(studentID){
             axios.delete(studentIDApi({'studentID': studentID}))
@@ -57,6 +55,7 @@ const app = Vue.createApp({
             axios.put(studentIDApi({'studentID': studentID}), this.student)
                     .then(() => {
                         window.location = 'studentprofile.html';
+                        dataStore.commit("signInStudent", this.student);
                     })
                     .catch(error =>{
                         console.error(error);
