@@ -56,34 +56,35 @@ const app = Vue.createApp({
             });
         },
 
-        registerStudentUser() {
+        registerUser() {
 // send POST request to service to create user
             dataStore.commit("signIn", this.newUser);
             axios.post(registerApi, this.newUser)
                     .then(() => {
-                        window.location = 'studentsignup.html';
+                        if(this.newUser.email.includes("@student.otago.ac.nz")){
+                            window.location = 'studentsignup.html';
+                        } else if(this.newUser.email.includes("@otago.ac.nz")){
+                            window.location = 'supervisorsignup.html';
+                        } else {
+                            alert("Please enter a valid Universtiy of Otago email");
+                        }
                     })
                     .catch(error => {
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
         },
-        
-        registerSupervisorUser(){
-            dataStore.commit("signIn", this.newUser);
-            axios.post(registerApi, this.newUser)
-                    .then(() =>{
-                        window.location = 'supervisorsignup.html';
-                
-            })
-                    .catch(error => {
-                        console.error(error);
-                        alert("An error occurred - check the console for details.");
-            });
-        },
-        
-        supervisorSignIn() {
-            this.loginSupervisor(this.newUser.email);
+
+        signIn() {
+            if(this.newUser.email.includes("@student.otago.ac.nz")){
+                this.loginStudent(this.newUser.email);
+            } else if(this.newUser.email.includes("@otago.ac.nz")){
+                this.loginSupervisor(this.newUser.email);
+            } else {
+                alert("Please enter a valid Universtiy of Otago email");
+                return;
+            }
+            
             axios.get(logInApi({'email': this.newUser.email}))
                     .then(response => {
                         if (this.newUser.password === response.data.password) { 
@@ -101,7 +102,7 @@ const app = Vue.createApp({
                     });
         },
 
-        studentSignIn() {
+        /*studentSignIn() {
             this.loginStudent(this.newUser.email);
             axios.get(logInApi({'email': this.newUser.email}))
                     .then(response => {
@@ -117,7 +118,7 @@ const app = Vue.createApp({
                     .catch(error => {
                         this.signInMessage = 'Sign in failed!  Check your username and password and try again.';
                     });
-        },
+        },*/
         
         registerStudent() {
         // send POST request to service to create customer
