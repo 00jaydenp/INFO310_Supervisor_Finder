@@ -42,18 +42,6 @@ public class ApplicationResource extends Jooby {
             });
         });
 
-        path("api/application/{studentID}", () -> {
-            get("", ctx -> {
-                String id = ctx.path("studentID").value();
-                Application application = dao.getApplicationByStudentID(id);
-                if (application == null) {
-                    return ctx.send(StatusCode.NOT_FOUND);
-                } else {
-                    return application;
-                }
-            });
-        });
-
         path("api/project/application", () -> {
             post("", ctx -> {
                 Application application = ctx.body().to(Application.class);
