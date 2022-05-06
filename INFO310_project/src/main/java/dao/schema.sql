@@ -49,7 +49,7 @@ CREATE TABLE Project(
     name varchar(255) not null,
     description varchar(255) not null,
     status varchar (255) not null,
-    openDate varchar(10),
+    date varchar(10),
     staffID varchar(8) not null,
     studentID varchar(8),
     hidden boolean not null default 0,

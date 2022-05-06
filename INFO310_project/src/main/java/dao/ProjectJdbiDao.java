@@ -49,7 +49,7 @@ public interface ProjectJdbiDao extends ProjectDao{
     public Collection<Project> getProjectsByStaffID(@Bind("staffID")String staffID);
 
     @Override
-    @SqlUpdate("INSERT INTO PROJECT (PROJECTID, NAME, DESCRIPTION, STATUS, OPENDATE, STAFFID) VALUES (:projectID, :name, :description, :status, :date, :supervisor.staffID)")
+    @SqlUpdate("INSERT INTO PROJECT (PROJECTID, NAME, DESCRIPTION, STATUS, DATE, STAFFID) VALUES (:projectID, :name, :description, :status, :date, :supervisor.staffID)")
     public void saveProject(@BindBean Project project);
     
 }
