@@ -1,3 +1,4 @@
+
 DROP TABLE project;
 DROP TABLE supervisor;
 DROP TABLE student;

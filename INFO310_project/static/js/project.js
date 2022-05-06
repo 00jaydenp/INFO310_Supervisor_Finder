@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Other/javascript.js to edit this template
  */
 
-/* global axios, Vue */
+/* global axios, Vue, Vuex */
 
 "use strict";
 
@@ -20,14 +20,17 @@ const app = Vue.createApp({
     data() {
         return {
             // models (comma separated key/value pairs)
-            project: new Array(),
-            projectByStaff: new Array()
-            //project: new Object()           
+            projectsArr: new Array(),
+            projectByStaff: new Array(),
+            project: new Object({
+                supervisor: new Object()
+            })           
         };
     },
     
     computed: Vuex.mapState({
-        project: 'selectedProject'
+        selectedProject: 'selectedProject',
+        supervisoruser: 'supervisoruser'
     }),
 
 
@@ -46,7 +49,7 @@ const app = Vue.createApp({
         getAllProjects() {
             axios.get(projectsApi)
                     .then(response => {
-                        this.project = response.data;
+                        this.projectsArr = response.data;
                     })
                     .catch(error => {
                         console.error(error);
@@ -63,14 +66,15 @@ const app = Vue.createApp({
                     .catch(error => {
                         console.error(error);
                         alert("An error occurred - check the console for details.");
-                    })
+                    });
         },
         
         // comma separated function declarations
         addProject() {
+            this.project.supervisor.staffID = this.supervisoruser.staffID;
             axios.post(addProjectApi, this.project)
                     .then(() => {
-                        window.location = 'index.html'
+                        window.location = 'index.html';
                     })
                     .catch(error => {
                         console.error(error);
