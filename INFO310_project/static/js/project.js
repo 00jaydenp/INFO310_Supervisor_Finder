@@ -20,7 +20,7 @@ const app = Vue.createApp({
     data() {
         return {
             // models (comma separated key/value pairs)
-            projects: new Array(),
+            project: new Array(),
             projectByStaff: new Array()
             //project: new Object()           
         };
@@ -46,7 +46,7 @@ const app = Vue.createApp({
         getAllProjects() {
             axios.get(projectsApi)
                     .then(response => {
-                        this.projects = response.data;
+                        this.project = response.data;
                     })
                     .catch(error => {
                         console.error(error);
