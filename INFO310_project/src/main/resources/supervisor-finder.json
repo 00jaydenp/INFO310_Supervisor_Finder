@@ -654,6 +654,102 @@
         ]
       },
       "parameters": []
+    },
+    "/project/application/{projectID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "projectID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Application by Project ID",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Application"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - No applications in that project"
+          }
+        },
+        "operationId": "get-application-projectID",
+        "description": "",
+        "tags": [
+          "Application"
+        ]
+      }
+    },
+    "/project/application": {
+      "parameters": [],
+      "post": {
+        "summary": "Add Application",
+        "operationId": "post-application-projectID",
+        "responses": {
+          "202": {
+            "description": "Application created"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Application"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Application"
+        ]
+      }
+    },
+    "/application/{studentID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "studentID",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get Applications by student ID",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Application"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-application-studentID",
+        "tags": [
+          "Application"
+        ]
+      }
     }
   },
   "components": {
@@ -717,7 +813,7 @@
         ]
       },
       "Student": {
-        "title": "Supervisor",
+        "title": "Student",
         "type": "object",
         "properties": {
           "studentID": {
@@ -781,9 +877,21 @@
           },
           "supervisor": {
             "$ref": "#/components/schemas/Supervisor"
+          }
+        }
+      },
+      "Application": {
+        "title": "Application",
+        "type": "object",
+        "properties": {
+          "applicationID": {
+            "type": "string"
           },
           "student": {
             "$ref": "#/components/schemas/Student"
+          },
+          "project": {
+            "$ref": "#/components/schemas/Project"
           }
         }
       }
@@ -792,6 +900,9 @@
     "securitySchemes": {}
   },
   "tags": [
+    {
+      "name": "Application"
+    },
     {
       "name": "Login"
     },
