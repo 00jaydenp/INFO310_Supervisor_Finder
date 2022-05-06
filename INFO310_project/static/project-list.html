@@ -28,6 +28,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <p></p>
                     <input type="text" placeholder="Search..">&nbsp
                     <button>Search</button>
+             
+                        
                 </div>
                 
                 <div> 
@@ -42,7 +44,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="project in projects">
+                            <tr v-for="project in project">
                                 <td>{{project.projectID}}</td> 
                                 <td>{{project.name}}</td>
                                 <td>{{project.description}}</td>
