@@ -39,6 +39,7 @@ const app = Vue.createApp({
 
         //alert('Mounted method called');
         this.getAllProjects();
+        //this.filterByProjectID(this.selectedProject.projectID);
         //this.getProjectByStaffID();
 
     },
@@ -71,7 +72,9 @@ const app = Vue.createApp({
         
         // comma separated function declarations
         addProject() {
+            
             this.project.supervisor.staffID = this.supervisoruser.staffID;
+            dataStore.commit("selectProject", this.project);
             axios.post(addProjectApi, this.project)
                     .then(() => {
                         window.location = 'index.html';
