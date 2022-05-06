@@ -15,9 +15,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <script src="js/external/axios.js"></script>
     </head>
     <body>
-        <main id="content"> 
+        <main id="content">
+            <navigation></navigation>
             <center>
-                
                 <div>Set Up Your Project</div> 
                 <form @submit.prevent="addProject()">
                     <label>Project ID:</label>
@@ -30,7 +30,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <input type="text" v-model="project.description" required><br>
                     
                     <label>Starting Date:</label>
-                    <input type="text" v-model="project.date" required><br>
+                    <input type="text" v-model="project.openDate" required><br>
                     
                     <label>Staff ID:</label>
                     <input type="text" v-model="project.staffID" required><br>
