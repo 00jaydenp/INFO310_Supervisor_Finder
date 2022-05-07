@@ -10,6 +10,7 @@ import dao.ApplicationDao;
 import domain.ErrorMessage;
 import domain.Student;
 import io.jooby.StatusCode;
+import java.util.Collection;
 
 /**
  *
@@ -21,7 +22,7 @@ public class ApplicationResource extends Jooby {
         path("api/project/application/{projectID}", () -> {
             get("", ctx -> {
                 String id = ctx.path("projectID").value();
-                Application application = dao.getApplicationByProjectID(id);
+                Collection<Application> application = dao.getApplicationByProjectID(id);
                 if (application == null) {
                     return ctx.send(StatusCode.NOT_FOUND);
                 } else {
@@ -33,7 +34,7 @@ public class ApplicationResource extends Jooby {
         path("api/application/{studentID}", () -> {
             get("", ctx -> {
                 String id = ctx.path("studentID").value();
-                Application application = dao.getApplicationByStudentID(id);
+                Collection<Application> application = dao.getApplicationByStudentID(id);
                 if (application == null) {
                     return ctx.send(StatusCode.NOT_FOUND);
                 } else {
