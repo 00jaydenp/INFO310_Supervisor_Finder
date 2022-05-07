@@ -13,9 +13,9 @@ import java.util.Collection;
 public interface ApplicationDao {
     
     
-    Application getApplicationByProjectID(String id);
+    Collection<Application> getApplicationByProjectID(String projectID);
     
-    Application getApplicationByStudentID(String id);
+    Collection<Application> getApplicationByStudentID(String studentID);
     
     void addApplication(Application application);
 }

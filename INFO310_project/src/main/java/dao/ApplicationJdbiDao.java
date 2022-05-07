@@ -6,6 +6,7 @@ package dao;
 
 import domain.Application;
 import domain.Project;
+import java.util.Collection;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
@@ -21,12 +22,12 @@ public interface ApplicationJdbiDao extends ApplicationDao {
     @Override
     @SqlQuery("SELECT * FROM APPLICATION WHERE PROJECTID = :projectID")
     @RegisterBeanMapper(Application.class)
-    public Application getApplicationByProjectID(@Bind("projectID")String id);
+    public Collection<Application> getApplicationByProjectID(@Bind("projectID")String id);
     
     @Override
     @SqlQuery("SELECT * FROM APPLICATION WHERE STUDENTID = :studentID")
     @RegisterBeanMapper(Application.class)
-    public Application getApplicationByStudentID(@Bind("studentID")String id);
+    public Collection<Application> getApplicationByStudentID(@Bind("studentID")String id);
     
     
     @Override
