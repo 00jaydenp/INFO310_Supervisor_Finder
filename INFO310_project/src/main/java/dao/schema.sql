@@ -54,7 +54,7 @@ CREATE TABLE Project(
     status varchar (255) not null,
     date varchar(10),
     staffID varchar(8) not null,
-    studentID varchar(8) not null unique,
+    studentID varchar(8),
     hidden boolean not null default 0,
 
     constraint Project_PK primary key (projectID), 
