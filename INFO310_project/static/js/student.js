@@ -4,7 +4,7 @@
 
 
 var studentIDApi = ({studentID}) => `/api/student/profile/${studentID}`;
-var studentApi = "//localhost:8090/api/student/profile"
+var studentsApi = `//localhost:8090/api/student/profile`;
 
 const app = Vue.createApp({
 
@@ -26,13 +26,13 @@ const app = Vue.createApp({
 
     mounted() {
         this.getStudent(this.studentuser.studentID);
-        this.getStudents();
+        this.getAllStudents();
     },
 
     methods: {
         
-        getStudents() {
-            axios.get(studentApi)
+        getAllStudents() {
+            axios.get(studentsApi)
                     .then(response => {
                         this.studentsArr = response.data;
                     })

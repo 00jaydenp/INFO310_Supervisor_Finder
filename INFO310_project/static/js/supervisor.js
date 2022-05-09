@@ -10,13 +10,13 @@
 
 
 var supervisorIDApi = ({staffID}) => `/api/supervisor/profile/${staffID}`;
-var supervisorApi = "//localhost:8082/api/supervisor/profile"
+var supervisorApi = `//localhost:8090/api/supervisor/profile`;
 
 
 const app = Vue.createApp({
     data() {
         return{
-            supervisorArr: new Array(),
+            supervisorsArr: new Array(),
             supervisor: new Object({
                 user: new Object()
             })
@@ -25,8 +25,8 @@ const app = Vue.createApp({
     
     computed: Vuex.mapState({
         user: 'user',
-        selectedSupervisor: 'selectedSupervisor',
-        supervisoruser: 'supervisoruser'
+        supervisoruser: 'supervisoruser',
+        selectedSupervisor: 'selectedSupervisor'
     }),
 
     
@@ -41,7 +41,7 @@ const app = Vue.createApp({
         getAllSupervisors() {
             axios.get(supervisorApi)
                     .then(response => {
-                        this.supervisorArr = response.data;
+                        this.supervisorsArr = response.data;
                     })
                     .catch(error => {
                         console.error(error);

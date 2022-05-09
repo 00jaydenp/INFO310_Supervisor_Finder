@@ -15,6 +15,7 @@ export const dataStore = Vuex.createStore({
         supervisoruser: null;
         selectedProject: null;
         selectedStudent: null;
+        selectedSupervisor: null;
     },
 
     mutations: {
@@ -40,6 +41,10 @@ export const dataStore = Vuex.createStore({
         selectStudent(state, studentuser){
             state.selectedStudent = studentuser;
         },
+        
+        selectSupervisor(state, supervisoruser){
+            state.selectedSupervisor = supervisoruser;
+        }
 
     },
 
