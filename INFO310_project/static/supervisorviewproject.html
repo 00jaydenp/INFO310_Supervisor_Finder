@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>My Project Details</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script> 
+    </head>
+    <body>
+        <main id="content">
+
+            <center>
+                <div>
+                    <navigation></navigation>
+                </div> 
+                
+                <form @submit.prevent="deleteProject(selectedProject.projectID)">   
+                    <h3>Project ID: </h3>{{selectedProject.projectID}} 
+                    <h3>Project Name: </h3>{{selectedProject.name}}
+                    <h3>Description: </h3>{{selectedProject.description}}
+                    <h3>Project Status </h3>{{selectedProject.status}}
+                    <h3>Open date </h3>{{selectedProject.date}}
+                    <p><a href="supervisoreditproject.html">Edit</a> <button type="submit">Delete</button></p>
+                </form>
+
+            </center>
+        </main>
+        <script type="module" src="js/project.js"></script>
+    </body>
+</html>

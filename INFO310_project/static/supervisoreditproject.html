@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Edit Project</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script> 
+    </head>
+    <body>
+        <main id="content">
+            <center>
+                <div>
+                    <navigation></navigation>
+                    <form @submit.prevent="updateProject(selectedProject.projectID)">   
+                   <h3>Project ID: </h3>{{selectedProject.projectID}} 
+                    <h3>Project Name: </h3><input type="text" v-model="selectedProject.name" value="selectedProject.name">
+                    <h3>Description: </h3><input type="text" v-model="selectedProject.description" value="selectedProject.description">
+                    <h3>Project Status </h3><input type="text" v-model="selectedProject.status" value="selectedProject.status">
+                    <h3>Open date </h3>{{selectedProject.date}}
+                    <p><button type="submit">Save Changes</button></p>
+                </form>
+                </div> 
+            </center>
+        </main>
+        <script type="module" src="js/Project.js"></script>
+    </body>
+</html>

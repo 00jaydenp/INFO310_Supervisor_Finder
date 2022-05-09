@@ -9,11 +9,8 @@
 
 var projectsApi = '//localhost:8090/api/projects';
 var addProjectApi = '//localhost:8090/api/supervisor/projects';
-//var projectByStaff = '/api/supervisor/projects';
-var projectByID = ({projectID}) => '//localhost:8090/api/projects/{projectID}';
-
-//var getByIDApi = ({projectID}) ='api/projects/${projectID}';
-//var getByStaffIDApi = ({staffID}) ='api/supervisor/projects/${staffID}';
+var projectIDApi = ({projectID}) => `//localhost:8090/api/projects/${projectID}`;
+var getByStaffIDApi = ({staffID}) => `//localhost:8090/api/supervisor/projects/${staffID}`;
 
 const app = Vue.createApp({
 
@@ -24,7 +21,7 @@ const app = Vue.createApp({
             projectByStaff: new Array(),
             project: new Object({
                 supervisor: new Object()
-            })           
+            })
         };
     },
     
@@ -36,11 +33,7 @@ const app = Vue.createApp({
 
     mounted() {
         // semicolon separated statements
-
-        //alert('Mounted method called');
         this.getAllProjects();
-        //this.filterByProjectID(this.selectedProject.projectID);
-        //this.getProjectByStaffID();
 
     },
     
@@ -59,16 +52,16 @@ const app = Vue.createApp({
 
         },
         
-        filterByProjectID(projectID) {
-            axios.get(project({'projectID': projectID}))
+        /*getByStaffID(staffID) {
+            axios.get(getByStaffIDApi({'staffID': staffID}))
                     .then(response => {
-                        this.project = response.data;
+                        this.projectByStaff = response.data;
                     })
                     .catch(error => {
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-        },
+        },*/
         
         // comma separated function declarations
         addProject() {
@@ -88,54 +81,52 @@ const app = Vue.createApp({
         pickProject(project){
             dataStore.commit("selectProject", project);
             window.location="viewselectedproject.html";
-        }
+        },
         
-        //enter project ID to get the project 
-    /*    getProjectByID(projectID) {
-            axios.get(getByIDApi({'projectID': projectID}))
+        staffPickProject(project){
+            dataStore.commit("selectProject", project);
+            window.location="supervisorviewproject.html";
+        },
+        
+        getProject(projectID){
+            axios.get(projectIDApi({'projectID': projectID}))
                     .then(response => {
                         this.project = response.data;
-                    })
+            })
                     .catch(error => {
                         console.error(error);
                         alert("An error occurred - check the console for details.");
-                    });
-        }, 
+            });
+        },
         
         //click handler to delete project 
-        deleteProjectByID(projectID) {
-            axios.delete(getByIDApi({'projectID': projectID}))
+        deleteProject(projectID) {
+            
+            axios.delete(projectIDApi({'projectID': projectID}))
                     .then(response => {
                         this.project = response.data;
+                        window.location = 'myproject.html';
                     })
                     .catch(error => {
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
         },
-        
-        updateProjectByID(projectID) {
-            axios.put(getByIDApi({'projectID': projectID}))
-                    .then(response => {
-                        this.project = response.data;
+
+        updateProject(projectID) {
+            axios.put(projectIDApi({'projectID': projectID}), this.project)
+                    .then(() /*response*/ => {
+                        //this.project = response.data;
+                        window.location = 'myproject.html';
+                        //dataStore.commit("signInSupervisor", this.supervisor);
+                        //dataStore.commit("selectProject", this.project);
                     })
                     .catch(error => {
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-        },*/
-        
-        /*getProjectByStaffID() {
-            axios.get(projectByStaff({'staffID': this.supervisor.staffID}))
-                    .then(response => {
-                        this.project = response.data;
-                    })
-                    .catch(error => {
-                        console.error(error);
-                        alert("An error occurred - check the console for details.");
-                    });
-        }*/
-        
+        }
+
 
     }
 
