@@ -10,6 +10,9 @@ package domain;
  */
 public class Application {
     private String applicationID;
+    private String studentID;
+    private String projectID;
+    
     private Student student;
     private Project project;
     
@@ -20,6 +23,24 @@ public class Application {
     public void setApplicationID(String applicationID){
         this.applicationID = applicationID;
     }
+
+    public String getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(String studentID) {
+        this.studentID = studentID;
+    }
+
+    public String getProjectID() {
+        return projectID;
+    }
+
+    public void setProjectID(String projectID) {
+        this.projectID = projectID;
+    }
+    
+    
     
     public Student getStudent(){
         return student;

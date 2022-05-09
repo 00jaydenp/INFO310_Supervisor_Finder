@@ -4,6 +4,7 @@
  */
 package server;
 
+import dao.ApplicationDao;
 import dao.JDBIDaoFactory;
 import dao.ProjectDao;
 import dao.StudentDao;
@@ -16,6 +17,7 @@ import io.jooby.ServerOptions;
 import io.jooby.json.GsonModule;
 import java.io.IOException;
 import java.nio.file.Paths;
+import resource.ApplicationResource;
 import resource.ProjectResource;
 import resource.StaticAssetResource;
 import resource.StudentResource;
@@ -31,6 +33,7 @@ public class SupervisorFinderService extends Jooby{
     private final SupervisorDao supervisorDao = JDBIDaoFactory.getSupervisorDao();
     private final UserDao userDao = JDBIDaoFactory.getUserDao();
     private final ProjectDao projectDao = JDBIDaoFactory.getProjectDao();
+    private final ApplicationDao applicationDao = JDBIDaoFactory.getApplicationDao();
     
     public SupervisorFinderService(){
         
@@ -46,6 +49,7 @@ public class SupervisorFinderService extends Jooby{
         mount(new SupervisorResource(supervisorDao));
         mount(new UserResource(userDao));
         mount(new ProjectResource(projectDao));
+        mount(new ApplicationResource(applicationDao));
         mount(new StaticAssetResource());
    
         

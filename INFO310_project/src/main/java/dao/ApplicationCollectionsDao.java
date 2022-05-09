@@ -7,14 +7,9 @@ package dao;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import domain.Application;
-import domain.Student;
-import domain.Supervisor;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.TreeMap;
-import org.antlr.v4.runtime.misc.MultiMap;
 
 /**
  *
@@ -39,6 +34,8 @@ public class ApplicationCollectionsDao implements ApplicationDao {
     @Override
     public void addApplication(Application application) {
         applications.put(application.getApplicationID(), application);
+        applicationProjectIDMap.put(application.getProject().getProjectID(), application);
+        applicationStudentIDMap.put(application.getStudent().getStudentID(), application);
     }
 
 }

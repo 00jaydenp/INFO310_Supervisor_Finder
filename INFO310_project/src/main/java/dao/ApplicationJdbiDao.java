@@ -5,7 +5,6 @@
 package dao;
 
 import domain.Application;
-import domain.Project;
 import java.util.Collection;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
@@ -31,6 +30,6 @@ public interface ApplicationJdbiDao extends ApplicationDao {
     
     
     @Override
-    @SqlUpdate("INSERT INTO APPLICATION (APPLICATIONID, STUDENTID, PROJECTID) VALUES (:applicationID, :student.studentID, :supervisor.staffID)")
+    @SqlUpdate("INSERT INTO APPLICATION (APPLICATIONID, STUDENTID, PROJECTID) VALUES (:applicationID, :student.studentID, :project.projectID)")
     public void addApplication(@BindBean Application application);
 }

@@ -8,7 +8,6 @@ import domain.Application;
 import io.jooby.Jooby;
 import dao.ApplicationDao;
 import domain.ErrorMessage;
-import domain.Student;
 import io.jooby.StatusCode;
 import java.util.Collection;
 
@@ -46,7 +45,7 @@ public class ApplicationResource extends Jooby {
         path("api/project/application", () -> {
             post("", ctx -> {
                 Application application = ctx.body().to(Application.class);
-                if (dao.getApplicationByProjectID(application.getProject().getProjectID()) == null) {
+                if (!dao.getApplicationByProjectID(application.getProject().getProjectID()).contains(application)) {
                     dao.addApplication(application);
                     return ctx.send(StatusCode.CREATED);
                 } else {

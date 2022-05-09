@@ -20,6 +20,7 @@ public class Supervisor {
     private String interests;
     private String description;
     private String phoneNumber;
+    private String email;
     
     private User user;
 
@@ -44,8 +45,14 @@ public class Supervisor {
         final Supervisor other = (Supervisor) obj;
         return Objects.equals(this.staffID, other.staffID);
     }
-    
-    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getStaffID() {
         return staffID;

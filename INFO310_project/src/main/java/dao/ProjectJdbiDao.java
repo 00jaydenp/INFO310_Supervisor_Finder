@@ -35,7 +35,7 @@ public interface ProjectJdbiDao extends ProjectDao{
     public Project getProjectByID(@Bind("projectID")String projectID);
     
     @Override
-    @SqlUpdate("UPDATE PROJECT SET NAME = :name, DESCRIPTION = :description, STATUS = :status, STUDENTID = :student.studentID")
+    @SqlUpdate("UPDATE PROJECT SET NAME = :name, DESCRIPTION = :description, STATUS = :status WHERE PROJECTID = :projectID")
     public void updateProjectByID(@Bind("projectID")String projectID, @BindBean Project project);
 
     @Override

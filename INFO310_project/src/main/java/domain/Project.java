@@ -20,9 +20,9 @@ public class Project {
     private String description;
     private String status;
     private String date;
+    private String staffID;
     
     private Supervisor supervisor;
-    private Student student;
 
     @Override
     public int hashCode() {
@@ -56,12 +56,12 @@ public class Project {
         this.supervisor = supervisor;
     }
 
-    public Student getStudent() {
-        return student;
+    public String getStaffID() {
+        return staffID;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStaffID(String staffID) {
+        this.staffID = staffID;
     }
 
     public String getProjectID() {

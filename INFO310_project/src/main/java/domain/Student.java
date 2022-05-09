@@ -21,8 +21,19 @@ public class Student {
     private String phoneNumber;
     private Double gpa;
     private String address;
+    private String email;
+    private String ProjectID;
     
     private User user;
+    private Project project;
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
     
     @Override
     public int hashCode() {
@@ -45,8 +56,22 @@ public class Student {
         final Student other = (Student) obj;
         return Objects.equals(this.studentID, other.studentID);
     }
-    
-    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getProjectID() {
+        return ProjectID;
+    }
+
+    public void setProjectID(String ProjectID) {
+        this.ProjectID = ProjectID;
+    }
 
     public String getStudentID() {
         return studentID;
