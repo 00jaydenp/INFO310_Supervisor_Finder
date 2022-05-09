@@ -4,11 +4,13 @@
 
 
 var studentIDApi = ({studentID}) => `/api/student/profile/${studentID}`;
+var studentApi = "//localhost:8090/api/student/profile"
 
 const app = Vue.createApp({
 
     data() {
         return {
+            studentsArr: new Array(),
             student: new Object({
                 user: new Object()
             })
@@ -23,9 +25,22 @@ const app = Vue.createApp({
 
     mounted() {
         this.getStudent(this.studentuser.studentID);
+        this.getStudents();
     },
 
     methods: {
+        
+        getStudents() {
+            axios.get(studentApi)
+                    .then(response => {
+                        this.studentsArr = response.data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+
+        },
         
        getStudent(studentID) {
             axios.get(studentIDApi({'studentID': studentID}))
