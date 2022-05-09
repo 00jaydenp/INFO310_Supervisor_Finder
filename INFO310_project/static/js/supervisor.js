@@ -10,10 +10,13 @@
 
 
 var supervisorIDApi = ({staffID}) => `/api/supervisor/profile/${staffID}`;
+var supervisorApi = "//localhost:8082/api/supervisor/profile"
+
 
 const app = Vue.createApp({
     data() {
         return{
+            supervisorArr: new Array(),
             supervisor: new Object({
                 user: new Object()
             })
@@ -22,16 +25,31 @@ const app = Vue.createApp({
     
     computed: Vuex.mapState({
         user: 'user',
+        selectedSupervisor: 'selectedSupervisor',
         supervisoruser: 'supervisoruser'
     }),
 
     
     mounted(){
-        this.getSupervisor(this.supervisoruser.staffID);
+       // this.getAllSupervisors(this.supervisoruser.staffID);
+       // this.getSupervisor(this.supervisoruser.staffID);
         
     },
     
     methods:{
+        
+        getAllSupervisors() {
+            axios.get(supervisorApi)
+                    .then(response => {
+                        this.supervisorArr = response.data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+
+        },
+        
         
         getSupervisor(staffID){
             axios.get(supervisorIDApi({'staffID':staffID}))
@@ -67,6 +85,11 @@ const app = Vue.createApp({
                         alert("An error occurred - check the console for details.");
                     });
                     
+        },
+        
+        pickSupervisor(supervisor){
+            dataStore.commit("selectSupervisor", supervisor);
+            window.location="viewselectedsupervisor.html";
         }
     }
 });
@@ -78,5 +101,3 @@ import { NavigationMenu } from './navigation.js';
 app.component('navigation', NavigationMenu);
 
 app.mount("#content");
-
-
