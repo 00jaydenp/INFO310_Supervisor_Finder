@@ -20,12 +20,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <div>
                     <navigation></navigation>
                     </div> 
-                    <form @submit.prevent="updateProject(selectedProject.projectID)">   
-                   <h3>Project ID: </h3>{{selectedProject.projectID}} 
-                    <h3>Project Name: </h3><input type="text" v-model="selectedProject.name" value="selectedProject.name">
-                    <h3>Description: </h3><input type="text" v-model="selectedProject.description" value="selectedProject.description">
-                    <h3>Project Status </h3><input type="text" v-model="selectedProject.status" value="selectedProject.status">
-                    <h3>Open date </h3>{{selectedProject.date}}
+                    <form @submit.prevent="updateProject(project.projectID)">   
+                   <h3>Project ID: </h3>{{project.projectID}} 
+                    <h3>Project Name: </h3><input type="text" v-model="project.name" value="project.name">
+                    <h3>Description: </h3><input type="text" v-model="project.description" value="project.description">
+                    <h3>Project Status </h3><input type="text" v-model="project.status" value="project.status">
+                    <h3>Open date </h3>{{project.date}}
                     <p><button type="submit">Save Changes</button></p>
                 </form>
                 

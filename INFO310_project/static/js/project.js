@@ -34,6 +34,7 @@ const app = Vue.createApp({
     mounted() {
         // semicolon separated statements
         this.getAllProjects();
+        this.getProject(this.selectedProject.projectID);
 
     },
     
@@ -117,7 +118,7 @@ const app = Vue.createApp({
                     .then(() => {
                         //this.project = response.data;
                         window.location = 'myproject.html';
-                        //dataStore.commit("selectProject", this.project);
+                        dataStore.commit("selectedProject", this.project);
                     })
                     .catch(error => {
                         console.error(error);
