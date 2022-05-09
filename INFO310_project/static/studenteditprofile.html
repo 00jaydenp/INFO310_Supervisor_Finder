@@ -16,9 +16,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <main id="content">
-            <navigation></navigation>
+
             <center> 
-                
+                <navigation></navigation>
                 <form @submit.prevent="updateStudent(student.studentID)">   
                     <h3>StudentID: </h3><h3>{{student.studentID}}</h3>  
                     <h3>Name: </h3><h3>{{student.firstName}} {{student.lastName}}</h3>
@@ -30,7 +30,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <h3>Address: </h3><input type="text" v-model="student.address" value="student.address"><br>
                     <button type="submit">Save Changes</button>
                 </form>
-                
+
             </center>
 
         </main>

@@ -17,8 +17,9 @@ and open the template in the editor.
     </head>
     <body>
         <main id="content">
-            <navigation></navigation>
+
             <center> 
+                <navigation></navigation>
                 <form @submit.prevent="updateSupervisor(supervisor.staffID)">   
                     <h3>StaffID: </h3><h3>{{supervisor.studentID}}</h3>  
                     <h3>Name: </h3><h3>{{supervisor.firstName}} {{supervisor.lastName}}</h3>
@@ -26,10 +27,10 @@ and open the template in the editor.
                     <h3>Interests: </h3><input type="text" v-model="supervisor.interests" value="supervisor.interests">
                     <h3>Description: </h3><input type="text" v-model="supervisor.description" value="supervisor.description">
                     <h3>Phone Number: </h3><input type="text" v-model="supervisor.phoneNumber" value="supervisor.phoneNumber">
-                    <button type="submit">Save Changes</button>
+                    <p><button type="submit">Save Changes</button></p>
                 </form>
             </center>
-          
+
         </main>
         <script type="module" src="js/supervisor.js"></script>
     </body>

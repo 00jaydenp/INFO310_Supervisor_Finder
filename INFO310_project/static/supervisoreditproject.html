@@ -19,6 +19,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <center>
                 <div>
                     <navigation></navigation>
+                    </div> 
                     <form @submit.prevent="updateProject(selectedProject.projectID)">   
                    <h3>Project ID: </h3>{{selectedProject.projectID}} 
                     <h3>Project Name: </h3><input type="text" v-model="selectedProject.name" value="selectedProject.name">
@@ -27,7 +28,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <h3>Open date </h3>{{selectedProject.date}}
                     <p><button type="submit">Save Changes</button></p>
                 </form>
-                </div> 
+                
             </center>
         </main>
         <script type="module" src="js/Project.js"></script>

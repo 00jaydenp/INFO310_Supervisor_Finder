@@ -101,7 +101,6 @@ const app = Vue.createApp({
         
         //click handler to delete project 
         deleteProject(projectID) {
-            
             axios.delete(projectIDApi({'projectID': projectID}))
                     .then(response => {
                         this.project = response.data;
@@ -115,10 +114,9 @@ const app = Vue.createApp({
 
         updateProject(projectID) {
             axios.put(projectIDApi({'projectID': projectID}), this.project)
-                    .then(() /*response*/ => {
+                    .then(() => {
                         //this.project = response.data;
                         window.location = 'myproject.html';
-                        //dataStore.commit("signInSupervisor", this.supervisor);
                         //dataStore.commit("selectProject", this.project);
                     })
                     .catch(error => {

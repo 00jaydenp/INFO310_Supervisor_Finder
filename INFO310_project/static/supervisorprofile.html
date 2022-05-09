@@ -17,19 +17,20 @@ and open the template in the editor.
     </head>
     <body>
         <main id="content">
-            <navigation></navigation>
+
             <center> 
+                <navigation></navigation>
                 <form @submit.prevent="deleteSupervisor(supervisor.staffID)">   
-                    <h3>StaffID: </h3><h3>{{supervisor.staffID}}</h3>  
-                    <h3>Name: </h3><h3>{{supervisor.firstName}} {{supervisor.lastName}}</h3>
-                    <h3>Email: </h3><h3>{{user.email}}</h3>
-                    <h3>Interests: </h3><h3>{{supervisor.interests}}</h3>
-                    <h3>Description: </h3><h3>{{supervisor.description}}</h3>
-                    <h3>Phone Number: </h3><h3>{{supervisor.phoneNumber}}</h3>
-                    <a href="supervisoreditprofile.html">Edit Account</a> <button type="submit">Delete Account</button>
+                    <h3>StaffID: </h3>{{supervisor.staffID}} 
+                    <h3>Name: </h3>{{supervisor.firstName}} {{supervisor.lastName}}
+                    <h3>Email: </h3>{{user.email}}
+                    <h3>Interests: </h3>{{supervisor.interests}}
+                    <h3>Description: </h3>{{supervisor.description}}
+                    <h3>Phone Number: </h3>{{supervisor.phoneNumber}}
+                    <p><a href="supervisoreditprofile.html">Edit Account</a> <button type="submit">Delete Account</button></p>
                 </form>
             </center>
-          
+
         </main>
         <script type="module" src="js/Supervisor.js"></script>
     </body>
