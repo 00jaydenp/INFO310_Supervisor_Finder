@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Student View</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+    </head>
+    <body>
+        <main id="content">  
+            <center>
+                <div><navigation></navigation></div>
+                
+                <h1>View your selected student details</h1>
+
+                <h4>Student ID</h4> 
+                <p>{{selectedStudent.studentID}}</p>
+
+                <h4>Name</h4> 
+                <p>{{selectedStudent.firstName}} {{selectedStudent.lastName}}</p>
+              
+                <h4>Email</h4> 
+                <p>{{selectedStudent.email}}</p>
+
+                <h4>Interests</h4> 
+                <p>{{selectedStudent.interests}}</p>
+                
+                <h4>Description</h4> 
+                <p>{{selectedStudent.description}}</p>
+
+                <h4>Phone Number</h4> 
+                <p>{{selectedStudent.phoneNumber}}</p>
+                
+                <h4>GPA</h4> 
+                <p>{{selectedStudent.gpa}}</p>
+                
+                <h4>Address</h4> 
+                <p>{{selectedStudent.address}}</p>
+                
+               
+                
+            </center>
+        </main> 
+        <script type="module" src="js/student.js"></script>
+    </body>
+</html>

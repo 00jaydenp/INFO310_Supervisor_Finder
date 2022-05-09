@@ -19,7 +19,8 @@ const app = Vue.createApp({
     
     computed: Vuex.mapState({
         user: 'user',
-        studentuser: 'studentuser'
+        studentuser: 'studentuser',
+        selectedStudent: 'selectedStudent'
     }),
 
 
@@ -51,6 +52,11 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
+        },
+        
+        pickStudent(student){
+            dataStore.commit("selectStudent", student);
+            window.location="viewselectedstudent.html";
         },
         
         deleteStudent(studentID){
