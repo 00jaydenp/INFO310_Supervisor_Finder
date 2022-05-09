@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Connect With Supervisors</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+    </head>
+    <body>
+        <main id="content"> 
+            <div>
+            <navigation></navigation>
+            </div>
+            <center>
+                <div>
+                    <h1>Connect With Supervisors</h1>
+                </div>
+
+                <div>
+                    <p></p>
+                    <input type="text" placeholder="Search..">&nbsp
+                    <button>Search</button>
+                </div>
+                
+                <div> 
+                    <table>
+                        <thead>
+                            <tr>&nbsp
+                                <th>Staff ID</th>
+                                <th>Name</th> 
+                                <th>Interests</th> 
+                                <th>Description</th>
+                                <th>Phone Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="supervisor in supervisorArr">
+                                <td>{{supervisor.staffID}}</td> 
+                                <td>{{supervisor.firstName}} {{supervisor.lastName}}</td> 
+                                <td>{{supervisor.interests}}</td>
+                                <td>{{supervisor.description}}</td>
+                                <td>{{supervisor.phoneNumber}}</td>
+                                <td>
+                                    <button @click.prevent="pickSupervisor(supervisor)">View Supervisor</button>
+                                </td>
+                            </tr> 
+                        </tbody>
+                    </table>  
+                </div>
+            </center>
+        </main>
+        <script type="module" src="js/supervisor.js"></script>
+    </body>
+</html>
