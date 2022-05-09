@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Project View</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+    </head>
+    <body>
+        <main id="content">  
+            <center>
+                <div><navigation></navigation></div>
+                
+                <h1>View your selected supervisor </h1>
+
+                <h4>Supervisor ID</h4> 
+                <p>{{selectedSupervisor.staffID}}</p>
+
+                <h4>Supervisor First Name</h4> 
+                <p>{{selectedSupervisor.firstName}}</p>
+                
+                <h4>Supervisor Last Name</h4> 
+                <p>{{selectedSupervisor.lastName}}</p>
+
+                <h4>Supervisor Interests</h4> 
+                <p>{{selectedSupervisor.interests}}</p>
+                
+                <h4>Supervisor Description</h4> 
+                <p>{{selectedSupervisor.description}}</p>
+
+                <h4>Available Projects</h4> 
+                <p>{{selectedSupervisor.projects}}</p>
+                
+            </center>
+        </main> 
+        <script type="module" src="js/supervisor.js"></script>
+    </body>
+</html>
