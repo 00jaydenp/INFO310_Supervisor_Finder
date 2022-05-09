@@ -39,6 +39,7 @@ export const NavigationMenu = {
         <a href ="login.html" v-if="!signedIn">Log In</a>&nbsp
         <a href ="signup.html" v-if="!signedIn">Sign up</a>&nbsp
         <a href ="studentlist.html" v-if="signedIn">Student List</a>&nbsp
+        <a href ="supervisorlookup.html" v-if="signedIn">Supervisor List</a>&nbsp
         <a href="studentprofile.html" v-if="studentSignedIn && signedIn">Profile</a>&nbsp
         <a href="supervisorprofile.html" v-if="supervisorSignedIn && signedIn">Profile</a>&nbsp
         <a href="project-list.html" v-if="studentSignedIn && signedIn">Project</a>&nbsp
