@@ -40,6 +40,12 @@ public class ApplicationResource extends Jooby {
                     return application;
                 }
             });
+            
+            delete("", ctx -> {
+                String id = ctx.path("studentID").value();
+                dao.deleteApplication(id);
+                return ctx.send(StatusCode.NO_CONTENT);            
+            });
         });
 
         path("api/project/application", () -> {

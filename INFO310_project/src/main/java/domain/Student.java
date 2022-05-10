@@ -22,7 +22,7 @@ public class Student {
     private Double gpa;
     private String address;
     private String email;
-    private String ProjectID;
+    private String projectID;
     
     private User user;
     private Project project;
@@ -66,11 +66,11 @@ public class Student {
     }
 
     public String getProjectID() {
-        return ProjectID;
+        return projectID;
     }
 
-    public void setProjectID(String ProjectID) {
-        this.ProjectID = ProjectID;
+    public void setProjectID(String projectID) {
+        this.projectID = projectID;
     }
 
     public String getStudentID() {

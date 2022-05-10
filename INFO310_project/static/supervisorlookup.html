@@ -26,9 +26,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
 
                 <div>
-                    <p></p>
-                    <input type="text" placeholder="Search..">&nbsp
-                    <button>Search</button>
+                    <p>Please enter a staff ID</p>
+                    <input type="text" placeholder="Search.." v-model="staffID">&nbsp
+                    <button @click.prevent = "searchSupervisor()">Search</button>
                 </div>
 
                 <div> 

@@ -37,5 +37,10 @@ public class ApplicationCollectionsDao implements ApplicationDao {
         applicationProjectIDMap.put(application.getProject().getProjectID(), application);
         applicationStudentIDMap.put(application.getStudent().getStudentID(), application);
     }
+    
+    @Override
+    public void deleteApplication(String studentID){
+        applicationStudentIDMap.removeAll(studentID);
+    }
 
 }

@@ -17,7 +17,7 @@ public class StaticAssetResource extends Jooby{
     public StaticAssetResource() {
 
         // handle favicons (silent 404)
-        get("/favicon.ico", Route.FAVICON);
+        //get("/favicon.ico", Route.FAVICON);
 
         // serve anything that matches a file in the static folder
         assets("/*", Paths.get("static"));

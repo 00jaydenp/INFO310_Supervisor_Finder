@@ -19,7 +19,8 @@ const app = Vue.createApp({
             supervisorsArr: new Array(),
             supervisor: new Object({
                 user: new Object()
-            })
+            }),
+            staffID: ""
         };
     },
 
@@ -61,8 +62,8 @@ const app = Vue.createApp({
                     .then(response => {
                         this.supervisor = response.data;
                     }).catch(error => {
-                console.error(error);
-                alert("An error occurred - check the console for details");
+                        console.error(error);
+                        alert("An error occurred - check the console for details");
             });
         },
 
@@ -95,7 +96,24 @@ const app = Vue.createApp({
         pickSupervisor(supervisor) {
             dataStore.commit("selectSupervisor", supervisor);
             window.location = "viewselectedsupervisor.html";
+        }, 
+        
+        searchSupervisor(){
+            if(this.staffID === ""){
+                alert("Please enter an ID");
+            } else {
+                axios.get(supervisorIDApi({'staffID': this.staffID}))
+                        .then(response => {
+                            this.supervisorsArr = new Array();
+                            this.supervisorsArr[0] = response.data;
+                        })
+                        .catch(error => {
+                            console.error(error);
+                            alert("No Supervisor found with that ID");
+                        });
+            }
         }
+        
     }
 });
 

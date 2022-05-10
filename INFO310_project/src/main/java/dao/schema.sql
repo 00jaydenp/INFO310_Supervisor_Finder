@@ -52,7 +52,7 @@ CREATE TABLE Student(
     gpa decimal(3,1) not null, 
     address varchar(50),
     email varchar(50) not null unique,
-    projectID varchar(8) unique,
+    projectID varchar(8),
     hidden boolean not null default 0,
     
     constraint Student_PK primary key (studentID),

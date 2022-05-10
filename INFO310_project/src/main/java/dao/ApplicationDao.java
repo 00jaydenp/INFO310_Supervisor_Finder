@@ -18,4 +18,6 @@ public interface ApplicationDao {
     Collection<Application> getApplicationByStudentID(String studentID);
     
     void addApplication(Application application);
+    
+    void deleteApplication(String studentID);
 }

@@ -10,6 +10,7 @@
 var applicationApi = 'api/project/application';
 var studentIDApi = ({studentID}) => `api/application/${studentID}`;
 var projectIDApi = ({projectID}) => `api/project/application/${projectID}`;
+var studentApi = ({studentID}) => `/api/student/profile/${studentID}`;
 
 const app = Vue.createApp({
 
@@ -20,6 +21,9 @@ const app = Vue.createApp({
             application: new Object({
                 student: new Object(),
                 project: new Object()
+            }),
+            student: new Object({
+                user: new Object()
             })
             
         };
@@ -29,7 +33,8 @@ const app = Vue.createApp({
         studentuser: 'studentuser',
         selectedSupervisor: 'selectedSupervisor',
         selectedProject: 'selectedProject',
-        selectedApplication: 'selectedApplication'
+        selectedApplication: 'selectedApplication', 
+        selectedStudent: 'selectedStudent'
     }),
 
 
@@ -79,6 +84,45 @@ const app = Vue.createApp({
                         alert ("An error occurred - check the console for details");
                     });
         },
+        
+        getThisStudent(studentID, projectID){
+            axios.get(studentApi({'studentID': studentID}))
+                    .then(response => {
+                        this.student = response.data;
+                        this.addProjectToStudent(studentID, projectID);
+                        
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+        },
+        
+        addProjectToStudent(studentID, projectID){
+            this.student.projectID = projectID;
+            axios.put(studentApi({'studentID': studentID}), this.student)
+                    .then(() => {
+                        alert("success");
+                        this.deleteApplication(studentID);
+                        window.location = 'viewsupervisorapplications.html';
+                    })
+                    .catch(error =>{
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+                    
+        },
+        
+        deleteApplication(studentID){
+            axios.delete(studentIDApi({'studentID': studentID}))
+                    .then(response => {
+                        this.student = response.data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+        }
 
     }
 });

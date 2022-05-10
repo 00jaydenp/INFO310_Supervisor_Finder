@@ -749,6 +749,18 @@
         "tags": [
           "Application"
         ]
+      },
+      "delete": {
+        "summary": "Delete application",
+        "operationId": "delete-application",
+        "responses": {
+          "204": {
+            "description": "Application successfully deleted"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
       }
     }
   },

@@ -12,8 +12,10 @@ const app = Vue.createApp({
         return {
             studentsArr: new Array(),
             student: new Object({
-                user: new Object()
-            })
+                user: new Object(),
+                project: new Object()
+            }),
+            studentID: ""
         };
     },
     
@@ -89,6 +91,22 @@ const app = Vue.createApp({
                         alert("An error occurred - check the console for details.");
                     });
                     
+        },
+        
+        searchStudent(){
+            if(this.studentID === ""){
+                alert("Please Enter an ID");
+            } else {
+                axios.get(studentIDApi({'studentID': this.studentID}))
+                        .then(response => {
+                            this.studentsArr = new Array();
+                            this.studentsArr[0] = response.data;
+                        })
+                        .catch(error => {
+                            console.error(error);
+                            alert("No student found with that ID");
+                        });
+            }
         }
     }
 });
