@@ -27,8 +27,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                 <div>
                     <p></p>
-                    <input type="text" placeholder="Search..">&nbsp
-                    <button>Search</button>
+                    <input type="text" placeholder="Search.." v-model="query">&nbsp
+                    <button @click.prevent = "getProjectByQuery()">Search</button>
                 </div>
 
                 <div> 

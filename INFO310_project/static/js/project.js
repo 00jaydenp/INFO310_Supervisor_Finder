@@ -11,17 +11,20 @@ var projectsApi = '//localhost:8090/api/projects';
 var addProjectApi = '//localhost:8090/api/supervisor/projects';
 var projectIDApi = ({projectID}) => `//localhost:8090/api/projects/${projectID}`;
 var getByStaffIDApi = ({staffID}) => `//localhost:8090/api/supervisor/projects/${staffID}`;
+var projectQueryApi = ({query}) => `//localhost:8090/api/projects/search/${query}`;
 
 const app = Vue.createApp({
 
     data() {
         return {
             // models (comma separated key/value pairs)
+            query: "",
             projectsArr: new Array(),
             projectByStaff: new Array(),
             project: new Object({
                 supervisor: new Object()
             })
+            
         };
     },
     
@@ -130,7 +133,18 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-        }
+        }, 
+        
+        getProjectByQuery(){
+            axios.get(projectQueryApi({'query': this.query}))
+                    .then(response => {
+                        this.projectsArr = response.data;
+            })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+            });
+        },
 
 
     }
