@@ -22,22 +22,28 @@ const app = Vue.createApp({
             })
         };
     },
-    
+
     computed: Vuex.mapState({
         user: 'user',
         supervisoruser: 'supervisoruser',
         selectedSupervisor: 'selectedSupervisor'
     }),
 
-    
-    mounted(){
+    mounted() {
         //this.getSupervisor(this.supervisoruser.staffID);
-        this.getAllSupervisors();
-        
+
+        if (document.URL.includes("supervisorlookup.html")) {
+            this.getAllSupervisors();
+        } else if (document.URL.includes("viewselectedsupervisor.html")) {
+        } else {
+            this.getSupervisor(this.supervisoruser.staffID);
+
+        }
+
     },
-    
-    methods:{
-        
+
+    methods: {
+
         getAllSupervisors() {
             axios.get(supervisorApi)
                     .then(response => {
@@ -49,19 +55,18 @@ const app = Vue.createApp({
                     });
 
         },
-        
-        
-        getSupervisor(staffID){
-            axios.get(supervisorIDApi({'staffID':staffID}))
+
+        getSupervisor(staffID) {
+            axios.get(supervisorIDApi({'staffID': staffID}))
                     .then(response => {
                         this.supervisor = response.data;
                     }).catch(error => {
-                        console.error(error);
-                        alert ("An error occurred - check the console for details");
-                    });
+                console.error(error);
+                alert("An error occurred - check the console for details");
+            });
         },
-        
-        deleteSupervisor(staffID){
+
+        deleteSupervisor(staffID) {
             axios.delete(supervisorIDApi({'staffID': staffID}))
                     .then(response => {
                         this.supervisor = response.data;
@@ -73,23 +78,23 @@ const app = Vue.createApp({
                         alert("An error occurred - check the console for details.");
                     });
         },
-        
-        updateSupervisor(staffID){
+
+        updateSupervisor(staffID) {
             axios.put(supervisorIDApi({'staffID': staffID}), this.supervisor)
                     .then(() => {
                         window.location = 'supervisorprofile.html';
                         dataStore.commit("signInSupervisor", this.supervisor);
                     })
-                    .catch(error =>{
+                    .catch(error => {
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-                    
+
         },
-        
-        pickSupervisor(supervisor){
+
+        pickSupervisor(supervisor) {
             dataStore.commit("selectSupervisor", supervisor);
-            window.location="viewselectedsupervisor.html";
+            window.location = "viewselectedsupervisor.html";
         }
     }
 });

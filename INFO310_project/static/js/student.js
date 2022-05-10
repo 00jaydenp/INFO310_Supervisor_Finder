@@ -26,7 +26,13 @@ const app = Vue.createApp({
 
     mounted() {
         //this.getStudent(this.studentuser.studentID);
-        this.getAllStudents();
+        if (document.URL.includes("studentlist.html")) {
+            this.getAllStudents();
+        } else if (document.URL.includes("viewselectedstudent.html")) {
+        } else {
+            this.getStudent(this.studentuser.studentID);
+        }
+
     },
 
     methods: {

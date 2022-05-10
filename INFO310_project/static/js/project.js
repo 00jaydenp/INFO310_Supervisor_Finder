@@ -24,26 +24,32 @@ const app = Vue.createApp({
             project: new Object({
                 supervisor: new Object()
             })
-            
+
         };
     },
-    
+
     computed: Vuex.mapState({
         selectedProject: 'selectedProject',
         supervisoruser: 'supervisoruser'
     }),
 
-
     mounted() {
         // semicolon separated statements
-        this.getAllProjects();
-        this.getByStaffID(this.supervisoruser.staffID);
+
+        if (document.URL.includes("myproject.html")) {
+            this.getByStaffID(this.supervisoruser.staffID);
+        } else if (document.URL.includes("supervisoreditproject.html")) {
+            this.getProject(this.selectedProject.projectID);
+        } else {
+            this.getAllProjects();
+        }
+        
+       
 
     },
-    
 
     methods: {
-        
+
         getAllProjects() {
             axios.get(projectsApi)
                     .then(response => {
@@ -55,7 +61,7 @@ const app = Vue.createApp({
                     });
 
         },
-        
+
         getByStaffID(staffID) {
             axios.get(getByStaffIDApi({'staffID': staffID}))
                     .then(response => {
@@ -63,10 +69,10 @@ const app = Vue.createApp({
                     })
                     .catch(error => {
                         console.error(error);
-                        alert("An error occurred - check the console for details.");
+                        alert("You do not have a project yet");
                     });
         },
-        
+
         // comma separated function declarations
         addProject() {
             this.project.supervisor.staffID = this.supervisoruser.staffID;
@@ -87,28 +93,28 @@ const app = Vue.createApp({
                     });
             this.project = {};
         },
-        
-        pickProject(project){
+
+        pickProject(project) {
             dataStore.commit("selectProject", project);
-            window.location="viewselectedproject.html";
+            window.location = "viewselectedproject.html";
         },
-        
-        staffPickProject(project){
+
+        staffPickProject(project) {
             dataStore.commit("selectProject", project);
-            window.location="supervisorviewproject.html";
+            window.location = "supervisorviewproject.html";
         },
-        
-        getProject(projectID){
+
+        getProject(projectID) {
             axios.get(projectIDApi({'projectID': projectID}))
                     .then(response => {
                         this.project = response.data;
-            })
+                    })
                     .catch(error => {
                         console.error(error);
                         alert("An error occurred - check the console for details.");
-            });
+                    });
         },
-        
+
         //click handler to delete project 
         deleteProject(projectID) {
             axios.delete(projectIDApi({'projectID': projectID}))
@@ -133,19 +139,18 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-        }, 
-        
-        getProjectByQuery(){
+        },
+
+        getProjectByQuery() {
             axios.get(projectQueryApi({'query': this.query}))
                     .then(response => {
                         this.projectsArr = response.data;
-            })
+                    })
                     .catch(error => {
                         console.error(error);
                         alert("An error occurred - check the console for details.");
-            });
+                    });
         },
-
 
     }
 
@@ -154,7 +159,7 @@ const app = Vue.createApp({
 // other component imports go here
 
 import { dataStore } from './data-store.js'
-app.use(dataStore);
+        app.use(dataStore);
 
 // import navigation  menu component
 import { NavigationMenu } from './navigation.js';
