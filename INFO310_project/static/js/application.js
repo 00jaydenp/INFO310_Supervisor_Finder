@@ -15,10 +15,12 @@ const app = Vue.createApp({
 
     data() {
         return {
+            applicationByStudent: new Array(),
             application: new Object({
                 student: new Object(),
                 project: new Object()
             })
+            
         };
     },
     
@@ -30,6 +32,7 @@ const app = Vue.createApp({
 
 
     mounted() {
+        this.getApplicationByStudent(this.studentuser.studentID);
     },
 
     methods: {
@@ -51,7 +54,7 @@ const app = Vue.createApp({
         getApplicationByStudent(studentID){
             axios.get(studentIDApi({'studentID':studentID}))
                     .then(response => {
-                        this.application = response.data;
+                        this.applicationByStudent = response.data;
                     }).catch(error => {
                         console.error(error);
                         alert ("An error occurred - check the console for details");

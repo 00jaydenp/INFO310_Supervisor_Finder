@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Project list</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+    </head>
+    <body>
+        <main id="content"> 
+
+            <center>
+                <div>
+                    <navigation></navigation>
+                </div>
+                <div>
+                    <h1>Applied applications here</h1>
+                </div>
+
+                <div> 
+                    <table>
+                        <thead>
+                            <tr>&nbsp
+                                <th>Application ID</th>
+                                <th>Student ID</th> 
+                                <th>Project ID</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="myapplication in applicationByStudent">
+                                <td>{{myapplication.applicationID}}</td> 
+                                <td>{{myapplication.studentID}}</td>
+                                <td>{{myapplication.projectID}}</td>
+                                
+                            </tr> 
+                        </tbody>
+                    </table>  
+                    
+                </div>
+            </center>
+        </main>
+        <script type="module" src="js/Application.js"> </script>
+    </body>
+</html>
