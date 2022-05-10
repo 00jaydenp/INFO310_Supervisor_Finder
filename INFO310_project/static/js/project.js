@@ -34,7 +34,7 @@ const app = Vue.createApp({
     mounted() {
         // semicolon separated statements
         this.getAllProjects();
-        this.getProject(this.selectedProject.projectID);
+        //this.getByStaffID(this.supervisoruser.staffID);
 
     },
     
@@ -53,7 +53,7 @@ const app = Vue.createApp({
 
         },
         
-        /*getByStaffID(staffID) {
+        getByStaffID(staffID) {
             axios.get(getByStaffIDApi({'staffID': staffID}))
                     .then(response => {
                         this.projectByStaff = response.data;
@@ -62,21 +62,27 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
-        },*/
+        },
         
         // comma separated function declarations
         addProject() {
-            
             this.project.supervisor.staffID = this.supervisoruser.staffID;
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            var fulldate = day + "/" + month + "/" + year;
+            this.project.date = fulldate;
             dataStore.commit("selectProject", this.project);
             axios.post(addProjectApi, this.project)
                     .then(() => {
-                        window.location = 'index.html';
+                        window.location = 'myproject.html';
                     })
                     .catch(error => {
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
+            this.project = {};
         },
         
         pickProject(project){

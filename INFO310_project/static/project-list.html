@@ -43,18 +43,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="project in projectsArr">
-                                <td>{{project.projectID}}</td> 
-                                <td>{{project.name}}</td>
-                                <td>{{project.description}}</td>
-                                <td>{{project.status}}</td>
-                                <td>{{project.date}}</td>
+                            <tr v-for="thisproject in projectsArr">
+                                <td>{{thisproject.projectID}}</td> 
+                                <td>{{thisproject.name}}</td>
+                                <td>{{thisproject.description}}</td>
+                                <td>{{thisproject.status}}</td>
+                                <td>{{thisproject.date}}</td>
                                 <td>
-                                    <button @click.prevent="pickProject(project)">View Project</button>
+                                    <button @click.prevent="pickProject(thisproject)">View Project</button>
+                              
                                 </td>
                             </tr> 
                         </tbody>
                     </table>  
+                    
                 </div>
             </center>
         </main>

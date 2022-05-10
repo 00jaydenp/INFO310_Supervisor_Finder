@@ -24,6 +24,7 @@ const app = Vue.createApp({
     
     computed: Vuex.mapState({
         studentuser: 'studentuser',
+        selectedSupervisor: 'selectedSupervisor',
         selectedProject: 'selectedProject'
     }),
 
@@ -65,7 +66,8 @@ const app = Vue.createApp({
                         console.error(error);
                         alert ("An error occurred - check the console for details");
                     });
-        }
+        },
+
     }
 });
 

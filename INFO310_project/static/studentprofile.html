@@ -20,14 +20,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <center> 
                 <navigation></navigation>
                 <form @submit.prevent="deleteStudent(student.studentID)">   
-                    <h3>StudentID: </h3><h3>{{student.studentID}}</h3>  
-                    <h3>Name: </h3><h3>{{student.firstName}} {{student.lastName}}</h3>
-                    <h3>Email: </h3><h3>{{user.email}}</h3>
-                    <h3>Interests: </h3><h3>{{student.interests}}</h3>
-                    <h3>Description: </h3><h3>{{student.description}}</h3>
-                    <h3>Phone Number: </h3><h3>{{student.phoneNumber}}</h3>
-                    <h3>GPA: </h3><h3>{{student.gpa}}</h3>
-                    <h3>Address: </h3><h3>{{student.address}}</h3>
+                    <h3>Student ID: </h3><h3>{{studentuser.studentID}}</h3>  
+                    <h3>Name: </h3><h3>{{studentuser.firstName}} {{studentuser.lastName}}</h3>
+                    <h3>Email: </h3><h3>{{studentuser.email}}</h3>
+                    <h3>Interests: </h3><h3>{{studentuser.interests}}</h3>
+                    <h3>Description: </h3><h3>{{studentuser.description}}</h3>
+                    <h3>Phone Number: </h3><h3>{{studentuser.phoneNumber}}</h3>
+                    <h3>GPA: </h3><h3>{{studentuser.gpa}}</h3>
+                    <h3>Address: </h3><h3>{{studentuser.address}}</h3>
                     <a href="studenteditprofile.html">Edit Account</a> <button type="submit">Delete Account</button>
                 </form>
             </center>

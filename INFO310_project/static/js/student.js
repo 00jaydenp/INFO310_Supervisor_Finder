@@ -25,7 +25,7 @@ const app = Vue.createApp({
 
 
     mounted() {
-        this.getStudent(this.studentuser.studentID);
+        //this.getStudent(this.studentuser.studentID);
         this.getAllStudents();
     },
 

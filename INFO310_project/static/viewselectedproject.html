@@ -38,11 +38,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                 <h4>Coordinator</h4> 
                 <p>{{selectedProject.staffID}}</p>
-                
-                <button> Apply to this project </button>
+                <button v-on:click="registerApplication()"> Apply to this project </button>
                 
             </center>
         </main> 
-        <script type="module" src="js/project.js"></script>
+        <script type="module" src="js/Application.js"></script>
     </body>
 </html>

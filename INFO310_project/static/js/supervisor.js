@@ -31,7 +31,7 @@ const app = Vue.createApp({
 
     
     mounted(){
-        this.getSupervisor(this.supervisoruser.staffID);
+        //this.getSupervisor(this.supervisoruser.staffID);
         this.getAllSupervisors();
         
     },

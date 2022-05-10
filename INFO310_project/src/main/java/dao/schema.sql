@@ -64,10 +64,11 @@ CREATE TABLE Student(
 
 
 CREATE TABLE Application(
-    applicationID varchar(8) not null unique,
-    projectID varchar(8) not null unique,
-    studentID varchar(8) not null unique,
-
+    applicationID integer not null auto_increment(1),
+    projectID varchar(8) not null,
+    studentID varchar(8) not null,
+    
+    constraint Single_Application unique(projectID, studentID),
     constraint Application_PK primary key (applicationID),
     constraint Project_FK foreign key (projectID) references Project(projectID)
         on delete cascade,

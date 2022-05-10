@@ -21,12 +21,12 @@ and open the template in the editor.
             <center> 
                 <navigation></navigation>
                 <form @submit.prevent="deleteSupervisor(supervisor.staffID)">   
-                    <h3>StaffID: </h3>{{supervisor.staffID}} 
-                    <h3>Name: </h3>{{supervisor.firstName}} {{supervisor.lastName}}
+                    <h3>StaffID: </h3>{{supervisoruser.staffID}} 
+                    <h3>Name: </h3>{{supervisoruser.firstName}} {{supervisoruser.lastName}}
                     <h3>Email: </h3>{{user.email}}
-                    <h3>Interests: </h3>{{supervisor.interests}}
-                    <h3>Description: </h3>{{supervisor.description}}
-                    <h3>Phone Number: </h3>{{supervisor.phoneNumber}}
+                    <h3>Interests: </h3>{{supervisoruser.interests}}
+                    <h3>Description: </h3>{{supervisoruser.description}}
+                    <h3>Phone Number: </h3>{{supervisoruser.phoneNumber}}
                     <p><a href="supervisoreditprofile.html">Edit Account</a> <button type="submit">Delete Account</button></p>
                 </form>
             </center>
