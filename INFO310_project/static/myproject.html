@@ -21,7 +21,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <navigation></navigation>
                 </div>
                 <h1>All of my projects</h1>
-                 
+
                 <div> 
                     <table>
                         <thead>
@@ -42,6 +42,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <td>{{myproject.date}}</td>
                                 <td>
                                     <button @click.prevent="staffPickProject(myproject)">View</button>
+                                    <button @click.prevent="staffPickApplication(myproject)">Applications for this project</button>
+
+                                    </a>
                                 </td>
 
                             </tr> 

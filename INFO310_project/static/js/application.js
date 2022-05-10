@@ -16,6 +16,7 @@ const app = Vue.createApp({
     data() {
         return {
             applicationByStudent: new Array(),
+            applicationByProject: new Array(),
             application: new Object({
                 student: new Object(),
                 project: new Object()
@@ -27,12 +28,20 @@ const app = Vue.createApp({
     computed: Vuex.mapState({
         studentuser: 'studentuser',
         selectedSupervisor: 'selectedSupervisor',
-        selectedProject: 'selectedProject'
+        selectedProject: 'selectedProject',
+        selectedApplication: 'selectedApplication'
     }),
 
 
     mounted() {
-        this.getApplicationByStudent(this.studentuser.studentID);
+        //for viewstudentappliactions
+        if (document.URL.includes("viewstudentapplications.html")) {
+            this.getApplicationByStudent(this.studentuser.studentID);
+        } else if(document.URL.includes("viewsupervisorapplications.html")) {
+            this.getApplicationByProject(this.selectedProject.projectID);
+        }
+        
+    
     },
 
     methods: {
@@ -64,7 +73,7 @@ const app = Vue.createApp({
         getApplicationByProject(projectID){
             axios.get(projectIDApi({'projectID':projectID}))
                     .then(response => {
-                        this.application = response.data;
+                        this.applicationByProject = response.data;
                     }).catch(error => {
                         console.error(error);
                         alert ("An error occurred - check the console for details");

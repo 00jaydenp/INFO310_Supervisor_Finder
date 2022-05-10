@@ -30,7 +30,8 @@ const app = Vue.createApp({
 
     computed: Vuex.mapState({
         selectedProject: 'selectedProject',
-        supervisoruser: 'supervisoruser'
+        supervisoruser: 'supervisoruser',
+        selectedApplication: 'selectedApplication'
     }),
 
     mounted() {
@@ -150,6 +151,11 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
+        },
+        
+        staffPickApplication(project) {
+            dataStore.commit("selectProject", project);
+            window.location = "viewsupervisorapplications.html";
         },
 
     }
