@@ -38,8 +38,6 @@ public class ProjectCollectionsDaoTest {
     private Supervisor supervisor1;
     private Supervisor supervisor2;
     
-    private Student student1;
-    
     private Project project1;
     private Project project2;
     private Project project3;
@@ -91,20 +89,6 @@ public class ProjectCollectionsDaoTest {
         supervisor2.setUser(user2);
         
         supervisorDao.saveSupervisor(supervisor1);
-        supervisorDao.saveSupervisor(supervisor2);
-        
-        student1 = new Student();
-        student1.setStudentID("doeja233");
-        student1.setFirstName("Jack");
-        student1.setLastName("Doe");
-        student1.setInterests("Computer Science");
-        student1.setDescription("Masters Student");
-        student1.setPhoneNumber("0213334445");
-        student1.setGpa(4.0);
-        student1.setAddress("444 George Street");
-        student1.setUser(user3);
-        
-        studentDao.saveStudent(student1);
         
         project1 = new Project();
         project1.setProjectID("phy11");
@@ -140,8 +124,7 @@ public class ProjectCollectionsDaoTest {
         projectDao.deleteProjectByID(project1.getProjectID());
         projectDao.deleteProjectByID(project2.getProjectID());
         projectDao.deleteProjectByID(project3.getProjectID());
-        
-        studentDao.deleteStudentByID(student1.getStudentID());
+
         
         supervisorDao.deleteSupervisor(supervisor1.getStaffID());
         supervisorDao.deleteSupervisor(supervisor2.getStaffID());
@@ -194,7 +177,6 @@ public class ProjectCollectionsDaoTest {
         testProject.setStatus("On-Going project");
         testProject.setDate(project1.getDate());
         testProject.setSupervisor(project1.getSupervisor());
-        testProject.setStudent(student1);
         
         projectDao.updateProjectByID(project1.getProjectID(), testProject);
         assertThat(project1, is(testProject));

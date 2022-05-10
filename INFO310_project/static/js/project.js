@@ -37,7 +37,7 @@ const app = Vue.createApp({
     mounted() {
         // semicolon separated statements
         this.getAllProjects();
-        //this.getByStaffID(this.supervisoruser.staffID);
+        this.getByStaffID(this.supervisoruser.staffID);
 
     },
     
