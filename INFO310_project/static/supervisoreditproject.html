@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Edit Project</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -17,16 +17,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <main id="content">
             <center>
-                <div>
-                    <navigation></navigation>
-                    </div> 
-                    <form @submit.prevent="updateProject(project.projectID)">   
-                   <h3>Project ID: </h3>{{project.projectID}} 
-                    <h3>Project Name: </h3><input type="text" v-model="project.name" value="project.name">
-                    <h3>Description: </h3><input type="text" v-model="project.description" value="project.description">
-                    <h3>Project Status </h3><input type="text" v-model="project.status" value="project.status">
-                    <h3>Open date </h3>{{project.date}}
-                    <p><button type="submit">Save Changes</button></p>
+                <navigation></navigation>
+                <h1>My Project</h1>
+                <form @submit.prevent="updateProject(project.projectID)">   
+                    <h3 class="lables">Project ID: </h3><h3 class="content">{{project.projectID}}</h3>
+                    <h3 class="lables">Project Name: </h3><input type="text" v-model="project.name" value="project.name">
+                    <h3 class="lables">Description: </h3><input type="text" v-model="project.description" value="project.description">
+                    <h3 class="lables">Project Status </h3><input type="text" v-model="project.status" value="project.status">
+                    <h3 class="lables">Open date </h3><h3 class="content">{{project.date}}</h3><br>
+                    <button type="submit">Save Changes</button>
                 </form>
                 
             </center>

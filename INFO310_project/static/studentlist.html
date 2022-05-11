@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Student List</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -27,8 +27,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                 <div>
                     <p>Please enter a student ID</p>
-                    <input type="text" placeholder="Search.." v-model="studentID">&nbsp
-                    <button @click.prevent = "searchStudent()">Search</button>
+                    <input class="search_bar" type="text" placeholder="Search.." v-model="studentID">&nbsp
+                    <button class="search_button" @click.prevent = "searchStudent()">Search</button>
                 </div>
 
                 <div> 
@@ -54,7 +54,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <td>{{student.phoneNumber}}</td>
                                 <td>{{student.gpa}}</td>
                                 <td>
-                                    <button @click.prevent="pickStudent(student)">View Student</button>
+                                    <button class="table_button" @click.prevent="pickStudent(student)">View Student</button>
                                 </td>
                             </tr> 
                         </tbody>

@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Student Profile</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -19,15 +19,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
             <center> 
                 <navigation></navigation>
+                <h1>My Profile</h1>
                 <form @submit.prevent="deleteStudent(student.studentID)">   
-                    <h3>Student ID: </h3><h3>{{studentuser.studentID}}</h3>  
-                    <h3>Name: </h3><h3>{{studentuser.firstName}} {{studentuser.lastName}}</h3>
-                    <h3>Email: </h3><h3>{{studentuser.email}}</h3>
-                    <h3>Interests: </h3><h3>{{studentuser.interests}}</h3>
-                    <h3>Description: </h3><h3>{{studentuser.description}}</h3>
-                    <h3>Phone Number: </h3><h3>{{studentuser.phoneNumber}}</h3>
-                    <h3>GPA: </h3><h3>{{studentuser.gpa}}</h3>
-                    <h3>Address: </h3><h3>{{studentuser.address}}</h3>
+                    <h3 class="lables">Student ID: </h3><h3 class="content">{{student.studentID}}</h3>  
+                    <h3 class="lables">Name: </h3><h3 class="content">{{student.firstName}} {{student.lastName}}</h3>
+                    <h3 class="lables">Email: </h3><h3 class="content">{{student.email}}</h3>
+                    <h3 class="lables">Interests: </h3><h3 class="content">{{student.interests}}</h3>
+                    <h3 class="lables">Description: </h3><h3 class="content">{{student.description}}</h3>
+                    <h3 class="lables">Phone Number: </h3><h3 class="content">{{student.phoneNumber}}</h3>
+                    <h3 class="lables">GPA: </h3><h3 class="content">{{student.gpa}}</h3>
+                    <h3 class="lables">Address: </h3><h3 class="content">{{student.address}}</h3><br>
                     <a href="studenteditprofile.html">Edit Account</a> <button type="submit">Delete Account</button>
                 </form>
             </center>

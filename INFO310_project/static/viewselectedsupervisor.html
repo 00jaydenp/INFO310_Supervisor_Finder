@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Supervisor View</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -17,24 +17,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <main id="content">  
             <center>
-                <div><navigation></navigation></div>
+                <navigation></navigation>
                 
-                <h1>View your selected supervisor details</h1>
+                <h1>View Selected Supervisor</h1>
 
-                <h4>Supervisor ID</h4> 
-                <p>{{selectedSupervisor.staffID}}</p>
-
-                <h4>Supervisor Name</h4> 
-                <p>{{selectedSupervisor.firstName}} {{selectedSupervisor.lastName}}</p>
-
-                <h4>Supervisor Interests</h4> 
-                <p>{{selectedSupervisor.interests}}</p>
-                
-                <h4>Supervisor Description</h4> 
-                <p>{{selectedSupervisor.description}}</p>
-
-                <h4>Supervisor Email</h4>
-                <p>{{selectedSupervisor.email}}</p>
+                <form @submit.prevent="deleteSupervisor(supervisor.staffID)">   
+                    <h3 class="lables">StaffID: </h3><h3 class="content">{{selectedSupervisor.staffID}}</h3>
+                    <h3 class="lables">Name: </h3><h3 class="content">{{selectedSupervisor.firstName}} {{selectedSupervisor.lastName}}</h3>
+                    <h3 class="lables">Email: </h3><h3 class="content">{{selectedSupervisor.email}}</h3>
+                    <h3 class="lables">Interests: </h3><h3 class="content">{{selectedSupervisor.interests}}</h3>
+                    <h3 class="lables">Description: </h3><h3 class="content">{{selectedSupervisor.description}}</h3>
+                    <h3 class="lables">Phone Number: </h3><h3 class="content">{{selectedSupervisor.phoneNumber}}</h3>
+                </form>
                 
             </center>
         </main> 

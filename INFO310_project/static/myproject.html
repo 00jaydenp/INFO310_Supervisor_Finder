@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>My Project</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -17,40 +17,35 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <main id="content">
             <center>
-                <div>
-                    <navigation></navigation>
-                </div>
-                <h1>All of my projects</h1>
+                <navigation></navigation>
+                <h1>My projects</h1> 
+                <table>
+                    <thead>
+                        <tr>&nbsp
+                            <th>Project ID</th>
+                            <th>Name</th> 
+                            <th>Description</th> 
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="myproject in projectByStaff">
+                            <td>{{myproject.projectID}}</td> 
+                            <td>{{myproject.name}}</td>
+                            <td>{{myproject.description}}</td>
+                            <td>{{myproject.status}}</td>
+                            <td>{{myproject.date}}</td>
+                            <td>
+                                <button class="table_button" @click.prevent="staffPickProject(myproject)">View This Project</button>
+                            </td>
+                            <td>
+                                <button class="table_button" @click.prevent="staffPickApplication(myproject)">View Applications</button>
+                            </td>
 
-                <div> 
-                    <table>
-                        <thead>
-                            <tr>&nbsp
-                                <th>Project ID</th>
-                                <th>Name</th> 
-                                <th>Description</th> 
-                                <th>Status</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="myproject in projectByStaff">
-                                <td>{{myproject.projectID}}</td> 
-                                <td>{{myproject.name}}</td>
-                                <td>{{myproject.description}}</td>
-                                <td>{{myproject.status}}</td>
-                                <td>{{myproject.date}}</td>
-                                <td>
-                                    <button @click.prevent="staffPickProject(myproject)">View</button>
-                                    <button @click.prevent="staffPickApplication(myproject)">Applications for this project</button>
-
-                                    </a>
-                                </td>
-
-                            </tr> 
-                        </tbody>
-                    </table>  
-                </div>
+                        </tr> 
+                    </tbody>
+                </table>  
             </center>
         </main> 
         <script type="module" src="js/Project.js"></script>

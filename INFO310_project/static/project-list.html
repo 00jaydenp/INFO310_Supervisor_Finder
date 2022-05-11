@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Project list</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -18,46 +18,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <main id="content"> 
 
             <center>
-                <div>
-                    <navigation></navigation>
-                </div>
-                <div>
-                    <h1>All projects available here</h1>
-                </div>
+                <navigation></navigation>
+                <h1>All projects available here</h1>
 
-                <div>
-                    <p></p>
-                    <input type="text" placeholder="Search.." v-model="query">&nbsp
-                    <button @click.prevent = "getProjectByQuery()">Search</button>
-                </div>
+                <p>Please Enter a Query</p>
+                <input class="search_bar" type="text" placeholder="Search.." v-model="query">&nbsp
+                <button class="search_button" @click.prevent = "getProjectByQuery()">Search</button>
 
-                <div> 
-                    <table>
-                        <thead>
-                            <tr>&nbsp
-                                <th>Project ID</th>
-                                <th>Name</th> 
-                                <th>Description</th> 
-                                <th>Status</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="thisproject in projectsArr">
-                                <td>{{thisproject.projectID}}</td> 
-                                <td>{{thisproject.name}}</td>
-                                <td>{{thisproject.description}}</td>
-                                <td>{{thisproject.status}}</td>
-                                <td>{{thisproject.date}}</td>
-                                <td>
-                                    <button @click.prevent="pickProject(thisproject)">View Project</button>
-                              
-                                </td>
-                            </tr> 
-                        </tbody>
-                    </table>  
+                <table>
+                    <thead>
+                        <tr>&nbsp
+                            <th>Project ID</th>
+                            <th>Name</th> 
+                            <th>Description</th> 
+                            <th>Status</th>
+                            <th>Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="thisproject in projectsArr">
+                            <td>{{thisproject.projectID}}</td> 
+                            <td>{{thisproject.name}}</td>
+                            <td>{{thisproject.description}}</td>
+                            <td>{{thisproject.status}}</td>
+                            <td>{{thisproject.date}}</td>
+                            <td>
+                                <button class="table_button" @click.prevent="pickProject(thisproject)">View Project</button>
+                            </td>
+                        </tr> 
+                    </tbody>
+                </table>  
                     
-                </div>
             </center>
         </main>
         <script type="module" src="js/Project.js"></script>

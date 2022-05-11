@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Sign In</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -19,29 +19,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <main id="content">
 
             <center>
-                <div>
-                    <h1>Sign in</h1>
-                </div>
+                <navigation></navigation>
+                <h1>Sign in</h1>
 
-                <div>
-                    <p>{{signInMessage}}</p>
-                    <form @submit.prevent="signIn()"> 
-                        <fieldset>
-                            <legend>Account Details:</legend>
-                            <p>
-                                <label>Email:</label> 
-                                <input type="email" v-model="newUser.email" required><br>
-                            </p>
-                            <p>
-                                <label>Password:</label>
-                                <input type="password" v-model="newUser.password" required><br>
-                            </p> 
-                            <p></p>
-                            <button type="submit" >Log In</button>
-                        </fieldset>
-                    </form>
-                    <p> If you don't have an account, then you can  <a href="signup.html">create one</a></p>
-                </div>
+                <p>{{signInMessage}}</p>
+                <form @submit.prevent="signIn()"> 
+                        <label class="lables">Email:</label> 
+                        <input type="email" v-model="newUser.email" required><br>
+                        <label class="lables">Password:</label>
+                        <input type="password" v-model="newUser.password" required><br>
+                        <button type="submit" >Log In</button>
+                </form>
+                <p> If you don't have an account, then you can  <a href="signup.html">create one</a></p>
             </center>
 
 

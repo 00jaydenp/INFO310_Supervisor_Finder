@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Register</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -16,22 +16,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <main id="content"> 
-            
-            <div>Create your account</div> <p></p>
+            <center>
+                <navigation></navigation>
+                <h1>Create your account</h1>
 
                 <form @submit.prevent="registerUser()">
-                    <fieldset>
-                    <label>Email:</label>
+                    <label class="lables">Email:</label>
                     <input type="email" v-model="newUser.email" required><br>
 
-                    <label>Password:</label>
+                    <label class="lables">Password:</label>
                     <input type="password" v-model="newUser.password" required><br> 
        
-                    <p></p>
                     <button type="submit" >Create Account</button>
-                    </fieldset>
                 </form>
-            
+            </center>
         </main>
         <script type="module" src="js/User.js"></script>
     </body>

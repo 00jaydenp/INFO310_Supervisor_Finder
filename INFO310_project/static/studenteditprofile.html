@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Student Profile</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -19,15 +19,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
             <center> 
                 <navigation></navigation>
+                
+                <h1>My Profile</h1>
                 <form @submit.prevent="updateStudent(student.studentID)">   
-                    <h3>StudentID: </h3><h3>{{student.studentID}}</h3>  
-                    <h3>Name: </h3><h3>{{student.firstName}} {{student.lastName}}</h3>
-                    <h3>Email: </h3><h3>{{user.email}}</h3>
-                    <h3>Interests: </h3><input type="text" v-model="student.interests" value="student.interests">
-                    <h3>Description: </h3><input type="text" v-model="student.description" value="student.description">
-                    <h3>Phone Number: </h3><input type="text" v-model="student.phoneNumber" value="student.phoneNumber">
-                    <h3>GPA: </h3><input type="text" v-model="student.gpa" value="student.gpa">
-                    <h3>Address: </h3><input type="text" v-model="student.address" value="student.address"><br>
+                    <h3 class="lables">StudentID: </h3><h3 class="content">{{student.studentID}}</h3>  
+                    <h3 class="lables">Name: </h3><h3 class="content">{{student.firstName}} {{student.lastName}}</h3>
+                    <h3 class="lables">Email: </h3><h3 class="content">{{user.email}}</h3>
+                    <h3 class="lables">Interests: </h3><input type="text" v-model="student.interests" value="student.interests">
+                    <h3 class="lables">Description: </h3><input type="text" v-model="student.description" value="student.description">
+                    <h3 class="lables">Phone Number: </h3><input type="text" v-model="student.phoneNumber" value="student.phoneNumber">
+                    <h3 class="lables">GPA: </h3><input type="text" v-model="student.gpa" value="student.gpa">
+                    <h3 class="lables">Address: </h3><input type="text" v-model="student.address" value="student.address"><br>
                     <button type="submit">Save Changes</button>
                 </form>
 

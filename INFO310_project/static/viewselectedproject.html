@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Project View</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -17,28 +17,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <main id="content">  
             <center>
-                <div><navigation></navigation></div>
-                
-                <h1>View your selected project details</h1>
-
-                <h4>Project ID</h4> 
-                <p>{{selectedProject.projectID}}</p>
-
-                <h4>Project Name</h4> 
-                <p>{{selectedProject.name}}</p>
-
-                <h4>Description</h4> 
-                <p>{{selectedProject.description}}</p>
-
-                <h4>Project Status</h4> 
-                <p>{{selectedProject.status}}</p>
-                
-                <h4>Open date</h4> 
-                <p>{{selectedProject.date}}</p>
-
-                <h4>Coordinator</h4> 
-                <p>{{selectedProject.staffID}}</p>
-                <button v-on:click="registerApplication()"> Apply to this project </button>
+                <navigation></navigation>
+                <h1>View Selected Project</h1>
+                <form @submit.prevent="registerApplication()">
+                <h3 class="lables">Project ID</h3><h3 class="content">{{selectedProject.projectID}}</h3>
+                <h3 class="lables">Project Name</h3><h3 class="content">{{selectedProject.name}}</h3>
+                <h3 class="lables">Description</h3><h3 class="content">{{selectedProject.description}}</h3>
+                <h3 class="lables">Project Status</h3><h3 class="content">{{selectedProject.status}}</h3>
+                <h3 class="lables">Open date</h3><h3 class="content">{{selectedProject.date}}</h3>
+                <h3 class="lables">Coordinator</h3><h3 class="content">{{selectedProject.staffID}}</h3><br>
+                <button type="submit"> Apply to this project </button>
+                </form>
             </center>
         </main> 
         <script type="module" src="js/Application.js"></script>

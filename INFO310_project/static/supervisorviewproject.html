@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>My Project Details</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -18,17 +18,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <main id="content">
 
             <center>
-                <div>
-                    <navigation></navigation>
-                </div> 
-                
+                <navigation></navigation>
+                <h1>My Project</h1>
                 <form @submit.prevent="deleteProject(selectedProject.projectID)">   
-                    <h3>Project ID: </h3>{{selectedProject.projectID}} 
-                    <h3>Project Name: </h3>{{selectedProject.name}}
-                    <h3>Description: </h3>{{selectedProject.description}}
-                    <h3>Project Status </h3>{{selectedProject.status}}
-                    <h3>Open date </h3>{{selectedProject.date}}
-                    <p><a href="supervisoreditproject.html">Edit</a> <button type="submit">Delete</button></p>
+                    <h3 class="lables">Project ID: </h3><h3 class="content">{{selectedProject.projectID}}</h3>
+                    <h3 class="lables">Project Name: </h3><h3 class="content">{{selectedProject.name}}</h3>
+                    <h3 class="lables">Description: </h3><h3 class="content">{{selectedProject.description}}</h3>
+                    <h3 class="lables">Project Status </h3><h3 class="content">{{selectedProject.status}}</h3>
+                    <h3 class="lables">Open date </h3><h3 class="content">{{selectedProject.date}}</h3><br>
+                    <a href="supervisoreditproject.html">Edit</a> <button type="submit">Delete</button>
                 </form>
 
             </center>

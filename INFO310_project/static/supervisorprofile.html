@@ -9,7 +9,7 @@ and open the template in the editor.
         <title>Supervisor Profile</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -20,14 +20,15 @@ and open the template in the editor.
 
             <center> 
                 <navigation></navigation>
+                <h1>My Profile</h1>
                 <form @submit.prevent="deleteSupervisor(supervisor.staffID)">   
-                    <h3>StaffID: </h3>{{supervisoruser.staffID}} 
-                    <h3>Name: </h3>{{supervisoruser.firstName}} {{supervisoruser.lastName}}
-                    <h3>Email: </h3>{{user.email}}
-                    <h3>Interests: </h3>{{supervisoruser.interests}}
-                    <h3>Description: </h3>{{supervisoruser.description}}
-                    <h3>Phone Number: </h3>{{supervisoruser.phoneNumber}}
-                    <p><a href="supervisoreditprofile.html">Edit Account</a> <button type="submit">Delete Account</button></p>
+                    <h3 class="lables">StaffID: </h3><h3 class="content">{{supervisoruser.staffID}}</h3>
+                    <h3 class="lables">Name: </h3><h3 class="content">{{supervisoruser.firstName}} {{supervisoruser.lastName}}</h3>
+                    <h3 class="lables">Email: </h3><h3 class="content">{{user.email}}</h3>
+                    <h3 class="lables">Interests: </h3><h3 class="content">{{supervisoruser.interests}}</h3>
+                    <h3 class="lables">Description: </h3><h3 class="content">{{supervisoruser.description}}</h3>
+                    <h3 class="lables">Phone Number: </h3><h3 class="content">{{supervisoruser.phoneNumber}}</h3><br>
+                    <a href="supervisoreditprofile.html">Edit Account</a> <button type="submit">Delete Account</button>
                 </form>
             </center>
 

@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Supervisor Profile Setup</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -17,28 +17,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <main id="content">
             <center> 
-                <div>Set Up Your Profile</div>
+                <div class="error_stopper"></div>
+                <h1>Set Up Your Profile</h1>
 
                 <form @submit.prevent="registerSupervisor()">
-                    <label>Staff ID:</label>
+                    <label class="lables">Staff ID:</label>
                     <input type="text" v-model="supervisor.staffID" required><br>  
 
-                    <label>First Name:</label>
+                    <label class="lables">First Name:</label>
                     <input type="text" v-model="supervisor.firstName" required><br>
 
-                    <label>Last Name:</label>
+                    <label class="lables">Last Name:</label>
                     <input type="text" v-model="supervisor.lastName" required><br>
 
-                    <label>Interest:</label>
+                    <label class="lables">Interest:</label>
                     <input type="text" v-model="supervisor.interests" required><br>
 
-                    <label>Description:</label>
+                    <label class="lables">Description:</label>
                     <input type="text" v-model="supervisor.description" required><br>
 
-                    <label>Phone Number:</label>
+                    <label class="lables">Phone Number:</label>
                     <input type="text" v-model="supervisor.phoneNumber" required><br>
 
-                    <p></p>
                     <button type="submit">Create Account</button>
                 </form> 
             </center> 

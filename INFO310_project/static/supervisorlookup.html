@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Connect With Supervisors</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -18,17 +18,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <main id="content"> 
 
             <center>
-                <div>
-                    <navigation></navigation>
-                </div>
+                <navigation></navigation>
                 <div>
                     <h1>Connect With Supervisors</h1>
                 </div>
 
                 <div>
                     <p>Please enter a staff ID</p>
-                    <input type="text" placeholder="Search.." v-model="staffID">&nbsp
-                    <button @click.prevent = "searchSupervisor()">Search</button>
+                    <input class="search_bar" type="text" placeholder="Search.." v-model="staffID">&nbsp
+                    <button class="search_button" @click.prevent = "searchSupervisor()">Search</button>
                 </div>
 
                 <div> 
@@ -54,7 +52,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <td>{{supervisor.phoneNumber}}</td>
                                 
                                 <td>
-                                    <button @click.prevent="pickSupervisor(supervisor)">View Supervisor</button>
+                                    <button class="table_button" @click.prevent="pickSupervisor(supervisor)">View Supervisor</button>
                                 </td>
                             </tr> 
                         </tbody>

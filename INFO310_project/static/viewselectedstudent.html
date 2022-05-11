@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>Student View</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="styles.css">
         <script src="js/external/vue.global.js"></script>
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
@@ -17,36 +17,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <main id="content">  
             <center>
-                <div><navigation></navigation></div>
+                <navigation></navigation>
                 
-                <h1>View your selected student details</h1>
-
-                <h4>Student ID</h4> 
-                <p>{{selectedStudent.studentID}}</p>
-
-                <h4>Name</h4> 
-                <p>{{selectedStudent.firstName}} {{selectedStudent.lastName}}</p>
-              
-                <h4>Email</h4> 
-                <p>{{selectedStudent.email}}</p>
-
-                <h4>Interests</h4> 
-                <p>{{selectedStudent.interests}}</p>
-                
-                <h4>Description</h4> 
-                <p>{{selectedStudent.description}}</p>
-
-                <h4>Phone Number</h4> 
-                <p>{{selectedStudent.phoneNumber}}</p>
-                
-                <h4>GPA</h4> 
-                <p>{{selectedStudent.gpa}}</p>
-                
-                <h4>Address</h4> 
-                <p>{{selectedStudent.address}}</p>
-                
-               
-                
+                <h1>View Selected Student</h1>
+                <form>
+                    <h3 class="lables">Student ID: </h3><h3 class="content">{{selectedStudent.studentID}}</h3>  
+                    <h3 class="lables">Name: </h3><h3 class="content">{{selectedStudent.firstName}} {{selectedStudent.lastName}}</h3>
+                    <h3 class="lables">Email: </h3><h3 class="content">{{selectedStudent.email}}</h3>
+                    <h3 class="lables">Interests: </h3><h3 class="content">{{selectedStudent.interests}}</h3>
+                    <h3 class="lables">Description: </h3><h3 class="content">{{selectedStudent.description}}</h3>
+                    <h3 class="lables">Phone Number: </h3><h3 class="content">{{selectedStudent.phoneNumber}}</h3>
+                    <h3 class="lables">GPA: </h3><h3 class="content">{{selectedStudent.gpa}}</h3>
+                    <h3 class="lables">Address: </h3><h3 class="content">{{selectedStudent.address}}</h3><br>                
+                </form>          
             </center>
         </main> 
         <script type="module" src="js/student.js"></script>
