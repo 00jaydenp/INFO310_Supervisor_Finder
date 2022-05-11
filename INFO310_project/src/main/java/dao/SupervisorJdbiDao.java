@@ -29,7 +29,7 @@ public interface SupervisorJdbiDao extends SupervisorDao {
     public Supervisor getSupervisorById(@Bind("staffID") String staffID);
 
     @Override
-    @SqlUpdate("DELETE FROM SUPERVISOR WHERE STAFFID = :staffID")
+    @SqlUpdate("DELETE FROM SYSUSER WHERE EMAIL IN (SELECT EMAIL FROM STUDENT WHERE STAFFID = :staffID)")
     public void deleteSupervisor(@Bind("staffID") String staffID);
 
     @Override
