@@ -21,6 +21,7 @@ public class Project {
     private String status;
     private String date;
     private String staffID;
+    private boolean hidden;
     
     private Supervisor supervisor;
 
@@ -102,6 +103,14 @@ public class Project {
 
     public void setDate(String date) {
         this.date = date;
+    }
+    
+    public boolean getHidden(){
+        return hidden;
+    }
+    
+    public void setHidden(boolean hidden){
+        this.hidden = hidden;
     }
     
     

@@ -157,6 +157,7 @@ const app = Vue.createApp({
             dataStore.commit("selectProject", project);
             window.location = "viewsupervisorapplications.html";
         },
+ 
 
     }
 

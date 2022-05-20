@@ -36,8 +36,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr v-for="thisproject in projectsArr">
+                    <tbody v-for="thisproject in projectsArr">
+                        <tr  v-if="thisproject.hidden == false">
                             <td>{{thisproject.projectID}}</td> 
                             <td>{{thisproject.name}}</td>
                             <td>{{thisproject.description}}</td>
