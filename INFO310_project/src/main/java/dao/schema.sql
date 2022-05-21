@@ -64,7 +64,7 @@ CREATE TABLE Student(
 
 
 CREATE TABLE Application(
-    applicationID integer auto_increment(1),
+    applicationID integer not null auto_increment(1),
     projectID varchar(8) not null,
     studentID varchar(8) not null,
     
