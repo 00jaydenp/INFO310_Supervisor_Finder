@@ -98,6 +98,11 @@ const app = Vue.createApp({
             window.location = "viewselectedsupervisor.html";
         }, 
         
+        projectBySupervisor(supervisor){
+            dataStore.commit("selectSupervisor", supervisor);
+            window.location = "projectbystaff.html";
+        },
+        
         searchSupervisor(){
             if(this.staffID === ""){
                 alert("Please enter an ID");

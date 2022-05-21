@@ -30,6 +30,7 @@ const app = Vue.createApp({
 
     computed: Vuex.mapState({
         selectedProject: 'selectedProject',
+        selectedSupervisor: 'selectedSupervisor',
         supervisoruser: 'supervisoruser',
         selectedApplication: 'selectedApplication'
     }),
@@ -41,7 +42,9 @@ const app = Vue.createApp({
             this.getByStaffID(this.supervisoruser.staffID);
         } else if (document.URL.includes("supervisoreditproject.html")) {
             this.getProject(this.selectedProject.projectID);
-        } else {
+        } else if (document.URL.includes("projectbystaff.html")){
+            this.getByStaffID(this.selectedSupervisor.staffID);
+        }else {
             this.getAllProjects();
         }
         
@@ -103,6 +106,11 @@ const app = Vue.createApp({
         staffPickProject(project) {
             dataStore.commit("selectProject", project);
             window.location = "supervisorviewproject.html";
+        },
+        
+        studentPickProject(project){
+            dataStore.commit("selectProject",project);
+            window.location = "viewselectedproject.html";
         },
 
         getProject(projectID) {
