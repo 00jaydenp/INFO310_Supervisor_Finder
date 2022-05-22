@@ -117,6 +117,7 @@ const app = Vue.createApp({
             axios.delete(studentIDApi({'studentID': studentID}))
                     .then(response => {
                         this.student = response.data;
+                        window.location = 'index.html';
                     })
                     .catch(error => {
                         console.error(error);
