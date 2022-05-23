@@ -36,6 +36,9 @@ public interface StudentDao {
      */
     void updateStudentByID(String id, Student updatedStudent);
     
+    /*
+    get a specific student profile by student email
+    */
     Student getStudentByEmail(String email);
     
 }

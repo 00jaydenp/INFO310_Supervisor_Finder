@@ -65,6 +65,9 @@ public class StudentCollectionsDao implements StudentDao {
  
     }
     
+    /*
+    get a specific student profile by student email
+    */
     @Override
     public Student getStudentByEmail(String email){
         return studentEmailMap.get(email);
