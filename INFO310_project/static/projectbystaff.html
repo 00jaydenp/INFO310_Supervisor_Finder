@@ -29,8 +29,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <th>Date</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr v-for="myproject in projectByStaff">
+                    <tbody v-for="myproject in projectByStaff">
+                           <tr  v-if="myproject.hidden == false">
                             <td>{{myproject.projectID}}</td> 
                             <td>{{myproject.name}}</td>
                             <td>{{myproject.description}}</td>
