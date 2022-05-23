@@ -88,7 +88,7 @@ const app = Vue.createApp({
                             window.location = 'supervisorsignup.html';
                 })
             } else {
-                alert ("Please enter a valid Universtiy of Otago email");
+                alert ("Please enter a valid University of Otago email");
             }
         },
 
