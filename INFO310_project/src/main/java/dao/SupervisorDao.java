@@ -41,6 +41,9 @@ public interface SupervisorDao {
      */
     void deleteSupervisor(String staffID);
     
+    /*
+    get a specific supervisor profile by staff email
+    */
     Supervisor getSupervisorByEmail(String email);
     
     /**

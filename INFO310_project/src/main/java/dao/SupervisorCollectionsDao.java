@@ -86,6 +86,9 @@ public class SupervisorCollectionsDao implements SupervisorDao {
         supervisorsIDMap.remove(id);
     }
     
+    /*
+    get a specific supervisor profile by staff email
+    */
     @Override
     public Supervisor getSupervisorByEmail(String email){
         return supervisorsEmailMap.get(email);
