@@ -1,8 +1,12 @@
 {
     "elements": {},
     "attributes": {
+        "@submit.prevent": {},
         "@click.prevent": {
             "context": "button"
+        },
+        "v-model": {
+            "context": "textarea"
         }
     }
 }
