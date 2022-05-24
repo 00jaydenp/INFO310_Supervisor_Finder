@@ -3937,7 +3937,7 @@ var Vue = (function (exports) {
                       ;
               const c = computed({
                   get,
-                  set
+                  set 
               });
               Object.defineProperty(ctx, key, {
                   enumerable: true,

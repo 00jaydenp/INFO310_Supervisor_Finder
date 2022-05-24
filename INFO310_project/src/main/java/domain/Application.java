@@ -12,7 +12,7 @@ public class Application {
     private String applicationID;
     private String studentID;
     private String projectID;
-    private String applicationDescription;
+    private String description;
     
     private Student student;
     private Project project;
@@ -41,15 +41,13 @@ public class Application {
         this.projectID = projectID;
     }
 
-    public String getApplicationDescription() {
-        return applicationDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setApplicationDescription(String applicationDescription) {
-        this.applicationDescription = applicationDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
-    
-    
     
     public Student getStudent(){
         return student;

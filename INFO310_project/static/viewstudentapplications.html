@@ -19,34 +19,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <main id="content"> 
 
             <center>
-                <div>
-                    <navigation></navigation>
-                </div>
-                <div>
-                    <h1>My Applications</h1>
-                </div>
-
-                <div> 
-                    <table>
-                        <thead>
-                            <tr>&nbsp
-                                <th>Project ID</th>
-                                <th>Description</th> 
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="myapplication in applicationByStudent">
-                                <td>{{myapplication.projectID}}</td> 
-                                <td>{{myapplication.applicationDescription}}</td>
-                                <td><button class="table_button" @click.prevent="deleteApplication(myapplication.applicationID)">Delete Application</button></td>
-                            </tr> 
-                        </tbody>
-                    </table>  
-                    
-                </div>
+                <navigation></navigation>
+                <h1>My Applications</h1>
+                <table>
+                    <thead>
+                        <tr>&nbsp
+                            <th>Project ID</th>
+                            <th>Description</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="myapplication in applicationByStudent">
+                            <td>{{myapplication.projectID}}</td> 
+                            <td>{{myapplication.description}}</td>
+                            <td><button class="table_button" @click.prevent="deleteApplication(myapplication.applicationID)">Delete Application</button></td>
+                        </tr> 
+                    </tbody>
+                </table>  
             </center>
+            <footer>
+                <h3>Supervisor Finder</h3>
+                <p> All Rights reserved by &copy;Supervisor Finder 2022
+            </footer>
         </main>
         <script type="module" src="js/Application.js"> </script>
+        <script>
+            var
+        </script>
     </body>
 </html>

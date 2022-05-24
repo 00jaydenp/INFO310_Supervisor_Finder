@@ -27,10 +27,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <h3 class="lables">Student ID: </h3><h3 class="content">{{selectedApplication.studentID}}</h3>
                     <h3 class="lables">Project ID: </h3><h3 class="content">{{selectedApplication.projectID}}</h3>
                     <h3>Reason For Application: </h3><br>
-                    <h3>{{selectedApplication.applicationDescription}}</h3>
+                    <h3>{{selectedApplication.description}}</h3>
                     <button @click.prevent="getStudent(selectedApplication.studentID)">View Student Profile</button>
+                    <button @click.prevent="getThisStudent(selectedApplication.studentID, selectedApplication.projectID)">Approve Application</button>
+                    <a :href="`mailto: davidcurrier11@gmail.com?subject=Re:%20${selectedProject.projectID}%20-%20${selectedProject.name}
+                       &body=Dear`">email</a>
                 </form>
             </center>
+            <footer>
+                <h3>Supervisor Finder</h3>
+                <p> All Rights reserved by &copy;Supervisor Finder 2022
+            </footer>
         </main>
         <script type="module" src="js/Application.js"></script>
     </body>

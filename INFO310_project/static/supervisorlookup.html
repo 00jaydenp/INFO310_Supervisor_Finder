@@ -19,47 +19,44 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
             <center>
                 <navigation></navigation>
-                <div>
-                    <h1>Connect With Supervisors</h1>
-                </div>
+  
+                <h1>Connect With Supervisors</h1>
 
-                <div>
-                    <p>Please enter a staff ID</p>
-                    <input class="search_bar" type="text" placeholder="Search.." v-model="staffID">&nbsp
-                    <button class="search_button" @click.prevent = "searchSupervisor()">Search</button>
-                </div>
+                <p>Please enter a staff ID</p>
+                <input class="search_bar" type="text" placeholder="Search.." v-model="staffID">&nbsp
+                <button class="search_button" @click.prevent = "searchSupervisor()">Search</button>
+                <table>
+                    <thead>
+                        <tr>&nbsp
+                            <th>Staff ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th> 
+                            <th>Interests</th> 
+                            <th>Description</th>
+                            <th>Phone Number</th>
 
-                <div> 
-                    <table>
-                        <thead>
-                            <tr>&nbsp
-                                <th>Staff ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th> 
-                                <th>Interests</th> 
-                                <th>Description</th>
-                                <th>Phone Number</th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="supervisor in supervisorsArr">
-                                <td>{{supervisor.staffID}}</td> 
-                                <td>{{supervisor.firstName}}</td>
-                                <td>{{supervisor.lastName}}</td>
-                                <td>{{supervisor.interests}}</td>
-                                <td>{{supervisor.description}}</td>
-                                <td>{{supervisor.phoneNumber}}</td>
-                                
-                                <td>
-                                    <button class="table_button" @click.prevent="pickSupervisor(supervisor)">View Supervisor</button>
-                                    
-                                </td>
-                            </tr> 
-                        </tbody>
-                    </table>  
-                </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="supervisor in supervisorsArr">
+                            <td>{{supervisor.staffID}}</td> 
+                            <td>{{supervisor.firstName}}</td>
+                            <td>{{supervisor.lastName}}</td>
+                            <td>{{supervisor.interests}}</td>
+                            <td>{{supervisor.description}}</td>
+                            <td>{{supervisor.phoneNumber}}</td>
+
+                            <td>
+                                <button class="table_button" @click.prevent="pickSupervisor(supervisor)">View Supervisor</button> 
+                            </td>
+                        </tr> 
+                    </tbody>
+                </table>  
             </center>
+            <footer>
+                <h3>Supervisor Finder</h3>
+                <p> All Rights reserved by &copy;Supervisor Finder 2022
+            </footer>
         </main>
         <script type="module" src="js/supervisor.js"></script>
     </body>

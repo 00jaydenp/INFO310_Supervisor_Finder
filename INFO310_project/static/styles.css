@@ -149,7 +149,7 @@ th{
 }
 
 footer{
-    padding-top: 40px;
+    padding-top: 20px;
     position: absolute;
     bottom: 0;
     height: 100px;
@@ -157,4 +157,9 @@ footer{
     background-color: #10428c;
     color: whitesmoke;
     text-align: center;
+}
+
+.Unapproved{
+    background-color: orange;
+    border-radius: 25px;
 }

@@ -141,6 +141,7 @@ const app = Vue.createApp({
         // send POST request to service to create customer
             this.student.user.email = this.user.email;
             this.student.user.password = this.user.password;
+            this.student.studentID = this.student.user.email.substring(0,8)
             dataStore.commit("signInStudent", this.student);
             axios.post(studentsApi, this.student)
                     .then(() => {
@@ -156,6 +157,7 @@ const app = Vue.createApp({
         // send POST request to service to create customer
             this.supervisor.user.email = this.user.email;
             this.supervisor.user.password = this.user.password;
+            this.supervisor.staffID = this.supervisor.user.email.substring(0,8)
             dataStore.commit("signInSupervisor", this.supervisor);
             axios.post(supervisorApi, this.supervisor)
                     .then(() => {

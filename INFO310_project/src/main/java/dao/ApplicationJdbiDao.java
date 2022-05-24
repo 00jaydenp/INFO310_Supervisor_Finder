@@ -30,7 +30,7 @@ public interface ApplicationJdbiDao extends ApplicationDao {
     
     
     @Override
-    @SqlUpdate("INSERT INTO APPLICATION (STUDENTID, PROJECTID, APPLICATIONDESCRIPTION) VALUES (:student.studentID, :project.projectID, :applicationDescription)")
+    @SqlUpdate("INSERT INTO APPLICATION (STUDENTID, PROJECTID, DESCRIPTION) VALUES (:student.studentID, :project.projectID, :description)")
     public void addApplication(@BindBean Application application);
     
     @Override

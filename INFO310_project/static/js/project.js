@@ -27,13 +27,20 @@ const app = Vue.createApp({
 
         };
     },
+    
+    computed: {
+      supervisorSignedIn() {
+            return this.supervisoruser != null;
+        },
+  
 
-    computed: Vuex.mapState({
-        selectedProject: 'selectedProject',
-        selectedSupervisor: 'selectedSupervisor',
-        supervisoruser: 'supervisoruser',
-        selectedApplication: 'selectedApplication'
-    }),
+        ...Vuex.mapState({
+            selectedProject: 'selectedProject',
+            selectedSupervisor: 'selectedSupervisor',
+            supervisoruser: 'supervisoruser',
+            selectedApplication: 'selectedApplication'
+        })
+    },
 
     mounted() {
         // semicolon separated statements
@@ -72,9 +79,11 @@ const app = Vue.createApp({
                         this.projectByStaff = response.data;
                     })
                     .catch(error => {
-                        console.error(error);
-                        alert("You do not have a project yet");
-                        window.location = 'addproject.html';
+                        if(supervisorSignedIn){
+                            console.error(error);
+                            alert("You do not have a project yet");
+                            window.location = 'addproject.html';
+                        }
                     });
         },
 

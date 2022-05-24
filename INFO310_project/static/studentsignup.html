@@ -21,9 +21,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <div class="error_stopper"></div>
                 <h1>Create Student Account</h1> 
                 <form @submit.prevent="registerStudent()">
-                    <label class="lables">Student ID:</label>
-                    <input type="text" v-model="student.studentID" required><br> 
-
                     <label class="lables">First Name: </label>
                     <input type="text" v-model="student.firstName" required><br>
 
@@ -47,6 +44,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <button type="submit" >Create Account</button>
                 </form>
             </center>
+            <footer>
+                <h3>Supervisor Finder</h3>
+                <p> All Rights reserved by &copy;Supervisor Finder 2022
+            </footer>
         </main>
         <script type="module" src="js/user.js"></script>
     </body>
