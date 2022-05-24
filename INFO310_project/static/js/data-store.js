@@ -51,6 +51,8 @@ export const dataStore = Vuex.createStore({
         selectApplication(state, application){
             state.selectedApplication = application;
         }
+        
+        
 
     },
 

@@ -26,8 +26,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <h3 class="lables">Application ID: </h3><h3 class="content">{{selectedApplication.applicationID}}</h3>  
                     <h3 class="lables">Student ID: </h3><h3 class="content">{{selectedApplication.studentID}}</h3>
                     <h3 class="lables">Project ID: </h3><h3 class="content">{{selectedApplication.projectID}}</h3>
-                    <h3 class="lables">Description </h3><h3 class="content">{{selectedApplication.applicationDescription}}</h3>
+                    <h3 class="lables">Reason For Application: </h3><h3 class="content">{{selectedApplication.applicationDescription}}</h3>
                 </form>   
+                 <td>
+                     <button class="table_button" @click.prevent="viewStudent()">View Student Profile</button>
+                 </td>
 
             </center>
         </main>

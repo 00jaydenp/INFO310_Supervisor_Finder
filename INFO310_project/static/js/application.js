@@ -51,7 +51,7 @@ const app = Vue.createApp({
             this.getApplicationByProject(this.selectedProject.projectID);
         } else if(document.URL.includes("viewselectedproject.html")){
             this.getSupervisor(this.selectedProject.staffID);
-        }
+        } 
         
     
     },
@@ -145,7 +145,14 @@ const app = Vue.createApp({
         viewApplication(application){
             dataStore.commit("selectApplication", application);
             window.location="vieweachapplication.html";
+        },
+        
+        viewStudent(){
+//            dataStore.commit("selectApplication2", application);
+            window.location="selectedstudentfromapplication.html";
         }
+        
+      
 
     }
 });

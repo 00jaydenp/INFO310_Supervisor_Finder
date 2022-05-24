@@ -31,7 +31,10 @@ const app = Vue.createApp({
         if (document.URL.includes("studentlist.html")) {
             this.getAllStudents();
         } else if (document.URL.includes("viewselectedstudent.html")) {
-        } else {
+            //don't mount
+        } else if(document.URL.includes("selectedstudentfromapplication.html")){
+            //don't mount yet
+        }else {
             this.getStudent(this.studentuser.studentID);
         }
 
