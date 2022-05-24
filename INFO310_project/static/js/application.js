@@ -61,6 +61,7 @@ const app = Vue.createApp({
         // send POST request to service to create customer
             this.application.student.studentID = this.studentuser.studentID;
             this.application.project.projectID = this.selectedProject.projectID;
+            this.application.applicationDescription = document.getElementById('applicationInput').value;
             axios.post(applicationApi, this.application)
                     .then(() => {
                         window.location = 'index.html';
@@ -155,5 +156,3 @@ app.component('navigation', NavigationMenu);
 
 // mount the page - this needs to be the last line in the file
 app.mount("#content");
-
-
