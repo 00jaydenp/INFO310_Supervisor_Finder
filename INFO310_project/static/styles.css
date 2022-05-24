@@ -81,12 +81,17 @@ input, select{
     margin: 2%
 }
 
-form, table{
+form, table, textarea{
     width: 50%;
     padding: 0 2%;
     margin:auto;
-    
-    border: #10428c solid
+    border: #10428c solid;
+}
+
+textarea{
+    padding: 2%;
+    height: 400px;
+    font-size: 16px;
 }
 
 button, a{

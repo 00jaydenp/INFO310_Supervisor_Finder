@@ -12,6 +12,7 @@ public class Application {
     private String applicationID;
     private String studentID;
     private String projectID;
+    private String applicationDescription;
     
     private Student student;
     private Project project;
@@ -38,6 +39,14 @@ public class Application {
 
     public void setProjectID(String projectID) {
         this.projectID = projectID;
+    }
+
+    public String getApplicationDescription() {
+        return applicationDescription;
+    }
+
+    public void setApplicationDescription(String applicationDescription) {
+        this.applicationDescription = applicationDescription;
     }
     
     
