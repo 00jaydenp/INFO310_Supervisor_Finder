@@ -40,6 +40,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <td>{{myapplication.applicationID}}</td> 
                                 <td>{{myapplication.studentID}}</td>
                                 <td>{{myapplication.projectID}}</td>
+                                <td>{{myapplication.applicationDescription}}</td>
                                 <td><button class="table_button" href="mailto:a@a.com" @click.prevent="getThisStudent(myapplication.studentID, myapplication.projectID)">Approve Application</button></td>
                                 <td><button class="table_button" @click.prevent="deleteApplication(myapplication.studentID)">Decline Application</button></td>
                             </tr> 
