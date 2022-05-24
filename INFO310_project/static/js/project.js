@@ -74,6 +74,7 @@ const app = Vue.createApp({
                     .catch(error => {
                         console.error(error);
                         alert("You do not have a project yet");
+                        window.location = 'addproject.html';
                     });
         },
 
@@ -86,6 +87,8 @@ const app = Vue.createApp({
             var year = date.getFullYear();
             var fulldate = day + "/" + month + "/" + year;
             this.project.date = fulldate;
+            this.project.status = "New Project"
+            this.project.projectID = this.project.name.substring(0,3) + (Math.floor(Math.random() * 999) + 10);
             dataStore.commit("selectProject", this.project);
             axios.post(addProjectApi, this.project)
                     .then(() => {

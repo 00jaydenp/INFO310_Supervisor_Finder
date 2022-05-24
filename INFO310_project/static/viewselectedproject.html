@@ -17,7 +17,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     </head>
     <body>
         <main id="content">  
-            <center>
+            <center>s
                 <navigation></navigation>
                 <h1>View Selected Project</h1>
                 <form @submit.prevent="registerApplication()">
@@ -32,7 +32,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <h3 class="lables">Staff Phone Number</h3><h3 class="content">{{supervisor.phoneNumber}}</h3><br>
                 <h3>Tell us about you and why you would like this project</h3><br>
                 <textarea style="resize: none" v-model="application.applicationDescription"></textarea><br>
-
+                <a href="viewselectedsupervisor.html">View {{supervisor.firstName}} {{supervisor.lastName}}'s Profile</a>
                 <button type="submit"> Apply to this project </button>
                 </form>
             </center>

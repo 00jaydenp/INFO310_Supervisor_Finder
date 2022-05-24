@@ -42,5 +42,10 @@ public class ApplicationCollectionsDao implements ApplicationDao {
     public void deleteApplication(String studentID){
         applicationStudentIDMap.removeAll(studentID);
     }
+    
+    @Override
+    public void deleteSingleApplication (String applicationID){
+        applications.remove(applicationID);
+    }
 
 }

@@ -30,17 +30,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <table>
                         <thead>
                             <tr>&nbsp
-                                <th>Application ID</th>
-                                <th>Student ID</th> 
-                                <th>Project ID</th> 
+                                <th>Project ID</th>
+                                <th>Description</th> 
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="myapplication in applicationByStudent">
-                                <td>{{myapplication.applicationID}}</td> 
-                                <td>{{myapplication.studentID}}</td>
                                 <td>{{myapplication.projectID}}</td> 
                                 <td>{{myapplication.applicationDescription}}</td>
+                                <td><button class="table_button" @click.prevent="deleteApplication(myapplication.applicationID)">Delete Application</button></td>
                             </tr> 
                         </tbody>
                     </table>  

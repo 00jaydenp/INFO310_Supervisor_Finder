@@ -30,7 +30,7 @@ public class ApplicationResource extends Jooby {
             });
         });
 
-        path("api/application/{studentID}", () -> {
+        path("api/student/application/{studentID}", () -> {
             get("", ctx -> {
                 String id = ctx.path("studentID").value();
                 Collection<Application> application = dao.getApplicationByStudentID(id);
@@ -59,6 +59,14 @@ public class ApplicationResource extends Jooby {
                             .setResponseCode(StatusCode.CONFLICT)
                             .render(new ErrorMessage("There is already an existing student with this ID in the system"));
                 }
+            });
+        });
+        
+        path("api/application/{applicationID}", () -> {
+            delete("", ctx -> {
+                String id = ctx.path("applicationID").value();
+                dao.deleteSingleApplication(id);
+                return ctx.send(StatusCode.NO_CONTENT);            
             });
         });
 

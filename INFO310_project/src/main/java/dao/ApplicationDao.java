@@ -20,4 +20,6 @@ public interface ApplicationDao {
     void addApplication(Application application);
     
     void deleteApplication(String studentID);
+    
+    void deleteSingleApplication(String applicationID);
 }

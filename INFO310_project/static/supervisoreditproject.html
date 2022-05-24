@@ -24,9 +24,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <h3 class="lables">Project ID: </h3><h3 class="content">{{project.projectID}}</h3>
                     <h3 class="lables">Project Name: </h3><input type="text" v-model="project.name" value="project.name">
                     <h3 class="lables">Description: </h3><input type="text" v-model="project.description" value="project.description">
-                    <h3 class="lables">Project Status </h3><input type="text" v-model="project.status" value="project.status">
+                    <h3 class="lables">Project Status </h3>
+                    <select v-model="project.status" value="project.status"> 
+                        <option>New Project</option>  
+                        <option>On-going</option>
+                        <option>Completed</option>
+                    </select> <br>
                     <h3 class="lables">Open date </h3><h3 class="content">{{project.date}}</h3><br>
-                    <h3 class="lables">Hidden </h3><select v-model="project.hidden" value="project.hidden"> <option value = "false"> False </option>  <option value = "true"> True </option></select> <br>
+                    <h3 class="lables">Hidden </h3>
+                    <select v-model="project.hidden" value="project.hidden"> 
+                        <option value = "false"> False </option>  
+                        <option value = "true"> True </option>
+                    </select> <br>
                     <button type="submit">Save Changes</button>
                 </form>
                 

@@ -8,7 +8,8 @@
 "use strict";
 
 var applicationApi = 'api/project/application';
-var studentIDApi = ({studentID}) => `api/application/${studentID}`;
+var applicationIDApi = ({applicationID}) => `api/application/${applicationID}`;
+var studentIDApi = ({studentID}) => `api/student/application/${studentID}`;
 var projectIDApi = ({projectID}) => `api/project/application/${projectID}`;
 var studentApi = ({studentID}) => `/api/student/profile/${studentID}`;
 var supervisorIDApi = ({staffID}) => `/api/supervisor/profile/${staffID}`;
@@ -110,7 +111,7 @@ const app = Vue.createApp({
             axios.put(studentApi({'studentID': studentID}), this.student)
                     .then(() => {
                         alert("success");
-                        this.deleteApplication(studentID);
+                        this.deleteApplications(studentID);
                         window.location = 'viewsupervisorapplications.html';
                     })
                     .catch(error =>{
@@ -120,11 +121,23 @@ const app = Vue.createApp({
                     
         },
         
-        deleteApplication(studentID){
+        deleteApplications(studentID){
             axios.delete(studentIDApi({'studentID': studentID}))
                     .then(response => {
                         this.student = response.data;
                         window.location = 'viewsupervisorapplications.html';
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+        },
+        
+        deleteApplication(applicationID){
+            axios.delete(applicationIDApi({'applicationID': applicationID}))
+                    .then(response => {
+                        this.application = response.data;
+                        window.location = 'viewstudentapplications.html';
                     })
                     .catch(error => {
                         console.error(error);
@@ -147,11 +160,18 @@ const app = Vue.createApp({
             window.location="vieweachapplication.html";
         },
         
-        viewStudent(){
-//            dataStore.commit("selectApplication2", application);
-            window.location="selectedstudentfromapplication.html";
+        getStudent(studentID) {
+            axios.get(studentApi({'studentID': studentID}))
+                    .then(response => {
+                        this.student = response.data;
+                        dataStore.commit("selectStudent", this.student);
+                        window.location="viewselectedstudent.html";
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
         }
-        
       
 
     }

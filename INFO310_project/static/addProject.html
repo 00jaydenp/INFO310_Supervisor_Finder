@@ -22,17 +22,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                  <navigation></navigation>
                 <h1>Set Up Your Project</h1> 
                 <form @submit.prevent="addProject()">
-                    <label class="lables">Project ID:</label>
-                    <input type="text" v-model="project.projectID" required><br>  
                     
                     <label class="lables">Name:</label>
                     <input type="text" v-model="project.name" required><br>
                     
                     <label class="lables">Description</label>
                     <input type="text" v-model="project.description" required><br>
-                    
-                    <label class="lables">Status:</label>
-                    <input type="text" v-model="project.status" required><br>
                     
                     <p></p>
                     <button type="submit">Save Project</button>

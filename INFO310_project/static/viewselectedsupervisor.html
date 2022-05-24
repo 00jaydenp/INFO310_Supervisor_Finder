@@ -22,13 +22,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 
                 <h1>View Selected Supervisor</h1>
 
-                <form @submit.prevent="deleteSupervisor(supervisor.staffID)">   
+                <form>   
                     <h3 class="lables">StaffID: </h3><h3 class="content">{{selectedSupervisor.staffID}}</h3>
                     <h3 class="lables">Name: </h3><h3 class="content">{{selectedSupervisor.firstName}} {{selectedSupervisor.lastName}}</h3>
                     <h3 class="lables">Email: </h3><h3 class="content">{{selectedSupervisor.email}}</h3>
                     <h3 class="lables">Interests: </h3><h3 class="content">{{selectedSupervisor.interests}}</h3>
                     <h3 class="lables">Description: </h3><h3 class="content">{{selectedSupervisor.description}}</h3>
-                    <h3 class="lables">Phone Number: </h3><h3 class="content">{{selectedSupervisor.phoneNumber}}</h3>
+                    <h3 class="lables">Phone Number: </h3><h3 class="content">{{selectedSupervisor.phoneNumber}}</h3><br>
+                    <button @click.prevent="projectBySupervisor(selectedSupervisor)">View {{selectedSupervisor.firstName}} {{selectedSupervisor.lastName}}'s Projects</button>
                 </form>
                 
             </center>

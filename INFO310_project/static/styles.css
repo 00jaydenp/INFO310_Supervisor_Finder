@@ -9,13 +9,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 html{
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    padding: 0;
-    height: 100%;
+    position: relative;
+    min-height: 100vh;
+} 
+
+main, body{
+
+    margin: 160px 0 0 0;
 }
 
-body, main{
-    margin: 0;
-    
+center{
+    padding-bottom: 160px;
 }
 
 img{
@@ -33,10 +37,6 @@ nav, .error_stopper{
     padding:3px;
 }
 
-center{
-    margin-top: 8%;
-}
-
 .nav_links{
     width: 90%;
 }
@@ -46,7 +46,7 @@ center{
     color: whitesmoke;
     font-size: 16px;
     text-align: center;
-    width: 12%;
+    width: 10%;
     margin-top: 12px;
     margin:12px 0 0 0;
     padding: 15px;
@@ -75,6 +75,7 @@ center{
 .content{
     text-align: center;
     
+    
 }
 
 input, select{
@@ -100,7 +101,7 @@ textarea{
 button, a{
     font-size: 18px;
     background-color: #10428c;
-    width: 20%;
+    width: 200px;
     padding: 5px;
     color: whitesmoke;
     margin: 15px;
@@ -148,13 +149,12 @@ th{
 }
 
 footer{
-
-    padding-top: 1px;
-    height: 100px;
+    padding-top: 40px;
     position: absolute;
+    bottom: 0;
+    height: 100px;
     width: 100%;
     background-color: #10428c;
     color: whitesmoke;
-    bottom: 0;
     text-align: center;
 }

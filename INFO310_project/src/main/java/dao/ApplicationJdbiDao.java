@@ -36,4 +36,8 @@ public interface ApplicationJdbiDao extends ApplicationDao {
     @Override
     @SqlUpdate("DELETE FROM APPLICATION WHERE STUDENTID = :studentID")
     public void deleteApplication(@Bind("studentID")String id);
+    
+    @Override
+    @SqlUpdate("DELETE FROM APPLICATION WHERE APPLICATIONID = :applicationID")
+    public void deleteSingleApplication(@Bind("applicationID")String id);
 }
