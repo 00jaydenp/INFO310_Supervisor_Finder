@@ -19,33 +19,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <main id="content"> 
 
             <center>
-                <div>
-                    <navigation></navigation>
-                </div>
-                <div>
-                    <h1>Student Applicants</h1>
-                </div>
+                <navigation></navigation>
+                <h1>Student Applicants</h1>
 
-                <div> 
-                    <table>
-                        <thead>
-                            <tr>&nbsp
-                                <th>Application ID</th>
-                                <th>Student ID</th> 
-                                <th>Project ID</th> 
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <form>
-                            <h3 class="lables">Application ID: </h3><h3 class="content">{{selectedApplication.applicationID}}</h3>  
-                            <h3 class="lables">Student ID: </h3><h3 class="content">{{selectedApplication.studentID}}</h3>
-                            <h3 class="lables">Project ID: </h3><h3 class="content">{{selectedApplication.projectID}}</h3>
-                            <h3 class="lables">Description </h3><h3 class="content">{{selectedApplication.description}}</h3>
-                            </form>   
-                        </tbody>
-                    </table>  
+                <form>
+                    <h3 class="lables">Application ID: </h3><h3 class="content">{{selectedApplication.applicationID}}</h3>  
+                    <h3 class="lables">Student ID: </h3><h3 class="content">{{selectedApplication.studentID}}</h3>
+                    <h3 class="lables">Project ID: </h3><h3 class="content">{{selectedApplication.projectID}}</h3>
+                    <h3 class="lables">Description </h3><h3 class="content">{{selectedApplication.applicationDescription}}</h3>
+                </form>   
 
-                </div>
             </center>
         </main>
         <script type="module" src="js/Application.js"></script>

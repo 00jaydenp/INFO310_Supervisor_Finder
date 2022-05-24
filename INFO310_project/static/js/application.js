@@ -143,7 +143,7 @@ const app = Vue.createApp({
         },
         
         viewApplication(application){
-            dataStore.commit("selectedApplication", application);
+            dataStore.commit("selectApplication", application);
             window.location="vieweachapplication.html";
         }
 
