@@ -11,6 +11,7 @@ var applicationApi = 'api/project/application';
 var studentIDApi = ({studentID}) => `api/application/${studentID}`;
 var projectIDApi = ({projectID}) => `api/project/application/${projectID}`;
 var studentApi = ({studentID}) => `/api/student/profile/${studentID}`;
+var supervisorIDApi = ({staffID}) => `/api/supervisor/profile/${staffID}`;
 
 const app = Vue.createApp({
 
@@ -23,6 +24,10 @@ const app = Vue.createApp({
                 project: new Object()
             }),
             student: new Object({
+                user: new Object()
+            }),
+            
+            supervisor: new Object({
                 user: new Object()
             })
             
@@ -44,6 +49,8 @@ const app = Vue.createApp({
             this.getApplicationByStudent(this.studentuser.studentID);
         } else if(document.URL.includes("viewsupervisorapplications.html")) {
             this.getApplicationByProject(this.selectedProject.projectID);
+        } else if(document.URL.includes("viewselectedproject.html")){
+            this.getSupervisor(this.selectedProject.staffID);
         }
         
     
@@ -123,6 +130,16 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
+        },
+        
+        getSupervisor(staffID) {
+            axios.get(supervisorIDApi({'staffID': staffID}))
+                    .then(response => {
+                        this.supervisor = response.data;
+                    }).catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details");
+            });
         }
 
     }

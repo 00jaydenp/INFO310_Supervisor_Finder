@@ -35,6 +35,10 @@ center{
     margin-top: 8%;
 }
 
+.nav_links{
+    width: 90%;
+}
+
 .nav_button{
     display: inline-block;
     color: whitesmoke;

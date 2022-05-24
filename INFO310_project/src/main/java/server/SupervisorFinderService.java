@@ -12,13 +12,12 @@ import dao.SupervisorDao;
 import dao.UserDao;
 import io.jooby.Jooby;
 import io.jooby.OpenAPIModule;
-import io.jooby.Route;
 import io.jooby.ServerOptions;
 import io.jooby.json.GsonModule;
 import java.io.IOException;
-import java.nio.file.Paths;
 import resource.ApplicationResource;
 import resource.ProjectResource;
+import resource.StaticAssetResource;
 import resource.StudentResource;
 import resource.SupervisorResource;
 import resource.UserResource;
@@ -49,6 +48,7 @@ public class SupervisorFinderService extends Jooby{
         mount(new UserResource(userDao));
         mount(new ProjectResource(projectDao));
         mount(new ApplicationResource(applicationDao));
+        mount(new StaticAssetResource());
    
         
         
