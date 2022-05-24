@@ -17,6 +17,7 @@ export const dataStore = Vuex.createStore({
         selectedStudent: null;
         selectedSupervisor: null;
         selectedApplication: null;
+//        studentApplication: null;
         
     },
 
@@ -52,7 +53,9 @@ export const dataStore = Vuex.createStore({
             state.selectedApplication = application;
         }
         
-        
+//        studentApp(state, studentuser){
+//            state.studentApplication = studentuser;
+//        }
 
     },
 

@@ -22,7 +22,10 @@ const app = Vue.createApp({
     computed: Vuex.mapState({
         user: 'user',
         studentuser: 'studentuser',
-        selectedStudent: 'selectedStudent'
+        selectedStudent: 'selectedStudent',
+        selectedApplication: 'selectedApplication',
+//        studentApplication: 'studentApplication' //fix here
+        
     }),
 
 
@@ -33,7 +36,8 @@ const app = Vue.createApp({
         } else if (document.URL.includes("viewselectedstudent.html")) {
             //don't mount
         } else if(document.URL.includes("selectedstudentfromapplication.html")){
-            //don't mount yet
+            //don't mount 
+//            dataStore.commit("studentApp", this.getStudent(this.studentuser.studentID));
         }else {
             this.getStudent(this.studentuser.studentID);
         }
