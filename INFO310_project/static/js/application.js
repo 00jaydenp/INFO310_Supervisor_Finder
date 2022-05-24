@@ -140,6 +140,11 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details");
             });
+        },
+        
+        viewApplication(application){
+            dataStore.commit("selectedApplication", application);
+            window.location="vieweachapplication.html";
         }
 
     }
