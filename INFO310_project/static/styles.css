@@ -148,10 +148,10 @@ th{
 }
 
 footer{
-    margin-bottom: 
+
     padding-top: 1px;
-    height: 70px;
-    position: inherit;
+    height: 100px;
+    position: absolute;
     width: 100%;
     background-color: #10428c;
     color: whitesmoke;
