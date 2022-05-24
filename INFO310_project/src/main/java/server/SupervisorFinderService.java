@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import resource.ApplicationResource;
 import resource.ProjectResource;
-import resource.StaticAssetResource;
 import resource.StudentResource;
 import resource.SupervisorResource;
 import resource.UserResource;
@@ -50,7 +49,6 @@ public class SupervisorFinderService extends Jooby{
         mount(new UserResource(userDao));
         mount(new ProjectResource(projectDao));
         mount(new ApplicationResource(applicationDao));
-        mount(new StaticAssetResource());
    
         
         

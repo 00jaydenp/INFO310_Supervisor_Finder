@@ -16,13 +16,17 @@ body{
     margin: 0;
 }
 
-
+img{
+    display: inline-block;
+    float:left;
+    margin: 10px;
+}
 
 nav, .error_stopper{
     top: 0;
     position: fixed;
     width: 100%;
-    height: 10%;
+    height: 100px;
     background-color: #10428c;
     padding:3px;
 }
@@ -37,21 +41,20 @@ center{
     font-size: 16px;
     text-align: center;
     width: 12%;
+    margin-top: 12px;
+    margin:12px 0 0 0;
     padding: 15px;
-    margin: 1%;
     text-decoration: none;
     float:none;
 }
 
-.nav_button:hover{
-    background-color: #00508F;
-}
-
 
 .message{
+    width: 80%;
     padding: 3px;
     color: whitesmoke;
     font-size: 18px;
+    text-align: center;
 }
 
 .lables, .content{
