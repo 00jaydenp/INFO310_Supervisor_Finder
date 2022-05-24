@@ -28,10 +28,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <h3 class="lables">Project ID: </h3><h3 class="content">{{selectedApplication.projectID}}</h3>
                     <h3>Reason For Application: </h3><br>
                     <h3>{{selectedApplication.description}}</h3>
-                    <button @click.prevent="getStudent(selectedApplication.studentID)">View Student Profile</button>
-                    <button @click.prevent="getThisStudent(selectedApplication.studentID, selectedApplication.projectID)">Approve Application</button>
-                    <a :href="`mailto: davidcurrier11@gmail.com?subject=Re:%20${selectedProject.projectID}%20-%20${selectedProject.name}
-                       &body=Dear`">email</a>
+                    <button @click.prevent="getStudent(selectedApplication.studentID)">View Student Profile</button><br>
+                    <button @click.prevent="addProjectToStudent(selectedApplication.studentID, selectedApplication.projectID)">Approve Application</button>
+                    <button @click.prevent="declineApplication()">Decline Application</button>
+
                 </form>
             </center>
             <footer>

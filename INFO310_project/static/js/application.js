@@ -52,16 +52,18 @@ const app = Vue.createApp({
             this.getApplicationByProject(this.selectedProject.projectID);
         } else if(document.URL.includes("viewselectedproject.html")){
             this.getSupervisor(this.selectedProject.staffID);
-        } 
+        } else if(document.URL.includes("vieweachapplication.html")){
+            this.getThisStudent(this.selectedApplication.studentID);
+        }
         
     
     },
 
     methods: {
-        registerApplication() {
+        registerApplication(studentID, projectID) {
         // send POST request to service to create customer
-            this.application.student.studentID = this.studentuser.studentID;
-            this.application.project.projectID = this.selectedProject.projectID;
+            this.application.student.studentID = studentID;
+            this.application.project.projectID = projectID;
             axios.post(applicationApi, this.application)
                     .then(() => {
                         window.location = 'index.html';
@@ -93,12 +95,10 @@ const app = Vue.createApp({
                     });
         },
         
-        getThisStudent(studentID, projectID){
+        getThisStudent(studentID){
             axios.get(studentApi({'studentID': studentID}))
                     .then(response => {
                         this.student = response.data;
-                        this.addProjectToStudent(studentID, projectID);
-                        
                     })
                     .catch(error => {
                         console.error(error);
@@ -112,6 +112,11 @@ const app = Vue.createApp({
                     .then(() => {
                         alert("success");
                         this.deleteApplications(studentID);
+                        window.location.href = "mailto:" + this.student.email + "?subject=Re:%20" + 
+                        this.selectedProject.projectID + "%20-%20" + this.selectedProject.name +
+                        "&body=Dear%20" + this.student.firstName +", %0D%0AWe%20are%20pleased%20to%20inform" +
+                        "%20you%20that%20your%20application%20to%20Project:%20" + this.selectedProject.name
+                        + "%20has%20been%20successful%0D%0A%0D%0ASincerely%0D%0ASupervisor%20Finder";
                         window.location = 'viewsupervisorapplications.html';
                     })
                     .catch(error =>{
@@ -121,11 +126,20 @@ const app = Vue.createApp({
                     
         },
         
+        declineApplication(){
+            this.deleteApplication(this.selectedApplication.applicationID)
+            window.location.href = "mailto:" + this.student.email + "?subject=Re:%20" + 
+            this.selectedProject.projectID + "%20-%20" + this.selectedProject.name +
+            "&body=Dear%20" + this.student.firstName +", %0D%0AWe%20regret%20to%20inform" +
+            "%20you%20that%20your%20application%20to%20Project:%20" + this.selectedProject.name
+            + "%20has%20been%20rejected%0D%0A%0D%0ASincerely%0D%0ASupervisor%20Finder";
+            window.location = 'viewsupervisorapplications.html';
+        },
+        
         deleteApplications(studentID){
             axios.delete(studentIDApi({'studentID': studentID}))
                     .then(response => {
-                        this.student = response.data;
-                        window.location = 'viewsupervisorapplications.html';
+                        this.application = response.data;
                     })
                     .catch(error => {
                         console.error(error);
